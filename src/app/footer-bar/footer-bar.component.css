@@ -1,0 +1,47 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.our-pics {
+  margin-left: 2px;
+  margin-right: 2px;
+  display: flex;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: .15s ease-out;
+}
+
+.our-pics:hover {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.25rem);
+}
+
+footer {
+  font-family: 'Russo One', sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 115px;
+  align-items: center;
+  background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+  background-blend-mode: multiply;  color: white;
+}
+
+.open-source {
+  color: #9d9ea3;
+  text-align: center;
+}
+
+footer a {
+  color: #9d9ea3;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #e8ebf2;
+}
