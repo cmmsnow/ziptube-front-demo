@@ -25,7 +25,7 @@ footer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -75px;
   height: 115px;
   align-items: center;
   background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
@@ -33,15 +33,25 @@ footer {
 }
 
 .open-source {
-  color: #9d9ea3;
+  /*color: #9d9ea3;*/
+  color: #bdbfc4;
   text-align: center;
 }
 
 footer a {
-  color: #9d9ea3;
+  /*color: #9d9ea3;*/
+  color: #bdbfc4;
   text-decoration: none;
 }
 
 footer a:hover {
   color: #e8ebf2;
+  position: relative;
+  top: -2px;
+  transition: .15s ease-out;
+}
+
+footer:hover{
+  bottom: 0px;
+  transition: .15s ease-out;
 }

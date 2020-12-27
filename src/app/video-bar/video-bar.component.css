@@ -1,0 +1,14 @@
+.side-bar{
+  position: absolute;
+  right: 0;
+  top: 0px;
+  bottom: 115px;
+  width: 30%;
+  padding: 0px;
+  /*background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);*/
+}
+
+h2, h3, h4 {
+  font-family: 'Russo One', sans-serif;
+  color: #353637;
+}
