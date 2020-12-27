@@ -4,14 +4,15 @@
   </h2>
 <div *ngFor = "let video of videos; let i=index">
   <div *ngIf="i==videos.length-1">
-  <h3>
+    <img alt="video" src="https://blog.majestic.com/wp-content/uploads/2010/10/Video-Icon-crop.png">
+    <h3>
     {{video.title}}
   </h3>
+    <p *ngIf="video.description">
+      Description: {{video.description}}
+    </p>
   <p>
     Posted by: {{video.postedBy}}
-  </p>
-  <p *ngIf="video.description">
-    Description: {{video.description}}
   </p>
 </div>
 </div>

@@ -5,12 +5,23 @@
   /*background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);*/
   position: absolute;
   left: 0;
-  top: 100px;
-  bottom: 115px;
+  top: 0;
+  bottom: 40px;
+  text-align: center;
   width: 70%;
 }
 
 h2, h3, h4 {
   font-family: 'Russo One', sans-serif;
   color: #353637;
+  padding-top: 15px;
+}
+
+img {
+  /*background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);*/
+  background: #333333;
+  padding: 15px 15px;
+  margin-top: 12px;
+  max-width: 100%;
+  height: auto;
 }
