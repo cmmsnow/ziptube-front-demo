@@ -11,8 +11,8 @@
   /*display: flex;*/
   /*flex-direction: column;*/
   /*align-items: center;*/
-  /*background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);*/
-  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); /*better than ^*/
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  /*background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); !*warmer than ^*!*/
   position: absolute;
   left: 0;
   right: 0;
