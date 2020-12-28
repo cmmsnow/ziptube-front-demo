@@ -4,7 +4,9 @@
   </h2>
 <div *ngFor = "let video of videos; let i=index">
   <div *ngIf="i==videos.length-1">
-    <img alt="video" src="https://blog.majestic.com/wp-content/uploads/2010/10/Video-Icon-crop.png">
+    <video height="500" controls>
+      <source src="{{video.url}}">
+    </video>
     <h3>
     {{video.title}}
   </h3>

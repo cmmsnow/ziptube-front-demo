@@ -7,7 +7,9 @@
   <h3>
     {{video.title}}
   </h3>
-    <img alt="video" src="https://blog.majestic.com/wp-content/uploads/2010/10/Video-Icon-crop.png">
+    <video height="200" controls>
+      <source src="{{video.url}}">
+    </video>
     <p *ngIf="video.description">
       Description: {{video.description}}
     </p>

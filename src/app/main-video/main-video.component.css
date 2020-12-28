@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   /*background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);*/
+  overflow-y: auto;
   position: absolute;
   left: 0;
   top: 0;
