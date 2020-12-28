@@ -1,4 +1,5 @@
 .side-bar{
+  color: #2d3238;
   position: absolute;
   right: 0;
   top: 0px;
@@ -12,7 +13,7 @@
 
 h2, h3, h4 {
   font-family: 'Russo One', sans-serif;
-  color: #353637;
+  color: #69655f;
 }
 
 img {
