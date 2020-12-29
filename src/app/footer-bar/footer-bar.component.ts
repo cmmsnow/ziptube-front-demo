@@ -5,9 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './footer-bar.component.html',
   styleUrls: ['./footer-bar.component.css']
 })
-
 export class FooterBarComponent implements OnInit {
-  constructor() {}
-  // tslint:disable-next-line:typedef
-  ngOnInit() {}
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
