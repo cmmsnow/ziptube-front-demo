@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderBarComponent } from './old-header-bar/header-bar.component';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { VideoBarComponent } from './old-video-bar/video-bar.component';
 import { MainVideoComponent } from './old-main-video/main-video.component';
