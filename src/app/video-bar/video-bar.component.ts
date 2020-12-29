@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { videos } from '../videos';
 
 @Component({
@@ -6,7 +6,12 @@ import { videos } from '../videos';
   templateUrl: './video-bar.component.html',
   styleUrls: ['./video-bar.component.css']
 })
-
-export class VideoBarComponent {
+export class VideoBarComponent implements OnInit {
   videos = videos;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
