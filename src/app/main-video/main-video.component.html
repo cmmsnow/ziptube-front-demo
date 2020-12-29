@@ -1,0 +1,21 @@
+<div class="main-section">
+  <h2>
+    Most recent:
+  </h2>
+  <div *ngFor = "let video of videos; let i=index">
+    <div *ngIf="i==videos.length-1">
+      <video height="500" controls>
+        <source src="{{video.url}}">
+      </video>
+      <h3>
+        {{video.title}}
+      </h3>
+      <p *ngIf="video.description">
+        Description: {{video.description}}
+      </p>
+      <p>
+        Posted by: {{video.postedBy}}
+      </p>
+    </div>
+  </div>
+</div>
