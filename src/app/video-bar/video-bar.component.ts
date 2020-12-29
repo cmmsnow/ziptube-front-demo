@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { videos } from '../videos';
+import { OldVideos } from '../old-videos';
 
 @Component({
   selector: 'app-video-bar',
@@ -7,7 +7,7 @@ import { videos } from '../videos';
   styleUrls: ['./video-bar.component.css']
 })
 export class VideoBarComponent implements OnInit {
-  videos = videos;
+  videos = OldVideos;
 
   constructor() { }
 

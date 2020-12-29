@@ -8,7 +8,6 @@ import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { VideoBarComponent } from './video-bar/video-bar.component';
 import { MainVideoComponent } from './main-video/main-video.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +18,7 @@ import { MainVideoComponent } from './main-video/main-video.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
