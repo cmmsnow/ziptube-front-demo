@@ -1,6 +1,4 @@
 .toolbar {
-  background-color: #eddcd2;
-  color: #69655f;
   height: 60px;
   position: absolute;
   top: 0;
@@ -10,8 +8,6 @@
 }
 
 h1 {
-  /*font-family: 'Comfortaa', cursive;*/
-  font-family: 'Russo One', sans-serif;
   font-size: 40px;
   margin-top: 8px;
 }

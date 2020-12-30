@@ -1,21 +1,21 @@
 <div class="side-bar">
-  <h2>
-    More videos:
-  </h2>
-  <div *ngFor = "let video of videos.slice().reverse(); let i=index;">
-    <div *ngIf="i>0">
-      <h3>
-        {{video.title}}
-      </h3>
-      <video height="200" controls>
-        <source src="{{video.url}}">
-      </video>
-      <p *ngIf="video.description">
-        Description: {{video.description}}
-      </p>
-      <p>
+<!--    <h2>-->
+<!--     More videos:-->
+<!--    </h2>-->
+    <div class="vid-contents" *ngFor = "let video of videos.slice().reverse(); let i=index;">
+      <div *ngIf="i>0">
+        <h3>
+          {{video.title}}
+        </h3>
+        <video controls>
+          <source src="{{video.url}}">
+        </video>
+        <p *ngIf="video.description">
+          Description: {{video.description}}
+        </p>
+        <p>
         Posted by: {{video.postedBy}}
-      </p>
+        </p>
+      </div>
     </div>
-  </div>
 </div>
