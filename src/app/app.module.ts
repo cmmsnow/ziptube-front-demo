@@ -12,6 +12,7 @@ import { LoginRegisterPageComponent } from './login-register-page/login-register
 import { MainVideoPageComponent } from './main-video-page/main-video-page.component';
 import { UserVideoPageComponent } from './user-video-page/user-video-page.component';
 import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.
     LoginRegisterPageComponent,
     MainVideoPageComponent,
     UserVideoPageComponent,
-    UploadVideoPageComponent
+    UploadVideoPageComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

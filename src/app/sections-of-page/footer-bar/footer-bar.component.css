@@ -28,7 +28,8 @@ footer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -75px;
+  bottom: 0;
+  /*bottom: -75px;*/
 }
 
 .open-source {
@@ -41,12 +42,12 @@ footer a {
   text-decoration: none;
 }
 
-footer a:hover {
-  color: #2d3238;
-  position: relative;
-  top: -2px;
-  transition: .15s ease-out;
-}
+/*footer a:hover {*/
+/*  color: #2d3238;*/
+/*  position: relative;*/
+/*  top: -2px;*/
+/*  transition: .15s ease-out;*/
+/*}*/
 
 footer:hover{
   bottom: 0px;
