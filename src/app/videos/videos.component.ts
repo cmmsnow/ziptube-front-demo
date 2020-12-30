@@ -10,6 +10,7 @@ import {Video} from '../video';
 })
 export class VideosComponent implements OnInit {
   videos!: Video[];
+
   // @ts-ignore
   selectedVideo = Video;
 
