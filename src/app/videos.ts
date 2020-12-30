@@ -1,6 +1,6 @@
 import {OnInit} from '@angular/core';
 import {Video} from './video';
-import {VideoService} from './video.service';
+import {VideoService} from './services/video.service';
 
 export class Videos implements OnInit{
   videos!: Video[];

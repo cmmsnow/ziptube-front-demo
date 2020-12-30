@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OldVideos } from '../old-videos';
+import { OldVideos } from '../../old-videos';
 
 @Component({
   selector: 'app-video-bar',

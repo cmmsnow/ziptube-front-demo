@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// Need to import User here
 
 @Component({
   selector: 'app-dashboard',
