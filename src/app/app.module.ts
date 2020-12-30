@@ -6,15 +6,19 @@ import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { VideoBarComponent } from './video-bar/video-bar.component';
-import { MainVideoComponent } from './main-video/main-video.component';
+import { CenterVideoComponent } from './center-video/center-video.component';
+import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
+import { LoginRegisterPageComponent } from './login-register-page/login-register-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderBarComponent,
     FooterBarComponent,
-    MainVideoComponent,
-    VideoBarComponent
+    CenterVideoComponent,
+    VideoBarComponent,
+    EditProfilePageComponent,
+    LoginRegisterPageComponent
   ],
   imports: [
     BrowserModule,

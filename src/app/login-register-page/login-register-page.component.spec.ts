@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainVideoComponent } from './main-video.component';
+import { LoginRegisterPageComponent } from './login-register-page.component';
 
-describe('MainVideoComponent', () => {
-  let component: MainVideoComponent;
-  let fixture: ComponentFixture<MainVideoComponent>;
+describe('LoginRegisterPageComponent', () => {
+  let component: LoginRegisterPageComponent;
+  let fixture: ComponentFixture<LoginRegisterPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainVideoComponent ]
+      declarations: [ LoginRegisterPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainVideoComponent);
+    fixture = TestBed.createComponent(LoginRegisterPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

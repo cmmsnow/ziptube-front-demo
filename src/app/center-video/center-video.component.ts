@@ -3,10 +3,10 @@ import { OldVideos } from '../old-videos';
 
 @Component({
   selector: 'app-main-video',
-  templateUrl: './main-video.component.html',
-  styleUrls: ['./main-video.component.css']
+  templateUrl: './center-video.component.html',
+  styleUrls: ['./center-video.component.css']
 })
-export class MainVideoComponent implements OnInit {
+export class CenterVideoComponent implements OnInit {
   videos = OldVideos;
 
   constructor() { }
