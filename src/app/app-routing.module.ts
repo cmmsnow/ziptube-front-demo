@@ -9,7 +9,7 @@ import {ErrorComponent} from './error/error.component';
 
 const routes: Routes = [
   {path: '', component: MainVideoPageComponent},
-  {path: 'loginregister', component: LoginRegisterPageComponent},
+  {path: 'login', component: LoginRegisterPageComponent},
   {path: 'editprofile', component: EditProfilePageComponent},
   {path: 'uservideos', component: UserVideoPageComponent},
   {path: 'uploadvideo', component: UploadVideoPageComponent},
