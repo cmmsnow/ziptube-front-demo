@@ -11,7 +11,7 @@ export class VideoService {
   private videosUrl: string;
 
   constructor(private http: HttpClient) {
-    this.videosUrl = '';
+    this.videosUrl = 'http://localhost:8080/h2-console/allvideosbyusername/christine';
   }
 
   public getAllVideos(): Observable<Video[]> {

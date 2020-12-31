@@ -1,0 +1,18 @@
+<div class="side-bar">
+  <div class="vid-contents" *ngFor = "let video of videos.slice().reverse(); let i=index;">
+    <div *ngIf="!selectedVideo; else i>0">
+      <h4 (click)="onSelect(video)">
+        {{video.title}}
+      </h4>
+      <video controls>
+        <source src="{{video.url}}">
+      </video>
+      <p *ngIf="video.description">
+        Description: {{video.description}}
+      </p>
+      <p>
+        Posted by: {{video.postedBy}}
+      </p>
+    </div>
+  </div>
+</div>
