@@ -15,6 +15,7 @@ import { UsersComponent } from './users/users.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CenterVideoComponent } from './page-sections/center-video/center-video.component';
 import { VideoBarComponent } from './page-sections/video-bar/video-bar.component';
+import { UserVideosComponent } from './user-videos/user-videos.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,14 @@ import { VideoBarComponent } from './page-sections/video-bar/video-bar.component
     FooterBarComponent,
     EditProfilePageComponent,
     LoginRegisterPageComponent,
-    // MainVideoPageComponent,
     UploadVideoPageComponent,
     ErrorComponent,
     VideosComponent,
     UsersComponent,
     CommentsComponent,
     CenterVideoComponent,
-    VideoBarComponent
+    VideoBarComponent,
+    UserVideosComponent
   ],
   imports: [
     BrowserModule,

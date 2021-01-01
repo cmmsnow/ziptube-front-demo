@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {VideoService} from '../services/video.service';
 import {Video} from '../video';
-import {OldVideos} from '../old-videos';
+import {MockVideos} from '../mock-videos';
 
 
 @Component({
@@ -11,7 +11,7 @@ import {OldVideos} from '../old-videos';
 })
 export class VideosComponent implements OnInit {
   // videos!: Video[];
-  videos = OldVideos;
+  videos = MockVideos;
   // @ts-ignore
   selectedVideo = Video;
 

@@ -4,6 +4,5 @@ export interface Video {
   description: string;
   postedBy: string;
   timestamp: string;
-  comments: string[];
   url: string;
 }
