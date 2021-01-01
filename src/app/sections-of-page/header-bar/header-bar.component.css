@@ -1,6 +1,4 @@
 .toolbar {
-  background-color: #eddcd2;
-  color: #69655f;
   height: 60px;
   position: absolute;
   top: 0;
@@ -8,10 +6,36 @@
   right: 0;
   text-align: center;
 }
-
 h1 {
-  /*font-family: 'Comfortaa', cursive;*/
-  font-family: 'Russo One', sans-serif;
   font-size: 40px;
   margin-top: 8px;
 }
+.login, .logout {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.right-side, .right-side1 {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.right-side2 {
+  position: absolute;
+  right: 5px;
+  top: 18px;
+}
+.right-side3 {
+  position: absolute;
+  right: 5px;
+  top: 31px;
+}
+ul {
+  font-size: 12px;
+  font-family: 'Russo One', sans-serif;
+  list-style: none;
+  /*visibility: hidden;*/
+}
+/*.active {*/
+/*  visibility: visible;*/
+/*}*/
