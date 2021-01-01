@@ -9,15 +9,15 @@ import {Video} from '../video';
 })
 export class UserVideosComponent implements OnInit {
   videos = MockVideos;
-  // @ts-ignore
-  selectedVideo = Video;
+  // // @ts-ignore
+  // selectedVideo = Video;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public onSelect(video: Video): void {
-    this.selectedVideo = video;
-  }
+  // public onSelect(video: Video): void {
+  //   this.selectedVideo = video;
+  // }
 }

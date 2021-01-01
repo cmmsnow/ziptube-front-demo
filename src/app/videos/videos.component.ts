@@ -12,7 +12,7 @@ export class VideosComponent implements OnInit {
   // videos!: Video[];
   videos = MockVideos;
   // @ts-ignore
-  selectedVideo = Video;
+  // selectedVideo = Video;
 
   // constructor(private videoService: VideoService) { }
   constructor() { }
@@ -23,8 +23,8 @@ export class VideosComponent implements OnInit {
     // });
   }
 
-  public onSelect(video: Video): void {
-    this.selectedVideo = video;
-  }
+  // public onSelect(video: Video): void {
+  //   this.selectedVideo = video;
+  // }
 
 }

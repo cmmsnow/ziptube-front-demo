@@ -23,7 +23,7 @@
 <div class="side-bar">
   <div class="vid-contents" *ngFor = "let video of videos.slice().reverse(); let i=index;">
     <div *ngIf="i>0">
-      <h4 (click)="onSelect(video)">
+      <h4>
         {{video.title}}
       </h4>
       <video controls>
@@ -41,5 +41,7 @@
 
 
 <!--    <div *ngIf="selectedVideo;else i==videos.length-1">    -->
+<!--    <h4 (click)="onSelect(video)">    -->
 <!--    <div *ngIf="!selectedVideo; else i>0">    -->
+
 <!--    ^^have momentarily removed the feature that lets you select video by click for center view    -->
