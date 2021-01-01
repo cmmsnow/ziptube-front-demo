@@ -1,0 +1,47 @@
+<div class="main-section">
+  <div *ngFor = "let video of videos; let i=index">
+    <div *ngIf="i==videos.length-1">
+      <video class="center-vid" controls>
+        <source src="{{video.url}}">
+      </video>
+      <h3>
+        {{video.title}}
+      </h3>
+      <p *ngIf="video.description">
+        Description: {{video.description}}
+      </p>
+      <p>
+        Posted by: {{video.postedBy}}
+      </p>
+    </div>
+  </div>
+  <!--  <ul *ngIf="video.comments">-->
+  <!--    <li *ngFor = "let comment of comments; let i=index">{{comments[i]}}<button>delete</button></li>-->
+  <!--  </ul>-->
+</div>
+
+<div class="side-bar">
+  <div class="vid-contents" *ngFor = "let video of videos.slice().reverse(); let i=index;">
+    <div *ngIf="i>0">
+      <h4>
+        {{video.title}}
+      </h4>
+      <video controls>
+        <source src="{{video.url}}">
+      </video>
+      <p *ngIf="video.description">
+        Description: {{video.description}}
+      </p>
+      <p>
+        Posted by: {{video.postedBy}}
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!--    <div *ngIf="selectedVideo;else i==videos.length-1">    -->
+<!--    <h4 (click)="onSelect(video)">    -->
+<!--    <div *ngIf="!selectedVideo; else i>0">    -->
+
+<!--    ^^have momentarily removed the feature that lets you select video by click for center view    -->
