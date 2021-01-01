@@ -38,5 +38,11 @@ h1 {
 
  ul {
    font-size: 12px;
+   font-family: 'Russo One', sans-serif;
    list-style: none;
+   /*visibility: hidden;*/
  }
+
+ /*.active {*/
+ /*  visibility: visible;*/
+ /*}*/

@@ -1,0 +1,52 @@
+<div class="toolbar" role="banner">
+  <h1>ZipTube</h1>
+  <input type="hidden" #selection>
+  <div [ngSwitch]="selection.value">
+    <ul class="user-video-page" *ngSwitchCase="'uservideo'">
+      <li class="logout"><a routerLink="login" (click)="selection.value = 'login'">Log Out</a></li>
+      <li class="right-side1"><a routerLink="" (click)="selection.value = 'main'">Browse Videos</a></li>
+      <li class="right-side2"><a routerLink="uploadvideo" (click)="selection.value = 'uploadvideo'">Upload Video</a></li>
+      <li class="right-side3"><a routerLink="editprofile" (click)="selection.value = 'editprofile'">Edit Profile</a></li>
+    </ul>
+    <ul class="upload-video-page" *ngSwitchCase="'uploadvideo'">
+      <li class="logout"><a routerLink="login" (click)="selection.value = 'login'">Log Out</a></li>
+      <li class="right-side1"><a routerLink="" (click)="selection.value = 'main'">Browse Videos</a></li>
+      <li class="right-side2"><a routerLink="uservideos" (click)="selection.value = 'uservideo'">My Videos</a></li>
+      <li class="right-side3"><a routerLink="editprofile" (click)="selection.value = 'editprofile'">Edit Profile</a></li>
+    </ul>
+    <ul class="main-video-page-signed-in" *ngSwitchCase="'main'">
+      <li class="logout"><a routerLink="login" (click)="selection.value = 'login'">Log Out</a></li>
+      <li class="right-side1"><a routerLink="uservideos" (click)="selection.value = 'uservideo'">My Videos</a></li>
+      <li class="right-side2"><a routerLink="uploadvideo" (click)="selection.value = 'uploadvideo'">Upload Video</a></li>
+      <li class="right-side3"><a routerLink="editprofile" (click)="selection.value = 'editprofile'">Edit Profile</a></li>
+    </ul>
+    <ul class="edit-profile" *ngSwitchCase="'editprofile'">
+      <li class="logout"><a routerLink="login" (click)="selection.value = 'login'">Log Out</a></li>
+      <li class="right-side1"><a routerLink="" (click)="selection.value = 'main'">Browse Videos</a></li>
+      <li class="right-side2"><a routerLink="uservideos" (click)="selection.value = 'uservideo'">My Videos</a></li>
+      <li class="right-side3"><a routerLink="uploadvideo" (click)="selection.value = 'uploadvideo'">Upload Video</a></li>
+    </ul>
+    <ul class="main-video-page-not-signed-in" *ngSwitchDefault>
+      <li class="login"><a routerLink="login" (click)="selection.value = 'login'">Login/Register</a></li>
+    </ul>
+    <ul class="login-page-not-signed-in" *ngSwitchCase="'login'">
+      <li class="right-side"><a routerLink="" (click)="selection.value = 'main'">Browse Videos</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<!--When user logs in, it should automatically take them to the main video page(or their videos. either.)-->
+
+<!--Left upper corner:-->
+<!--* on login/register page  -  (nothing?)-->
+<!--* on main page/if not signed in  -  login/register button-->
+<!--* on every page/if signed in  -  logout button-->
+
+
+<!--Right upper corner:-->
+<!--* on main page/if not signed in  -  (nothing?)-->
+<!--* on main page/if signed in  -  my videos, upload video, edit profile-->
+<!--* on user page  -  browse videos, upload video, edit profile-->
+<!--* on login/register page  -  browse videos-->
+<!--* on upload video page - browse videos, my videos, edit profile-->

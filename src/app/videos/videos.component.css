@@ -11,17 +11,32 @@
   width: 70%;
 }
 
-h2, h3, h4 {
+.main-section h2, h3, h4 {
   padding-top: 15px;
 }
 
-video {
+.center-vid {
   padding: 15px 15px;
   margin-top: 12px;
   max-width: 100%;
   max-height: 600px;
 }
 
-li {
+.main-section li {
   list-style: none;
+}
+
+.side-bar{
+  position: absolute;
+  right: 0;
+  top: 0px;
+  bottom: 40px;
+  width: 30%;
+  padding: 10px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.vid-contents {
+  /*max-width: fit-content;*/
 }
