@@ -1,7 +1,7 @@
-.navbar-brand {
-  /*font-family: 'Russo One', sans-serif;*/
-  /*font-size: xx-large;*/
-}
+/*.navbar-brand {*/
+/*  !*font-family: 'Russo One', sans-serif;*!*/
+/*  !*font-size: xx-large;*!*/
+/*}*/
 
 
 /*.toolbar {*/
@@ -48,6 +48,10 @@
    list-style: none;
    /*visibility: hidden;*/
  }
+
+header {
+  height: 90px;
+}
 
  /*.active {*/
  /*  visibility: visible;*/

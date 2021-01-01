@@ -13,28 +13,35 @@
   transition: .15s ease-out;
 }
 
+img {
+  max-width: 80%;
+  height: auto;
+}
+
 .our-pics:hover {
   /*box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);*/
   transform: translateY(-0.25rem);
 }
 
 footer {
-  align-items: center;
-  font-family: 'Russo One', sans-serif;
+  /*align-items: center;*/
+  /*font-family: 'Russo One', sans-serif;*/
   font-size: 12px;
   height: 90px;
   line-height: 20px;
   position: absolute;
-  left: 0;
-  right: 0;
+  width: 100%;
+  /*left: 0;*/
+  /*right: 0;*/
   bottom: 0;
   /*bottom: -75px;*/
+  background-color: #343a40;
 }
 
 .open-source {
-  position: relative;
-  top: 10px;
-  text-align: center;
+  /*position: relative;*/
+  /*top: 10px;*/
+  margin: auto;
 }
 
 footer a {
