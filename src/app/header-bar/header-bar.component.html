@@ -29,8 +29,11 @@
     <ul class="main-video-page-not-signed-in" *ngSwitchDefault>
       <li class="login"><a routerLink="login" (click)="selection.value = 'login'">Login/Register</a></li>
     </ul>
+    <ul class="main-video-page-not-signed-in" *ngSwitchCase="'mainNotSignedIn'">
+      <li class="login"><a routerLink="login" (click)="selection.value = 'login'">Login/Register</a></li>
+    </ul>
     <ul class="login-page-not-signed-in" *ngSwitchCase="'login'">
-      <li class="right-side"><a routerLink="" (click)="selection.value = 'main'">Browse Videos</a></li>
+      <li class="right-side"><a routerLink="" (click)="selection.value = 'mainNotSignedIn'">Browse Videos</a></li>
     </ul>
   </div>
 </div>

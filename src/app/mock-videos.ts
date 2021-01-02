@@ -1,4 +1,5 @@
 import { Video } from './video';
+import { MockComments } from './mock-comments';
 
 export const MockVideos: Video[] = [
   {
@@ -7,6 +8,7 @@ export const MockVideos: Video[] = [
     description: 'Oh you will definitely see why',
     postedBy: 'Christine1',
     timestamp: '',
+    comments: [],
     url: ''
   },
   {
@@ -15,6 +17,7 @@ export const MockVideos: Video[] = [
     description: 'Two brother cats cleaning themselves.',
     postedBy: 'Christian1',
     timestamp: '',
+    comments: [],
     url: ''
   },
   {
@@ -23,6 +26,7 @@ export const MockVideos: Video[] = [
     description: 'Dog takes out the trash every day for his elderly owner.',
     postedBy: 'Hillary1',
     timestamp: '',
+    comments: [],
     url: ''
   },
   {
@@ -31,6 +35,7 @@ export const MockVideos: Video[] = [
     description: 'A non-confrontational guide to confronting people who are just begging for it',
     postedBy: 'Shubham1',
     timestamp: '',
+    comments: [],
     url: ''
   },
   {
@@ -39,6 +44,7 @@ export const MockVideos: Video[] = [
     description: 'a community of chipmunks show their LGBTQ+ pride',
     postedBy: 'Christine1',
     timestamp: '',
+    comments: [],
     url: ''
   },
   {
@@ -47,6 +53,7 @@ export const MockVideos: Video[] = [
     description: 'One man`s story of struggle, heartache, and ultimate redemption.',
     postedBy: 'Jay1',
     timestamp: '',
+    comments: [],
     url: 'https://s3.us-east-1.amazonaws.com/teamc2ziptube/1609187969948-IMG_3501.MOV'
   }
 ];
