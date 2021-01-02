@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
 // Need to import User here
 
 @Component({
@@ -8,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegisterPageComponent implements OnInit {
 
-  constructor() { }
+  username = 'Christian1';
+  password = '';
+  errorMessage = 'Invalid Credentials. Please try again';
+  invalidLogin = false;
+
+  constructor(
+    private router: Router,
+    private hardcodedAuthenticationService: HardcodedAuthenticationService) { }
 
   ngOnInit(): void {
+  }
+
+  handleLogin = () => {
+    if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
+      this.router.navigate(['', this.username]);
+      this.invalidLogin = false;
+    } else {
+      this.invalidLogin = true;
+    }
   }
 
 }
