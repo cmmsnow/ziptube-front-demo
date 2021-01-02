@@ -9,7 +9,6 @@ import {UserVideosComponent} from './user-videos/user-videos.component';
 
 const routes: Routes = [
   {path: '', component: VideosComponent},
-  {path: 'main', component: VideosComponent},
   {path: 'login', component: LoginRegisterPageComponent},
   {path: 'editprofile', component: EditProfilePageComponent},
   {path: 'uservideos', component: UserVideosComponent},

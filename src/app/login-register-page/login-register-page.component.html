@@ -7,30 +7,31 @@
       <h3>Login</h3>
       <div> Username:</div>
       <label>
-        <input type="text" name="username" [(ngModel)]="username">
+        <input type="text" name="username" [(ngModel)]="loginUsername">
       </label>
       <div> Password:</div>
       <label>
-        <input type="password" name="password" [(ngModel)]="password">
+        <input type="password" name="password" [(ngModel)]="loginPassword">
       </label>
       <div>
         <button class="btn btn-success" (click)=handleLogin()>Login</button>
+<!-- *****the problem is that when you click on the Login button the switch statement in the header-bar does not update -->
       </div>
     </div>
 
     <div class="register-container">
       <h3>Register</h3>
-      <div>  Firstname:</div>
+      <div> Firstname:</div>
       <label>
-        <input type="text" name = "firstname" [(ngModel)]="firstname">
+        <input type="text" name="firstname" [(ngModel)]="firstname">
       </label>
-      <div>  Lastname:</div>
+      <div> Lastname:</div>
       <label>
-        <input type="text" name = "firstname" [(ngModel)]="lastname">
+        <input type="text" name="firstname" [(ngModel)]="lastname">
       </label>
-      <div>  Email:</div>
+      <div> Email:</div>
       <label>
-        <input type="email" name = "firstname" [(ngModel)]="email">
+        <input type="email" name="firstname" [(ngModel)]="email">
       </label>
       <div> Username:</div>
       <label>

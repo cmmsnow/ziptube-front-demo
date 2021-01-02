@@ -10,10 +10,12 @@ import {HardcodedAuthenticationService} from '../service/hardcoded-authenticatio
 })
 export class LoginRegisterPageComponent implements OnInit {
 
-  username = 'Christian1';
-  password = '';
+  loginUsername = 'Christian1';
+  loginPassword = '';
   firstname = '';
   lastname = '';
+  username = '';
+  password = '';
   email = '';
   errorMessage = 'Invalid Credentials. Please try again';
   invalidLogin = false;
@@ -26,8 +28,8 @@ export class LoginRegisterPageComponent implements OnInit {
   }
 
   handleLogin = () => {
-    if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
-      this.router.navigate(['main']);
+    if (this.hardcodedAuthenticationService.authenticate(this.loginUsername, this.loginPassword)) {
+      this.router.navigate(['']);
       this.invalidLogin = false;
     } else {
       this.invalidLogin = true;
