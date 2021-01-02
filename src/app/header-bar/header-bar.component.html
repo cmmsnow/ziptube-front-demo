@@ -4,9 +4,25 @@
     <div><a href="#" class="navbar-brand mb-0 h1">ZipTube</a></div>
 
     <div class="container-fluid" id="navbarNav" [ngSwitch]="selection.value">
-      <ul class="navbar-nav navbar-collapse justify-content-start" *ngSwitchDefault>
-        <li class="nav-item"><a *ngIf="!hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
-                                routerLink="login" (click)="selection.value = 'login'">Login / Register</a>
+
+<!--      <ul class="navbar-nav navbar-collapse justify-content-start" *ngSwitchDefault>-->
+<!--        <li class="nav-item"><a *ngIf="!hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"-->
+<!--                                routerLink="login" (click)="selection.value = 'login'">Login / Register</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+
+      <ul class="navbar-nav" *ngSwitchCase="'main'">
+        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
+                                routerLink="login" (click)="selection.value = 'login'">Log Out</a>
+        </li>
+        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
+                                routerLink="uservideos" (click)="selection.value = 'uservideos'">My Videos</a>
+        </li>
+        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
+                                routerLink="uploadvideo" (click)="selection.value = 'uploadvideo'">Upload Video</a>
+        </li>
+        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
+                                routerLink="editprofile" (click)="selection.value = 'editprofile'">Edit Profile</a>
         </li>
       </ul>
 
@@ -40,21 +56,6 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav" *ngSwitchCase="'main'">
-        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
-                                routerLink="login" (click)="selection.value = 'login'">Log Out</a>
-        </li>
-        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
-                                routerLink="uservideos" (click)="selection.value = 'uservideos'">My Videos</a>
-        </li>
-        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
-                                routerLink="uploadvideo" (click)="selection.value = 'uploadvideo'">Upload Video</a>
-        </li>
-        <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
-                                routerLink="editprofile" (click)="selection.value = 'editprofile'">Edit Profile</a>
-        </li>
-      </ul>
-
       <ul class="edit-profile navbar-nav" *ngSwitchCase="'editprofile'">
         <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
                                 routerLink="login" (click)="selection.value = 'login'">Log Out</a>
@@ -67,6 +68,12 @@
         </li>
         <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
                                 routerLink="uploadvideo" (click)="selection.value = 'uploadvideo'">Upload Video</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-collapse justify-content-start" *ngSwitchDefault>
+        <li class="nav-item"><a *ngIf="!hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
+                                routerLink="login" (click)="selection.value = 'login'">Login / Register</a>
         </li>
       </ul>
 

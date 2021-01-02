@@ -27,7 +27,7 @@ export class LoginRegisterPageComponent implements OnInit {
 
   handleLogin = () => {
     if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
-      this.router.navigate(['', this.username]);
+      this.router.navigate(['main']);
       this.invalidLogin = false;
     } else {
       this.invalidLogin = true;
