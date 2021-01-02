@@ -11,6 +11,7 @@ import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.
 import { ErrorComponent } from './error/error.component';
 import { VideosComponent } from './videos/videos.component';
 import { UserVideosComponent } from './user-videos/user-videos.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserVideosComponent } from './user-videos/user-videos.component';
     UploadVideoPageComponent,
     ErrorComponent,
     VideosComponent,
-    UserVideosComponent
+    UserVideosComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

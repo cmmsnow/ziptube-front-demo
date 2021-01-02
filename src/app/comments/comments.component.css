@@ -1,0 +1,12 @@
+div {
+  /*overflow-x: auto;*/
+}
+
+ul {
+  list-style: none;
+  visibility: hidden;
+}
+
+li {
+  visibility: visible;
+}

@@ -1,0 +1,3 @@
+  <ul *ngFor = "let comment of comments; let i=index">
+    <li *ngIf="comment.videoId == videoID">{{comment.postedBy}}: {{comment.comment}}<button>delete</button></li>
+  </ul>

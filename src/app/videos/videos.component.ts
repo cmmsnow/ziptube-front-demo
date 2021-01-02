@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Video} from '../video';
 import {MockVideos} from '../mock-videos';
 
 
