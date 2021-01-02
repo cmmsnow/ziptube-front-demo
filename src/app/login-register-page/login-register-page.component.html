@@ -1,21 +1,71 @@
+<div class="container">
+  <div class="alert alert-warning" *ngIf="invalidLogin">{{errorMessage}}</div>
 
-<div class="login">
-  <h3>Login</h3>
-  <ul>
-    <li>Username:  <input></li>
-    <li>Password:  <input></li>
-    <input type="submit">
-  </ul>
+  <div class="d-flex justify-content-center">
+
+    <div class="login-container">
+      <h3>Login</h3>
+      <div> Username:</div>
+      <label>
+        <input type="text" name="username" [(ngModel)]="username">
+      </label>
+      <div> Password:</div>
+      <label>
+        <input type="password" name="password" [(ngModel)]="password">
+      </label>
+      <div>
+        <button class="btn btn-success" (click)=handleLogin()>Login</button>
+      </div>
+    </div>
+
+    <div class="register-container">
+      <h3>Register</h3>
+      <div>  Firstname:</div>
+      <label>
+        <input type="text" name = "firstname" [(ngModel)]="firstname">
+      </label>
+      <div>  Lastname:</div>
+      <label>
+        <input type="text" name = "firstname" [(ngModel)]="lastname">
+      </label>
+      <div>  Email:</div>
+      <label>
+        <input type="email" name = "firstname" [(ngModel)]="email">
+      </label>
+      <div> Username:</div>
+      <label>
+        <input type="text" name="username" [(ngModel)]="username">
+      </label>
+      <div> Password:</div>
+      <label>
+        <input type="password" name="password" [(ngModel)]="password">
+      </label>
+      <div>
+        <button class="btn btn-success" (click)=handleRegistration()>Register</button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="register">
-  <h3>Register</h3>
-  <ul>
-    <li>Username:  <input></li>
-    <li>First name:  <input></li>
-    <li>Last name:  <input></li>
-    <li>Email:  <input></li>
-    <li>Password:  <input></li>
-    <input type="submit">
-  </ul>
-</div>
+<!--<div class="login">-->
+<!--  <h3>Login</h3>-->
+<!--  <ul>-->
+<!--    <li>Username:  <input></li>-->
+<!--    <li>Password:  <input></li>-->
+<!--    <input type="submit">-->
+<!--  </ul>-->
+<!--</div>-->
+
+<!--<div class="register">-->
+<!--  <h3>Register</h3>-->
+<!--  <ul>-->
+<!--    <li>Username:  <input></li>-->
+<!--    <li>First name:  <input></li>-->
+<!--    <li>Last name:  <input></li>-->
+<!--    <li>Email:  <input></li>-->
+<!--    <li>Password:  <input></li>-->
+<!--    <input type="submit">-->
+<!--  </ul>-->
+<!--</div>-->

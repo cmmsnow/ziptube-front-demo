@@ -11,6 +11,7 @@ import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.
 import { ErrorComponent } from './error/error.component';
 import { VideosComponent } from './videos/videos.component';
 import { UserVideosComponent } from './user-videos/user-videos.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,10 +25,11 @@ import { UserVideosComponent } from './user-videos/user-videos.component';
     VideosComponent,
     UserVideosComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,9 @@ export class LoginRegisterPageComponent implements OnInit {
 
   username = 'Christian1';
   password = '';
+  firstname = '';
+  lastname = '';
+  email = '';
   errorMessage = 'Invalid Credentials. Please try again';
   invalidLogin = false;
 
@@ -29,6 +32,10 @@ export class LoginRegisterPageComponent implements OnInit {
     } else {
       this.invalidLogin = true;
     }
+  }
+
+  handleRegistration = () => {
+    console.log('hello');
   }
 
 }
