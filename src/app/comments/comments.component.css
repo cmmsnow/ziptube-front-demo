@@ -1,12 +1,3 @@
-div {
-  /*overflow-x: auto;*/
-}
+.comment-section{
 
-ul {
-  list-style: none;
-  visibility: hidden;
-}
-
-li {
-  visibility: visible;
 }

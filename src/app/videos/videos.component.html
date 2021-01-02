@@ -7,10 +7,7 @@
         {{video.title}}
       </h3>
       <p *ngIf="video.description">
-        Description: {{video.description}}
-      </p>
-      <p>
-        Posted by: {{video.postedBy}}
+        {{video.postedBy}}: {{video.description}}
       </p>
     </div>
     <app-comments [videoID]="video.videoId"></app-comments>
@@ -26,10 +23,7 @@
         <source src="{{video.url}}">
       </video>
       <p *ngIf="video.description">
-        Description: {{video.description}}
-      </p>
-      <p>
-        Posted by: {{video.postedBy}}
+        {{video.postedBy}}: {{video.description}}
       </p>
     </div>
   </div>
