@@ -5,11 +5,11 @@
 
     <div class="container-fluid" id="navbarNav" [ngSwitch]="selection.value">
 
-<!--      <ul class="navbar-nav navbar-collapse justify-content-start" *ngSwitchDefault>-->
-<!--        <li class="nav-item"><a *ngIf="!hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"-->
-<!--                                routerLink="login" (click)="selection.value = 'login'">Login / Register</a>-->
-<!--        </li>-->
-<!--      </ul>-->
+      <!--      <ul class="navbar-nav navbar-collapse justify-content-start" *ngSwitchDefault>-->
+      <!--        <li class="nav-item"><a *ngIf="!hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"-->
+      <!--                                routerLink="login" (click)="selection.value = 'login'">Login / Register</a>-->
+      <!--        </li>-->
+      <!--      </ul>-->
 
       <ul class="navbar-nav" *ngSwitchCase="'main'">
         <li class="nav-item"><a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link"
@@ -77,9 +77,9 @@
         </li>
       </ul>
 
-      <!--      <ul class="login-page-not-signed-in navbar-nav navbar-collapse justify-content-end" *ngSwitchDefault>-->
-      <!--        <li class="right-side nav-link"><a routerLink="" (click)="selection.value = 'main'">Browse Videos</a></li>-->
-      <!--      </ul>-->
+      <ul class="login-page-not-signed-in navbar-nav navbar-collapse justify-content-end" *ngSwitchDefault>
+        <li class="right-side nav-link"><a routerLink="" (click)="selection.value = 'main'">Browse Videos</a></li>
+      </ul>
     </div>
   </nav>
 </header>
