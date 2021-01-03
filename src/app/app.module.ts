@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { VideosComponent } from './videos/videos.component';
 import { UserVideosComponent } from './user-videos/user-videos.component';
 import {FormsModule} from "@angular/forms";
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {FormsModule} from "@angular/forms";
     UploadVideoPageComponent,
     ErrorComponent,
     VideosComponent,
-    UserVideosComponent
+    UserVideosComponent,
+    LogoutComponent
   ],
     imports: [
         BrowserModule,

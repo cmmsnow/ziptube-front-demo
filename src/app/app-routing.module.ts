@@ -6,6 +6,7 @@ import {UploadVideoPageComponent} from './upload-video-page/upload-video-page.co
 import {ErrorComponent} from './error/error.component';
 import {VideosComponent} from './videos/videos.component';
 import {UserVideosComponent} from './user-videos/user-videos.component';
+import {LogoutComponent} from './logout/logout.component';
 
 const routes: Routes = [
   {path: '', component: VideosComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'editprofile', component: EditProfilePageComponent},
   {path: 'uservideos', component: UserVideosComponent},
   {path: 'uploadvideo', component: UploadVideoPageComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: '**', component: ErrorComponent}
 ];
 
