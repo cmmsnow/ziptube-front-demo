@@ -1,5 +1,4 @@
-<div class="main-section">
-  <div *ngFor = "let video of videos; let i=index">
+<div class="main-section" *ngFor = "let video of videos; let i=index">
     <div *ngIf="i==videos.length-1">
       <video class="center-vid" controls>
         <source src="{{video.url}}">
@@ -8,16 +7,10 @@
         {{video.title}}
       </h3>
       <p *ngIf="video.description">
-        Description: {{video.description}}
-      </p>
-      <p>
-        Posted by: {{video.postedBy}}
+        {{video.postedBy}}: {{video.description}}
       </p>
     </div>
-  </div>
-  <!--  <ul *ngIf="video.comments">-->
-  <!--    <li *ngFor = "let comment of comments; let i=index">{{comments[i]}}<button>delete</button></li>-->
-  <!--  </ul>-->
+    <app-comments [videoID]="video.videoId"></app-comments>
 </div>
 
 <div class="side-bar">
@@ -30,10 +23,7 @@
         <source src="{{video.url}}">
       </video>
       <p *ngIf="video.description">
-        Description: {{video.description}}
-      </p>
-      <p>
-        Posted by: {{video.postedBy}}
+        {{video.postedBy}}: {{video.description}}
       </p>
     </div>
   </div>

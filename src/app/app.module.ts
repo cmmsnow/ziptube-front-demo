@@ -11,7 +11,10 @@ import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.
 import { ErrorComponent } from './error/error.component';
 import { VideosComponent } from './videos/videos.component';
 import { UserVideosComponent } from './user-videos/user-videos.component';
-import {FormsModule} from "@angular/forms";
+import { CommentsComponent } from './comments/comments.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpErrorInterceptor} from './http-error.interceptor';
+import {FormsModule} from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
@@ -25,14 +28,21 @@ import { LogoutComponent } from './logout/logout.component';
     ErrorComponent,
     VideosComponent,
     UserVideosComponent,
+    CommentsComponent,
     LogoutComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
