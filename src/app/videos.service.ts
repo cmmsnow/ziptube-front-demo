@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Video} from './video';
 
 @Injectable({
@@ -8,7 +8,7 @@ import {Video} from './video';
 })
 export class VideosService {
 
-  private videosUrl = 'https://localhost:8080/videos';
+  private videosUrl = 'http://localhost:8080/video';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
