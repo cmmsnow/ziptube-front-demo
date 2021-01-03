@@ -1,48 +1,8 @@
-.toolbar {
-  height: 60px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
+header {
+  height: 90px;
 }
 
-h1 {
-  font-size: 40px;
-  margin-top: 8px;
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: 500;
 }
-
-.login, .logout {
-  position: absolute;
-  left: 5px;
-  top: 5px;
-}
-
-.right-side, .right-side1 {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-
-.right-side2 {
-  position: absolute;
-  right: 5px;
-  top: 18px;
-}
-
-.right-side3 {
-  position: absolute;
-  right: 5px;
-  top: 31px;
-}
-
- ul {
-   font-size: 12px;
-   font-family: 'Russo One', sans-serif;
-   list-style: none;
-   /*visibility: hidden;*/
- }
-
- /*.active {*/
- /*  visibility: visible;*/
- /*}*/
