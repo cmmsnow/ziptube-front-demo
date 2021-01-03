@@ -7,14 +7,15 @@ import {ErrorComponent} from './error/error.component';
 import {VideosComponent} from './videos/videos.component';
 import {UserVideosComponent} from './user-videos/user-videos.component';
 import {LogoutComponent} from './logout/logout.component';
+import {RouteGuardService} from './service/route-guard.service';
 
 const routes: Routes = [
   {path: '', component: VideosComponent},
   {path: 'login', component: LoginRegisterPageComponent},
-  {path: 'editprofile', component: EditProfilePageComponent},
-  {path: 'uservideos', component: UserVideosComponent},
-  {path: 'uploadvideo', component: UploadVideoPageComponent},
-  {path: 'logout', component: LogoutComponent},
+  {path: 'editprofile', component: EditProfilePageComponent, canActivate: [RouteGuardService]},
+  {path: 'uservideos', component: UserVideosComponent, canActivate: [RouteGuardService]},
+  {path: 'uploadvideo', component: UploadVideoPageComponent, canActivate: [RouteGuardService]},
+  {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
 ];
 

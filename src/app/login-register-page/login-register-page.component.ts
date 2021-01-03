@@ -36,10 +36,10 @@ export class LoginRegisterPageComponent implements OnInit {
     } else {
       this.invalidLogin = true;
     }
-  }
+  } // ***** will need to switch this over to a real authentication piece with JWT
 
   handleRegistration = () => {
     console.log('hello');
-  }
+  } // ***** finish up tutorial to figure out how this would look with JWT
 
 }
