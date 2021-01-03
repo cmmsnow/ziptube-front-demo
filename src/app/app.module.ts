@@ -12,6 +12,8 @@ import { ErrorComponent } from './error/error.component';
 import { VideosComponent } from './videos/videos.component';
 import { UserVideosComponent } from './user-videos/user-videos.component';
 import { CommentsComponent } from './comments/comments.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpErrorInterceptor} from './http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,13 @@ import { CommentsComponent } from './comments/comments.component';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
