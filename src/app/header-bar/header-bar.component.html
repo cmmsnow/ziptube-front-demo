@@ -4,7 +4,7 @@
 
     <ul class="navbar-nav navbar-collapse justify-content-start">
       <li class="nav-item">
-        <a *ngIf="!hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/login">Login</a>
+        <a *ngIf="!hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/login">Login / Register</a>
       </li>
       <li class="nav-item">
         <a *ngIf="hardCodedAuthenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/logout">Logout</a>
