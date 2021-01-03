@@ -1,6 +1,6 @@
-import { Video } from './video';
+import { AVideo } from './video';
 
-export const MockVideos: Video[] = [
+export const MockVideos: AVideo[] = [
   {
     videoId: 1,
     title: 'World`s worst makeup tutorial',
