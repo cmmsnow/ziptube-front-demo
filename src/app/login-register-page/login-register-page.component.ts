@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
 // Need to import User here
 
 @Component({
@@ -8,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegisterPageComponent implements OnInit {
 
-  constructor() { }
+  loginUsername = 'Christian1';
+  loginPassword = '';
+  firstname = '';
+  lastname = '';
+  username = '';
+  password = '';
+  email = '';
+  errorMessage = 'Invalid Credentials. Please try again';
+  invalidLogin = false;
+
+  constructor(
+    private router: Router,
+    public hardcodedAuthenticationService: HardcodedAuthenticationService) { }
 
   ngOnInit(): void {
   }
+
+  handleLogin = () => {
+    if (this.hardcodedAuthenticationService.authenticate(this.loginUsername, this.loginPassword)) {
+      this.router.navigate(['main/:username']); // ***** need to get this settled
+      this.invalidLogin = false;
+    } else {
+      this.invalidLogin = true;
+    }
+  } // ***** will need to switch this over to a real authentication piece with JWT
+
+  handleRegistration = () => {
+    console.log('hello');
+  } // ***** need to figure out how this would look with JWT
 
 }

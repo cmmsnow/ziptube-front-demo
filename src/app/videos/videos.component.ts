@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MockVideos} from '../mock-videos';
-import { Video } from '../video';
+import { AVideo } from '../video';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Video } from '../video';
 })
 export class VideosComponent implements OnInit {
   // videos = MockVideos;
-  videos!: Video[];
+  videos!: AVideo[];
 
   // @ts-ignore
   // selectedVideo = Video;
@@ -23,7 +23,7 @@ export class VideosComponent implements OnInit {
 
   getVideos(): void {
     this.videoService.getVideos()
-      .subscribe((videos: Video[]) => this.videos = videos);
+      .subscribe((videos: AVideo[]) => this.videos = videos);
   }
 
   // public onSelect(video: Video): void {

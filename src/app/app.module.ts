@@ -14,6 +14,8 @@ import { UserVideosComponent } from './user-videos/user-videos.component';
 import { CommentsComponent } from './comments/comments.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpErrorInterceptor} from './http-error.interceptor';
+import {FormsModule} from '@angular/forms';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import {HttpErrorInterceptor} from './http-error.interceptor';
     ErrorComponent,
     VideosComponent,
     UserVideosComponent,
-    CommentsComponent
+    CommentsComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [
     {
