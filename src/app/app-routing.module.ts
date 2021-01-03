@@ -12,6 +12,7 @@ import {RouteGuardService} from './service/route-guard.service';
 const routes: Routes = [
   {path: '', component: VideosComponent},
   {path: 'login', component: LoginRegisterPageComponent},
+  {path: 'main/:username', component: VideosComponent, canActivate: [RouteGuardService]}, // *****
   {path: 'editprofile', component: EditProfilePageComponent, canActivate: [RouteGuardService]},
   {path: 'uservideos', component: UserVideosComponent, canActivate: [RouteGuardService]},
   {path: 'uploadvideo', component: UploadVideoPageComponent, canActivate: [RouteGuardService]},
