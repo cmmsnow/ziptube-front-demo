@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
 // Need to import User here
@@ -29,7 +29,7 @@ export class LoginRegisterPageComponent implements OnInit {
 
   handleLogin = () => {
     if (this.hardcodedAuthenticationService.authenticate(this.loginUsername, this.loginPassword)) {
-      this.router.navigate(['main/:username']); // ***** need to get this settled
+      this.router.navigate([`main/${this.loginUsername}`]); // ***** need to get this settled
       this.invalidLogin = false;
     } else {
       this.invalidLogin = true;

@@ -9,22 +9,24 @@ import { AVideo } from '../video';
   styleUrls: ['./videos.component.css']
 })
 export class VideosComponent implements OnInit {
-  // videos = MockVideos;
-  videos!: AVideo[];
+  videos = MockVideos;
+  // videos!: AVideo[];
 
   // @ts-ignore
   // selectedVideo = Video;
 
-  constructor(private videoService: VideoService) { }
+  constructor() {}
+  // constructor(private videoService: VideoService) { }
 
-  ngOnInit(): void {
-    this.getVideos();
-  }
+  ngOnInit(): void {}
+  // ngOnInit(): void {
+  //   this.getVideos();
+  // }
 
-  getVideos(): void {
-    this.videoService.getVideos()
-      .subscribe((videos: AVideo[]) => this.videos = videos);
-  }
+  // getVideos(): void {
+  //   this.videoService.getVideos()
+  //     .subscribe((videos: AVideo[]) => this.videos = videos);
+  // }
 
   // public onSelect(video: Video): void {
   //   this.selectedVideo = video;
