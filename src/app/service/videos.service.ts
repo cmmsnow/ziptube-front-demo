@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Video} from './video';
+import {AVideo} from '../video';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class VideosService {
   constructor(private http: HttpClient) { }
 
   /** GET videos from the server */
-  getVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>(this.videosUrl);
+  getVideos(): Observable<AVideo[]> {
+    return this.http.get<AVideo[]>(this.videosUrl);
   }
 
   /** POST: add a new video to the server */
