@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
+// import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
+import {AuthenticationService} from '../service/authentication.service';
 // Need to import User here
 
 @Component({
@@ -22,19 +23,35 @@ export class LoginRegisterPageComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public hardcodedAuthenticationService: HardcodedAuthenticationService) { }
+    public authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
-  handleLogin = () => {
-    if (this.hardcodedAuthenticationService.authenticate(this.loginUsername, this.loginPassword)) {
-      this.router.navigate(['main/:username']); // ***** need to get this settled
-      this.invalidLogin = false;
-    } else {
-      this.invalidLogin = true;
-    }
-  } // ***** will need to switch this over to a real authentication piece with JWT
+  // handleLogin = () => {
+  //   if (this.hardcodedAuthenticationService.authenticate(this.loginUsername, this.loginPassword)) {
+  //     this.router.navigate([`main/${this.loginUsername}`]); // ***** need to get this settled
+  //     this.invalidLogin = false;
+  //   } else {
+  //     this.invalidLogin = true;
+  //   }
+  // }
+  // ***** will need to switch this over to a real authentication piece with JWT
+
+  handleJWTAuthLogin = () => {
+    this.authenticationService.executeJWTAuthenticationService(this.loginUsername, this.loginPassword)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate([`main/${this.loginUsername}`]);
+          this.invalidLogin = false;
+        },
+        error => {
+          console.log(error);
+          this.invalidLogin = true;
+        }
+      );
+  }
 
   handleRegistration = () => {
     console.log('hello');
