@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpErrorInterceptor} from './service/http-error.interceptor';
 import {FormsModule} from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LogoutComponent } from './logout/logout.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
+// import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
+import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-header-bar',
@@ -9,7 +10,7 @@ import {HardcodedAuthenticationService} from '../service/hardcoded-authenticatio
 export class HeaderBarComponent implements OnInit {
 
   constructor(
-    public hardCodedAuthenticationService: HardcodedAuthenticationService
+    public authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
