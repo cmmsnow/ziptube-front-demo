@@ -2,7 +2,7 @@
   <div *ngFor = "let video of videos; let i=index">
     <div *ngIf="i==videos.length-1">
       <video class="center-vid" controls>
-        <source src="{{video.url}}">
+        <source src="{{video.videoURL}}">
       </video>
       <h3>
         {{video.title}}
@@ -11,7 +11,7 @@
         Description: {{video.description}}
       </p>
       <p>
-        Posted by: {{video.postedBy}}
+        Posted by: {{video.userName}}
       </p>
     </div>
   </div>
@@ -27,13 +27,13 @@
         {{video.title}}
       </h4>
       <video controls>
-        <source src="{{video.url}}">
+        <source src="{{video.videoURL}}">
       </video>
       <p *ngIf="video.description">
         Description: {{video.description}}
       </p>
       <p>
-        Posted by: {{video.postedBy}}
+        Posted by: {{video.userName}}
       </p>
     </div>
   </div>
