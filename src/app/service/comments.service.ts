@@ -8,7 +8,7 @@ import { Comment } from '../comment';
 })
 export class CommentsService {
 
-  private commentsUrl = 'http://localhost:8080/storage/comments/allcomments';
+  private commentsUrl = 'http://localhost:8080/comments/allcomments';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
