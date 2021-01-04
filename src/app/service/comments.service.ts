@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Video} from '../video';
+import { Comment } from '../comment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VideosService {
+export class CommentsService {
 
-  private videosUrl = 'http://localhost:8080/storage/video/allvideos';
+  private commentsUrl = 'http://localhost:8080/comments/allcomments';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,14 +16,14 @@ export class VideosService {
 
   constructor(private http: HttpClient) { }
 
-  /** GET videos from the server */
-  getVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>(this.videosUrl);
+  /** GET comments from the server */
+  getComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.commentsUrl);
   }
 
-  /** POST: add a new video to the server */
-  // addVideo(video: Video): Observable<Video> {
-  //   return this.http.post<Video>(this.videosUrl, video, this.httpOptions);
+  /** POST: add a new comment to the server */
+  // addComment(comment: Comment): Observable<Comment> {
+  //   return this.http.post<Comment>(this.commentsUrl, comment, this.httpOptions);
   // }
 
   /** DELETE: delete the video from the server */
@@ -38,5 +38,4 @@ export class VideosService {
   // updateVideo(video: Video): Observable<any> {
   //   return this.http.put(this.videosUrl, video, this.httpOptions);
   // }
-
 }

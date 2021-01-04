@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MockVideos} from '../mock-videos';
-import {AVideo} from '../video';
+import {Video} from '../video';
 
 @Component({
   selector: 'app-user-videos',
