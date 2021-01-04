@@ -1,7 +1,7 @@
 export interface Comment {
   commentId: number;
   comment: string;
-  postedBy: string;
-  timestamp: string;
+  userName: string;
   videoId: number;
+  commentDatePosted: any;
 }

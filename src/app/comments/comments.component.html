@@ -2,6 +2,6 @@
   <input placeholder="Post comment">
   <input type="submit">
   <div *ngFor = "let comment of comments; let i=index">
-    <div *ngIf="comment.videoId == videoID">{{comment.postedBy}}: {{comment.comment}}<button>delete</button></div>
+    <div *ngIf="comment.videoId == videoID">{{comment.userName}}: {{comment.comment}}<button>delete</button></div>
   </div>
 </div>
