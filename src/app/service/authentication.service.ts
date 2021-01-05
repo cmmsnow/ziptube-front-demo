@@ -38,7 +38,6 @@ export class AuthenticationService {
   }
   isUserLoggedIn = () => {
     const user = sessionStorage.getItem(AUTHENTICATED_USER);
-    console.log(user);
     return !(user === null);
   }
   logout = () => {

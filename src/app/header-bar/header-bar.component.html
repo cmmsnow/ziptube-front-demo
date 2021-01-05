@@ -4,7 +4,11 @@
 
     <ul class="navbar-nav navbar-collapse justify-content-start">
       <li class="nav-item">
-        <a *ngIf="!authenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/login">Login / Register</a>
+        <a *ngIf="!authenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item"><span *ngIf="!authenticationService.isUserLoggedIn()" class="nav-link fs-6"> | </span></li>
+      <li class="nav-item">
+        <a *ngIf="!authenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/register">Register</a>
       </li>
       <li class="nav-item">
         <a *ngIf="authenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/logout">Logout</a>
@@ -12,7 +16,7 @@
     </ul>
 
     <ul class="navbar-nav navbar-collapse justify-content-end">
-      <li class="nav-item"><a *ngIf="authenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/uservideos">
+      <li class="nav-item"><a *ngIf="authenticationService.isUserLoggedIn()" class="nav-link fs-6"routerLink="/uservideos">
         My Videos</a></li>
       <li class="nav-item"><a *ngIf="authenticationService.isUserLoggedIn()" class="nav-link fs-6" routerLink="/uploadvideo">
         Upload Video</a></li>
