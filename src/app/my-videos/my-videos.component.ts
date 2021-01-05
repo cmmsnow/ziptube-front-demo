@@ -3,11 +3,11 @@ import {MockVideos} from '../mock-videos';
 import {Video} from '../video';
 
 @Component({
-  selector: 'app-user-videos',
-  templateUrl: './user-videos.component.html',
-  styleUrls: ['./user-videos.component.css']
+  selector: 'app-my-videos',
+  templateUrl: './my-videos.component.html',
+  styleUrls: ['./my-videos.component.css']
 })
-export class UserVideosComponent implements OnInit {
+export class MyVideosComponent implements OnInit {
   videos = MockVideos;
   // // @ts-ignore
   // selectedVideo = Video;
