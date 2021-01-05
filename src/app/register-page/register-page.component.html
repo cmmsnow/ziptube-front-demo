@@ -3,23 +3,23 @@
     <h3>Register</h3>
     <div> Firstname:</div>
     <label>
-      <input type="text" name="firstname" [(ngModel)]="firstname">
+      <input type="text" name="firstname" required="required" [(ngModel)]="firstname">
     </label>
     <div> Lastname:</div>
     <label>
-      <input type="text" name="firstname" [(ngModel)]="lastname">
+      <input type="text" name="firstname" required="required" [(ngModel)]="lastname">
     </label>
     <div> Email:</div>
     <label>
-      <input type="email" name="firstname" [(ngModel)]="email">
+      <input type="email" name="firstname" required="required" [(ngModel)]="email">
     </label>
     <div> Username:</div>
     <label>
-      <input type="text" name="username" [(ngModel)]="username">
+      <input type="text" name="username" required="required" [(ngModel)]="username">
     </label>
     <div> Password:</div>
     <label>
-      <input type="password" name="password" [(ngModel)]="password">
+      <input type="password" name="password" required="required" [(ngModel)]="password">
     </label>
     <div>
       <button class="btn btn-success" (click)=handleJWTRegistration()>Register</button>
