@@ -9,11 +9,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  executeJWTRegistrationService = (firstname: string, lastname: string, username: string,
+  executeJWTRegistrationService = (firstName: string, lastName: string, username: string,
                                    password: string, email: string) => this.http.post<any>(
     `${API_URL}/user`, {
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       username,
       password,
       email

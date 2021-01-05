@@ -9,8 +9,8 @@ import {UserService} from '../service/user.service';
 })
 export class RegisterPageComponent implements OnInit {
 
-  firstname = '';
-  lastname = '';
+  firstName = '';
+  lastName = '';
   username = '';
   password = '';
   email = '';
@@ -22,7 +22,7 @@ export class RegisterPageComponent implements OnInit {
   }
 
   handleJWTRegistration = () => {
-    this.userService.executeJWTRegistrationService(this.firstname, this.lastname, this.username, this.password,
+    this.userService.executeJWTRegistrationService(this.firstName, this.lastName, this.username, this.password,
       this.email).subscribe(
         response => {
           console.log(response);
