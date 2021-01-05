@@ -5,15 +5,15 @@
 }
 
 .our-pics {
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
   display: flex;
   cursor: pointer;
   transition: .15s ease-out;
 }
 
 img {
-  max-width: 80%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -25,9 +25,9 @@ footer {
   font-size: 12px;
   height: 85px;
   line-height: 20px;
-  position: absolute;
-  width: 100%;
+  position: fixed;
   bottom: 0;
+  width: 100%;
   background-color: #343a40;
 }
 
@@ -36,5 +36,11 @@ footer {
 }
 
 img {
-  border-radius: 15px/15px;
+  border-radius: 10px/10px;
+}
+
+.rights-reserved {
+  /*position: absolute;*/
+  /*bottom: 3px;*/
+  /*left: 5px;*/
 }

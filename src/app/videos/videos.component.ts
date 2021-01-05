@@ -12,14 +12,13 @@ import {Video} from '../video';
 export class VideosComponent implements OnInit {
   // videos = MockVideos;
   videos!: Video[];
+  selectedVideo!: Video;
 
-  // @ts-ignore
-  // selectedVideo = Video;
-
-  constructor(private videosService: VideosService) { }
+  constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
     this.getVideos();
+    this.onSelect(this.getLastVideo());
   }
 
   getVideos(): void {
@@ -27,8 +26,12 @@ export class VideosComponent implements OnInit {
       .subscribe((videos: Video[]) => this.videos = videos);
   }
 
-  // public onSelect(video: Video): void {
-  //   this.selectedVideo = video;
-  // }
+  public getLastVideo(): Video {
+    return this.videos[this.videos.length - 1];
+  }
+
+  public onSelect(video: Video): void {
+    this.selectedVideo = video;
+  }
 
 }
