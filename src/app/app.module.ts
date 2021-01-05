@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
-import { LoginRegisterPageComponent } from './login-register-page/login-register-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.component';
 import { ErrorComponent } from './error/error.component';
 import { VideosComponent } from './videos/videos.component';
@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpErrorInterceptor} from './service/http-error.interceptor';
 import {FormsModule} from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +24,14 @@ import { LogoutComponent } from './logout/logout.component';
     HeaderBarComponent,
     FooterBarComponent,
     EditProfilePageComponent,
-    LoginRegisterPageComponent,
+    LoginPageComponent,
     UploadVideoPageComponent,
     ErrorComponent,
     VideosComponent,
     UserVideosComponent,
     CommentsComponent,
-    LogoutComponent
+    LogoutComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
