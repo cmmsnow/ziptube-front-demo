@@ -10,7 +10,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.component';
 import { ErrorComponent } from './error/error.component';
 import { VideosComponent } from './videos/videos.component';
-import { UserVideosComponent } from './user-videos/user-videos.component';
+import { MyVideosComponent } from './my-videos/my-videos.component';
 import { CommentsComponent } from './comments/comments.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpErrorInterceptor} from './service/http-error.interceptor';
@@ -28,7 +28,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     UploadVideoPageComponent,
     ErrorComponent,
     VideosComponent,
-    UserVideosComponent,
+    MyVideosComponent,
     CommentsComponent,
     LogoutComponent,
     RegisterPageComponent
