@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentChecked, AfterContentInit, Component, OnInit} from '@angular/core';
 import {MockVideos} from '../mock-videos';
 import {VideosService} from '../service/videos.service';
 import {Video} from '../video';
@@ -9,7 +9,7 @@ import {Video} from '../video';
   templateUrl: './videos.component.html',
   styleUrls: ['./videos.component.css']
 })
-export class VideosComponent implements OnInit {
+export class VideosComponent implements OnInit, AfterContentChecked{
   // videos = MockVideos;
   videos!: Video[];
   selectedVideo!: Video;
@@ -18,7 +18,12 @@ export class VideosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getVideos();
-    this.onSelect(this.getLastVideo());
+  }
+
+  ngAfterContentChecked(): void {
+    if (this.selectedVideo == null) {
+      this.onSelect(this.getLastVideo());
+    }
   }
 
   getVideos(): void {
