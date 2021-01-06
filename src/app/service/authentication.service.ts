@@ -24,7 +24,7 @@ export class AuthenticationService {
         console.log(response);
         sessionStorage.setItem(AUTHENTICATED_USER, username);
         sessionStorage.setItem(TOKEN, `Bearer ${response.token}`);
-        // return response;
+        return response;
       }
     )
   )
