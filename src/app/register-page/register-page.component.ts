@@ -9,11 +9,13 @@ import {UserService} from '../service/user.service';
 })
 export class RegisterPageComponent implements OnInit {
 
-  firstname = '';
-  lastname = '';
+  firstName = '';
+  lastName = '';
   username = '';
   password = '';
   email = '';
+  registrationErrorMessage = 'Username is currently in use. Please select another username.';
+  invalidRegistration = false;
 
   constructor(private router: Router,
               public userService: UserService) { }
@@ -22,15 +24,21 @@ export class RegisterPageComponent implements OnInit {
   }
 
   handleJWTRegistration = () => {
-    this.userService.executeJWTRegistrationService(this.firstname, this.lastname, this.username, this.password,
+    this.userService.executeJWTRegistrationService(this.firstName, this.lastName, this.username, this.password,
       this.email).subscribe(
         response => {
           console.log(response);
           this.router.navigate(['login']);
         },
       error => {
+          window.onbeforeunload = null;
           console.log(error);
+          // this.registrationErrorMessage = error;
+          this.invalidRegistration = true;
       }
     );
   }
+
+  // window.onbeforeunload: any = null;
+
 }
