@@ -14,6 +14,8 @@ export class RegisterPageComponent implements OnInit {
   username = '';
   password = '';
   email = '';
+  registrationErrorMessage = 'Username is currently in use. Please select another username.';
+  invalidRegistration = false;
 
   constructor(private router: Router,
               public userService: UserService) { }
@@ -29,8 +31,14 @@ export class RegisterPageComponent implements OnInit {
           this.router.navigate(['login']);
         },
       error => {
+          window.onbeforeunload = null;
           console.log(error);
+          // this.registrationErrorMessage = error;
+          this.invalidRegistration = true;
       }
     );
   }
+
+  // window.onbeforeunload: any = null;
+
 }

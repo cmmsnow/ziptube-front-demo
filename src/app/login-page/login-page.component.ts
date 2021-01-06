@@ -26,7 +26,7 @@ export class LoginPageComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate([`main/${this.loginUsername}`]);
+          this.router.navigate([``]);
           this.invalidLogin = false;
         },
         error => {

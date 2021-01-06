@@ -14,7 +14,6 @@ const routes: Routes = [
   {path: '', component: VideosComponent},
   {path: 'register', component: RegisterPageComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'main/:username', component: VideosComponent, canActivate: [RouteGuardService]},
   {path: 'editprofile', component: EditProfilePageComponent, canActivate: [RouteGuardService]},
   {path: 'myvideos', component: MyVideosComponent, canActivate: [RouteGuardService]},
   {path: 'uploadvideo', component: UploadVideoPageComponent, canActivate: [RouteGuardService]},

@@ -22,6 +22,7 @@ export class AuthenticationService {
   ).pipe(
     map(
       response => {
+        console.log(response);
         sessionStorage.setItem(AUTHENTICATED_USER, username);
         sessionStorage.setItem(TOKEN, `Bearer ${response.token}`);
         return response;
