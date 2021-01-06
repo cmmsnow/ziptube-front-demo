@@ -7,9 +7,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  /*bottom: 0;*/
-  /*bottom: 85px;*/
-  /*overflow-y: auto;*/
 }
 
 .main-section h2, h3, h4 {
@@ -20,12 +17,6 @@
   padding: 15px 15px 0px;
   max-width: 100%;
   max-height: 600px;
-  /*z-index: -1;*/
-  /*z-index: 1 !important;*/
-}
-
-.main-section li {
-  list-style: none;
 }
 
 .header-comments {
@@ -36,7 +27,6 @@
   position: absolute;
   right: 0;
   top: 5px;
-  /*bottom: 0;*/
   bottom: 90px;
   width: 30%;
   padding: 10px;
@@ -59,11 +49,30 @@
   margin-bottom: 20px;
 }
 
-.main-section, .side-bar {
-  /*z-index: 100;*/
-}
-
 .no-videos {
   margin-top: 50px;
   text-align: center;
+}
+
+.only-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /*width: 70%;*/
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.only-section video {
+  padding: 15px 15px 0px;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 400px;
+}
+
+.only-section h2, h3, h4 {
+  padding-top: 0;
 }

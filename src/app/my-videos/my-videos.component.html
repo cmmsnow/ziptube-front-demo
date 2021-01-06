@@ -1,4 +1,4 @@
-<div *ngIf="myVideos">
+<div *ngIf="myVideos.length > 1">
   <div class="main-section" *ngFor="let video of myVideos; let i = index;">
     <div *ngIf="video == selectedVideo">
       <video controls>
@@ -33,6 +33,27 @@
     </div>
   </div>
 </div>
+
 <div *ngIf="myVideos.length == 0" class="no-videos">
   <h6>You haven't posted any videos!</h6>
+</div>
+
+<div *ngIf="myVideos.length == 1">
+  <div class="only-section" *ngFor="let video of myVideos; let i = index;">
+    <div *ngIf="video == selectedVideo">
+      <video controls>
+        <source src="{{video.videoURL}}">
+      </video>
+      <div class="header-comments">
+        <h3>
+          {{video.title}}
+        </h3>
+        <p>
+          {{video.userName}} posted on {{video.videoTimePosted}}<br/>
+          {{video.description}}
+        </p>
+        <app-comments [videoID]="video.videoId"></app-comments>
+      </div>
+    </div>
+  </div>
 </div>
