@@ -10,6 +10,7 @@ export const AUTHENTICATED_USER = 'authenticatedUser';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  username!: string;
 
   constructor(private http: HttpClient) { }
 

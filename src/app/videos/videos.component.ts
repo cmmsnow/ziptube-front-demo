@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterContentInit, Component, OnInit} from '@angular/core';
+import {AfterContentChecked, Component, OnInit} from '@angular/core';
 import {MockVideos} from '../mock-videos';
 import {VideosService} from '../service/videos.service';
 import {Video} from '../video';
