@@ -23,7 +23,7 @@ img {
 
 footer {
   font-size: 12px;
-  height: 85px;
+  height: 72px;
   line-height: 20px;
   position: fixed;
   bottom: 0;
@@ -32,7 +32,21 @@ footer {
 }
 
 .open-source {
+  font-weight: bold;
   margin: auto;
+  padding: 3px 0;
+}
+
+.open-source a {
+  color: #6d757d;
+  /*color: #9a9da0;*/
+  padding-right: 3px;
+}
+
+.open-source a:hover {
+  color: #9a9da0;
+  text-decoration: none;
+  padding-right: 5px;
 }
 
 img {
@@ -40,7 +54,7 @@ img {
 }
 
 .rights-reserved {
-  /*position: absolute;*/
-  /*bottom: 3px;*/
-  /*left: 5px;*/
+  position: absolute;
+  bottom: 3px;
+  left: 5px;
 }
