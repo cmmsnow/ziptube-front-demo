@@ -1,7 +1,7 @@
 <div class="container">
   <div class="register-container">
     <div class="alert alert-warning" *ngIf="registrationForm.dirty && registrationForm.invalid">Enter valid values</div>
-    <div class="alert alert-success" *ngIf="registrationErrorMessage">{{registrationErrorMessage}}</div>
+    <div class="alert alert-success" *ngIf="invalidRegistration">{{registrationErrorMessage}}</div>
   </div>
 
   <h3>Register</h3>
