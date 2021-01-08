@@ -21,12 +21,23 @@ export class VideosService {
     return this.http.get<Video[]>(this.videosUrl);
   }
 
-  /** POST: add a new video to the server */
+  /** POST: add a new video to the server (storage) */
   // addVideo(video: Video): Observable<Video> {
   //   return this.http.post<Video>(this.videosUrl, video, this.httpOptions);
   // }
+  // addVideo(fileToUpload: File): Observable<boolean> {
+  //   const endpoint = 'your-destination-url';
+  //   const formData: FormData = new FormData();
+  //   formData.append('fileKey', fileToUpload, fileToUpload.name);
+  //   return this.httpClient
+  //     .post(endpoint, formData, { headers: yourHeadersConfig })
+  //     .map(() => { return true; })
+  //     .catch((e) => this.handleError(e));
+  // }
 
-  /** DELETE: delete the video from the server */
+  /** POST: add video details
+
+/** DELETE: delete the video from the server */
   // deleteVideo(video: Video | number): Observable<Video> {
   //   const id = typeof video === 'number' ? video : video.id;
   //   const url = `${this.videosUrl}/${id}`;

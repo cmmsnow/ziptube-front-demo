@@ -1,5 +1,57 @@
-<h2>Upload Video</h2>
-<p>Title:  <input id="title"></p>
-<p>Description:  <input id="description"></p>
-<input type="file">
-<input type="submit">
+<div class="container d-flex flex-column">
+  <div>
+    <h3>Upload Video</h3>
+    <br>
+  </div>
+
+
+  <div class="d-flex justify-content-center">
+
+    <div class="upload-content d-flex flex-column justify-content-between">
+      <div>
+        <h4>1. Choose File</h4>
+      </div>
+      <br>
+      <input type="file" id="file">
+      <h6>*Note: File format must be mp4 or mov</h6>
+      <div>
+        <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="next()">Next</button>
+      </div>
+    </div>
+
+
+    <div class="upload-content d-flex flex-column justify-content-between">
+      <h4>2. Video Details</h4>
+      <br>
+      <div>Title:</div>
+      <label>
+        <input [disabled]="isDisabled" type="text" name="title" [(ngModel)]="videoTitle" required="required">
+      </label>
+      <div>Description:</div>
+      <label>
+        <input [disabled]="isDisabled" type="text" name="description" [(ngModel)]="videoDescription"
+               required="required">
+      </label>
+
+      <div>
+        <button [disabled]="isDisabled" class="btn btn-success"
+                (click)="submitVideoDetails()">Submit
+        </button>
+      </div>
+    </div>
+
+    <div class="upload-content {{isVisible}}">
+      <h4>3. Upload Complete!</h4>
+      <div class="alert alert-success alert-message" role="alert">
+          <p>You have successfully uploaded your video</p>
+          <hr>
+          <p class="mb-0">Please click the button below if you'd like to upload another video</p>
+        <br>
+        <button class="btn btn-primary"
+                (click)="uploadAnotherVideo()">Upload New Video</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
