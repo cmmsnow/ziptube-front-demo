@@ -1,13 +1,12 @@
 <div class="container">
   <div class="register-container">
-    <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">Enter valid values</div>
+    <div class="alert alert-warning" *ngIf="registrationForm.dirty && registrationForm.invalid">Enter valid values</div>
+    <div class="alert alert-success" *ngIf="registrationErrorMessage">{{registrationErrorMessage}}</div>
   </div>
 
   <h3>Register</h3>
-
   <br>
-
-  <form #todoForm="ngForm">
+  <form #registrationForm="ngForm">
     <fieldset>
       <label>First Name:</label>
       <br>
@@ -28,7 +27,7 @@
       <label>Email:</label>
       <br>
       <label>
-        <input type="email" name="email" [(ngModel)]="email" required
+        <input type="email" name="email" [(ngModel)]="email" required="required"
                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
       </label>
     </fieldset>
