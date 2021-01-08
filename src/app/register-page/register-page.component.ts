@@ -31,14 +31,9 @@ export class RegisterPageComponent implements OnInit {
           this.router.navigate(['login']);
         },
       error => {
-          window.onbeforeunload = null;
           console.log(error);
-          // this.registrationErrorMessage = error;
           this.invalidRegistration = true;
       }
     );
   }
-
-  // window.onbeforeunload: any = null;
-
 }
