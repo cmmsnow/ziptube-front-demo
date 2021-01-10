@@ -55,10 +55,16 @@ export class CommentsComponent implements OnInit {
 
 
 
+
+
   // tslint:disable-next-line:typedef
   post() {
     // @ts-ignore
     this.comments.push(this.newComment);
+  }
+
+  deleteComment(commentId: number): void {
+    this.commentsService.deleteComment(commentId);
   }
 }
 

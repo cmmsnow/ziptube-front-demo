@@ -10,7 +10,9 @@
     <hr/>
     <div>
       <div *ngFor = "let comment of comments; let i=index">
-        <div *ngIf="comment.videoId == videoID">{{comment.userName}}: {{comment.comment}}<button>delete</button></div>
+        <div *ngIf="comment.videoId == videoID">
+          {{comment.userName}}: {{comment.comment}}<button
+          (click)=deleteComment(comment.commentId)>delete</button></div>
       </div>
     </div>
     <h3>Comments</h3>

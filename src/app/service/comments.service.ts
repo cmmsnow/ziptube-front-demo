@@ -32,7 +32,7 @@ export class CommentsService {
   )
 
   /** DELETE: delete the video from the server */
-  deleteComment(comment: Comment | string): Observable<Comment> {
+  deleteComment(comment: number): Observable<Comment> {
     // const id = typeof comment === 'string' ? comment : this;
     const url = `${this.commentsUrl}/${comment}`;
 
