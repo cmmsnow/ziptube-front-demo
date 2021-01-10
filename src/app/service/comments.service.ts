@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Comment } from '../comment';
+import {API_URL} from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,13 @@ export class CommentsService {
   }
 
   /** POST: add a new comment to the server */
-  // addComment(comment: Comment): Observable<Comment> {
-  //   return this.http.post<Comment>(this.commentsUrl, comment, this.httpOptions);
-  // }
+  // addNewComment = (userName: string, comment: string, videoId: number) => this.http.post<any>(
+  //   'http://localhost:8080/comment/addcomment', {userName, videoId, comment}
+  // )
+
+  addComment = (userName: string, videoId: number, comment: string) => this.http.post<any>(
+    `${API_URL}/comment/addcomment`, {userName, videoId, comment}
+  )
 
   /** DELETE: delete the video from the server */
   // deleteVideo(video: Video | number): Observable<Video> {

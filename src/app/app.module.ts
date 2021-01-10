@@ -17,7 +17,7 @@ import {HttpErrorInterceptor} from './service/http-error.interceptor';
 import {FormsModule} from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
-import { EditVideoPageComponent } from './edit-video-page/edit-video-page.component';
+import {HttpInterceptorAuthService} from './service/http/http-interceptor-auth.service';
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import { EditVideoPageComponent } from './edit-video-page/edit-video-page.compon
     MyVideosComponent,
     CommentsComponent,
     LogoutComponent,
-    RegisterPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +44,7 @@ import { EditVideoPageComponent } from './edit-video-page/edit-video-page.compon
   providers: [
     {
     provide: HTTP_INTERCEPTORS,
-    useClass: HttpErrorInterceptor,
+    useClass: HttpInterceptorAuthService,
     multi: true
   }
   ],
