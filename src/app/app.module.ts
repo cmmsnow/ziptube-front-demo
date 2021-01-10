@@ -17,6 +17,7 @@ import {HttpErrorInterceptor} from './service/http-error.interceptor';
 import {FormsModule} from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import {HttpInterceptorAuthService} from './service/http/http-interceptor-auth.service';
 
 
 @NgModule({
@@ -43,7 +44,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
   providers: [
     {
     provide: HTTP_INTERCEPTORS,
-    useClass: HttpErrorInterceptor,
+    useClass: HttpInterceptorAuthService,
     multi: true
   }
   ],

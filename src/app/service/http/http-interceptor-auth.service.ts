@@ -1,7 +1,7 @@
-// this service allows us to add a specific header to each request, so that we can access the backend
 import { Injectable } from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {AuthenticationService} from '../authentication.service';
+import { map } from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -9,18 +9,28 @@ import {Observable} from 'rxjs';
 })
 export class HttpInterceptorAuthService implements HttpInterceptor {
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(public authenticationService: AuthenticationService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authHeaderString = this.authenticationService.getAuthenticatedToken();
-    const username = this.authenticationService.getAuthenticatedUser();
-    if (authHeaderString && username) {
+    if (authHeaderString) {
       request = request.clone({
         setHeaders: {
           Authorization: authHeaderString
         }
       });
     }
-    return next.handle(request);
+    if (!request.headers.has('Content-Type')) {
+      request = request.clone({
+        headers: request.headers.set('Content-Type', 'application/json')
+        });
+    }
+    return next.handle(request).pipe(
+      map((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+          console.log(`event--->>> ${event}`);
+        }
+        return event;
+      }));
   }
 }
