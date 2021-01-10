@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Comment } from '../comment';
+import {API_URL} from '../app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class CommentsService {
   // )
 
   addComment = (userName: string, videoId: number, comment: string) => this.http.post<any>(
-    'http://localhost:8080/comment/addcomment', {userName, videoId, comment}
+    `${API_URL}/comment/addcomment`, {userName, videoId, comment}
   )
 
   /** DELETE: delete the video from the server */
