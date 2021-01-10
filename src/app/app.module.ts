@@ -19,6 +19,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { EditVideoPageComponent } from './edit-video-page/edit-video-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,6 @@ import { EditVideoPageComponent } from './edit-video-page/edit-video-page.compon
     CommentsComponent,
     LogoutComponent,
     RegisterPageComponent,
-    EditVideoPageComponent
   ],
   imports: [
     BrowserModule,
