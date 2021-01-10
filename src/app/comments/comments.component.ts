@@ -44,13 +44,13 @@ export class CommentsComponent implements OnInit {
       });
   }
 
-  editComments = () => {
-    this.commentsService.updateComment(this.comment, this.videoID).subscribe(
-      response => {
-
-      }
-    );
-  }
+  // editComments = () => {
+  //   this.commentsService.updateComment(this.comment, this.videoID).subscribe(
+  //     response => {
+  //
+  //     }
+  //   );
+  // }
 
 
 

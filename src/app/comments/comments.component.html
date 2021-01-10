@@ -4,7 +4,8 @@
     <textarea class="form-controller" rows="2" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
   <br/>
   <br/>
-    <button (click)="post()" >Comment </button>
+    <button (click)=addComment()>Submit</button>
+<!--    <button (click)="post()" >Comment </button>-->
 <!--    <button class="btn btn-success btn-md pull-right" ng-click='btn_post();'>Comment</button>-->
   <br/>
     <hr/>
@@ -23,7 +24,13 @@
     </form>
 
 </div>
-
+<!--<div class="comment-section">-->
+<!--  <input placeholder="Post comment" type="text" name="newComment" [(ngModel)]="newComment">-->
+<!--  <button (click)=addComment()>Submit</button>-->
+<!--  <div *ngFor = "let comment of comments; let i=index">-->
+<!--    <div *ngIf="comment.videoId == videoID">{{comment.userName}}: {{comment.comment}}<button>delete</button></div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!--trial 1-->
 <!--<script type="text/javascript">-->
