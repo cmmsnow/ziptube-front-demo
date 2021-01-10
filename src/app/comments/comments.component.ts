@@ -3,6 +3,7 @@ import {MockComments} from '../mock-comments';
 import {CommentsService} from '../service/comments.service';
 import { Comment } from '../comment';
 import {AUTHENTICATED_USER} from '../service/authentication.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -16,12 +17,13 @@ export class CommentsComponent implements OnInit {
   // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
   // @Output() outCreateComment = new EventEmitter<Comment>()
   // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
-
+  comment!: string;
   newComment!: string;
   username!: string;
 
 
-  constructor(private commentsService: CommentsService) { }
+  constructor(
+    private commentsService: CommentsService) { }
   ngOnInit(): void {
     this.getComments();
     // @ts-ignore
@@ -42,6 +44,17 @@ export class CommentsComponent implements OnInit {
       });
   }
 
+  editComments = () => {
+    this.commentsService.updateComment(this.comment, this.videoID).subscribe(
+      response => {
+
+      }
+    );
+  }
+
+
+
+
   // tslint:disable-next-line:typedef
   post() {
     // @ts-ignore
@@ -49,7 +62,4 @@ export class CommentsComponent implements OnInit {
   }
 }
 
-  // createComment() {
-  //
-  // }
 

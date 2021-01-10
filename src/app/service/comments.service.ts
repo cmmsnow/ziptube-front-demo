@@ -32,15 +32,15 @@ export class CommentsService {
   )
 
   /** DELETE: delete the video from the server */
-  // deleteVideo(video: Video | number): Observable<Video> {
-  //   const id = typeof video === 'number' ? video : video.id;
-  //   const url = `${this.videosUrl}/${id}`;
-  //
-  //   return this.http.delete<Video>(url, this.httpOptions);
-  // }
+  deleteComment(comment: Comment | string): Observable<Comment> {
+    // const id = typeof comment === 'string' ? comment : this;
+    const url = `${this.commentsUrl}/${comment}`;
+
+    return this.http.delete<Comment>(url, this.httpOptions);
+  }
 
   /** PUT: update the video on the server */
-  // updateVideo(video: Video): Observable<any> {
-  //   return this.http.put(this.videosUrl, video, this.httpOptions);
-  // }
+  updateComment(comment: Comment): Observable<any> {
+    return this.http.put<any>(this.commentsUrl, comment, this.httpOptions);
+  }
 }
