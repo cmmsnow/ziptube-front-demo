@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditVideoPageComponent implements OnInit {
 
+  warningIsVisible = 'd-none';
+  confirmDeleteIsVisible = 'd-none';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showDeleteVideo = () => {
+    this.warningIsVisible = '';
+  }
+
+  confirmVideoDeleted = () => {
+    this.warningIsVisible = 'd-none';
+    this.confirmDeleteIsVisible = '';
+
   }
 
 }
