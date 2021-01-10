@@ -9,6 +9,7 @@ import {MyVideosComponent} from './my-videos/my-videos.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RouteGuardService} from './service/route-guard.service';
 import {RegisterPageComponent} from './register-page/register-page.component';
+import {EditVideoPageComponent} from "./edit-video-page/edit-video-page.component";
 
 const routes: Routes = [
   {path: '', component: VideosComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'myvideos', component: MyVideosComponent, canActivate: [RouteGuardService]},
   {path: 'uploadvideo', component: UploadVideoPageComponent, canActivate: [RouteGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
+  {path: 'editvideo', component: EditVideoPageComponent, canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
 ];
 
