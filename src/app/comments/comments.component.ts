@@ -14,16 +14,16 @@ import {Router} from '@angular/router';
 export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
-  // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
-  // @Output() outCreateComment = new EventEmitter<Comment>()
-  // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
-  comment!: string;
+  @Output() commentsUpdated = new EventEmitter();
+
+  comment!: Comment;
   newComment!: string;
   username!: string;
 
 
   constructor(
-    private commentsService: CommentsService) { }
+    private commentsService: CommentsService
+   ) { }
   ngOnInit(): void {
     this.getComments();
     // @ts-ignore
@@ -44,26 +44,15 @@ export class CommentsComponent implements OnInit {
       });
   }
 
-  // editComments = () => {
-  //   this.commentsService.updateComment(this.comment, this.videoID).subscribe(
-  //     response => {
-  //
-  //     }
-  //   );
-  // }
+  editComments = () => {
+    this.commentsService.updateComment(this.comment).subscribe(
+      response => {
 
-
-
-
-
-
-  // tslint:disable-next-line:typedef
-  post() {
-    // @ts-ignore
-    this.comments.push(this.newComment);
+      }
+    );
   }
 
-  deleteComment(commentId: number): void {
+ deleteComment(commentId: number): void {
     this.commentsService.deleteComment(commentId);
   }
 }
