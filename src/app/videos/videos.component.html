@@ -1,6 +1,6 @@
 <div class="main-section" *ngFor = "let video of videos; let i = index;">
     <div *ngIf="video == selectedVideo">
-      <video controls>
+      <video controls muted>
         <source src="{{video.videoURL}}">
       </video>
       <div class="header-comments">

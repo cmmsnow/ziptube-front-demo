@@ -14,20 +14,36 @@ import {Router} from '@angular/router';
 export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
-  @Output() commentsUpdated = new EventEmitter();
-
-  comment!: Comment;
+  @Input() videoUser!: string;
+  // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
+  // @Output() outCreateComment = new EventEmitter<Comment>()
+  // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
+  comment!: string;
   newComment!: string;
   username!: string;
+  isUserLoggedIn!: boolean;
+  canDelete!: boolean;
 
-
-  constructor(
-    private commentsService: CommentsService
-   ) { }
+  constructor(private commentsService: CommentsService) { }
   ngOnInit(): void {
     this.getComments();
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
+    this.isUserLoggedIn = this.isLoggedIn();
+    this.canDelete = this.canUserDelete();
+  }
+  isLoggedIn(): boolean {
+    if (this.username == null){
+      return false;
+    } else {
+      return true;
+    }
+  }
+  canUserDelete(): boolean {
+    if (this.isLoggedIn() && this.videoUser === this.username){
+      return true;
+    }
+    return false;
   }
   getComments(): void {
     this.commentsService.getComments()
@@ -44,15 +60,26 @@ export class CommentsComponent implements OnInit {
       });
   }
 
-  editComments = () => {
-    this.commentsService.updateComment(this.comment).subscribe(
-      response => {
+  // editComments = () => {
+  //   this.commentsService.updateComment(this.comment, this.videoID).subscribe(
+  //     response => {
+  //
+  //     }
+  //   );
+  // }
 
-      }
-    );
+
+
+
+
+
+  // tslint:disable-next-line:typedef
+  post() {
+    // @ts-ignore
+    this.comments.push(this.newComment);
   }
 
- deleteComment(commentId: number): void {
+  deleteComment(commentId: number): void {
     this.commentsService.deleteComment(commentId);
   }
 }

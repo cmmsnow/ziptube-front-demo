@@ -9,7 +9,7 @@
   top: 0;
   /*bottom: 0;*/
   /*bottom: 85px;*/
-  /*overflow-y: auto;*/
+  overflow-y: auto;
 }
 
 .main-section h2, h3, h4 {
