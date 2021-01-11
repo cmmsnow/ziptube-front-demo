@@ -3,7 +3,6 @@
   <form ng-controller="Controller">
     <textarea *ngIf="isLoggedIn()" class="form-controller" rows="2" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
     <button *ngIf="isLoggedIn()" (click)=addComment()>Submit</button>
-    <br/>
     <hr/>
     <div>
       <div *ngFor = "let comment of comments; let i=index">
