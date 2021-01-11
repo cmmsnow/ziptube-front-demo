@@ -3,6 +3,7 @@ import {MockComments} from '../mock-comments';
 import {CommentsService} from '../service/comments.service';
 import { Comment } from '../comment';
 import {AUTHENTICATED_USER} from '../service/authentication.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -16,9 +17,10 @@ export class CommentsComponent implements OnInit {
   // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
   // @Output() outCreateComment = new EventEmitter<Comment>()
   // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
-
+  comment!: string;
   newComment!: string;
   username!: string;
+  isUserLoggedIn!: boolean;
 
 
   constructor(private commentsService: CommentsService) { }
@@ -26,6 +28,14 @@ export class CommentsComponent implements OnInit {
     this.getComments();
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
+    this.isUserLoggedIn = this.isLoggedIn();
+  }
+  isLoggedIn(): boolean {
+    if (this.username == null){
+      return false;
+    } else {
+      return true;
+    }
   }
   getComments(): void {
     this.commentsService.getComments()
@@ -42,12 +52,28 @@ export class CommentsComponent implements OnInit {
       });
   }
 
+  // editComments = () => {
+  //   this.commentsService.updateComment(this.comment, this.videoID).subscribe(
+  //     response => {
+  //
+  //     }
+  //   );
+  // }
+
+
+
+
+
+
+  // tslint:disable-next-line:typedef
+  post() {
+    // @ts-ignore
+    this.comments.push(this.newComment);
+  }
+
   deleteComment(commentId: number): void {
     this.commentsService.deleteComment(commentId);
   }
-  }
+}
 
-  // createComment() {
-  //
-  // }
 
