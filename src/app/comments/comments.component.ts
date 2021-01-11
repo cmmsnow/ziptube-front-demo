@@ -22,6 +22,7 @@ export class CommentsComponent implements OnInit {
   newComment!: string;
   username!: string;
   isUserLoggedIn!: boolean;
+  commentID!: number;
   canDelete!: boolean;
 
   constructor(private commentsService: CommentsService) { }
@@ -69,18 +70,8 @@ export class CommentsComponent implements OnInit {
   // }
 
 
-
-
-
-
-  // tslint:disable-next-line:typedef
-  post() {
-    // @ts-ignore
-    this.comments.push(this.newComment);
-  }
-
-  deleteComment(commentId: number): void {
-    this.commentsService.deleteComment(commentId);
+  deleteComment(commentID: number): void {
+    this.commentsService.deleteComment(commentID);
   }
 }
 
