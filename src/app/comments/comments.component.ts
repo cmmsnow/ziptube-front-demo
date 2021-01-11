@@ -60,16 +60,19 @@ export class CommentsComponent implements OnInit {
       });
   }
 
-  // editComments = () => {
-  //   this.commentsService.updateComment(this.comment, this.videoID).subscribe(
+  // editComments(commentID: number, comment: string): void {
+  //   this.commentsService.updateComment(commentID, comment).subscribe(
   //     response => {
   //
   //     }
   //   );
   // }
 
-  deleteComment(commentID: number): void {
-    this.commentsService.deleteComment(commentID);
+  deleteComment = (commentID: number) => {
+    this.commentsService.deleteComment(commentID).subscribe(
+      response => {
+        return response;
+      });
   }
 }
 
