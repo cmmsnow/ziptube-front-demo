@@ -1,14 +1,42 @@
-<h3>
-  My Account
-</h3>
-<ul>
-  <li>First name:  <input placeholder="change first name"/></li>
-  <li>Last name:  <input placeholder="change last name"/></li>
-  <li>Password:  <input placeholder="change password"/></li>
-  <li>Email:  <input placeholder="change email"/></li>
-<!--  <li>{{user.firstName}}  <input placeholder="new first name"/></li>-->
-<!--  <li>{{user.lastName}}  <input placeholder="new last name"/></li>-->
-<!--  <li>{{user.password}}  <input placeholder="new password"/></li>-->
-<!--  <li>{{user.email}}  <input placeholder="new email"/></li>-->
-  <input type="submit">
-</ul>
+<div>
+  <h3>My Account</h3>
+  <br>
+
+  <form #updateProfileForm="ngForm">
+    <fieldset>
+      <label>First Name:</label>
+      <br>
+      <label>
+        <input type="text" name="firstName" required="required" [(ngModel)]="firstName" value="">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <label>Last Name:</label>
+      <br>
+      <label>
+        <input type="text" name="lastName" [(ngModel)]="lastName" required="required" value="">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <label>Email:</label>
+      <br>
+      <label>
+        <input type="email" name="email" [(ngModel)]="email" required="required"
+               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" value="">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <label>Password:</label>
+      <br>
+      <label>
+        <input type="password" name="password" [(ngModel)]="password" required="required" value="">
+      </label>
+    </fieldset>
+
+    <br>
+    <button type="submit" class="btn btn-success" (click)=handleJWTProfileUpdate()>Submit</button>
+  </form>
+</div>

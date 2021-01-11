@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// Need to import User here
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../service/authentication.service';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProfilePageComponent implements OnInit {
 
-  constructor() { }
+  username = this.authenticationService.getAuthenticatedUser();
+  firstName = '';
+  lastName = '';
+  email = '';
+  password = '';
+
+  constructor(
+    private router: Router,
+    public authenticationService: AuthenticationService,
+    public userService: UserService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  handleJWTProfileUpdate = () => {
+    this.userService.executeJWTUpdateUserService(this.username, this.firstName, this.lastName, this.email,
+      this.password)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 }
