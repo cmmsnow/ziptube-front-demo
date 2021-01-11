@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
+  @Input() videoUser!: string;
   // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
   // @Output() outCreateComment = new EventEmitter<Comment>()
   // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
@@ -21,7 +22,7 @@ export class CommentsComponent implements OnInit {
   newComment!: string;
   username!: string;
   isUserLoggedIn!: boolean;
-
+  canDelete!: boolean;
 
   constructor(private commentsService: CommentsService) { }
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class CommentsComponent implements OnInit {
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
     this.isUserLoggedIn = this.isLoggedIn();
+    this.canDelete = this.canUserDelete();
   }
   isLoggedIn(): boolean {
     if (this.username == null){
@@ -36,6 +38,12 @@ export class CommentsComponent implements OnInit {
     } else {
       return true;
     }
+  }
+  canUserDelete(): boolean {
+    if (this.isLoggedIn() && this.videoUser === this.username){
+      return true;
+    }
+    return false;
   }
   getComments(): void {
     this.commentsService.getComments()

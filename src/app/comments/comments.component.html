@@ -7,7 +7,7 @@
     <div>
       <div *ngFor = "let comment of comments; let i=index">
         <div *ngIf="comment.videoId == videoID">
-          {{comment.userName}}: {{comment.comment}}<button *ngIf="isLoggedIn()"
+          {{comment.userName}}: {{comment.comment}}<button *ngIf="canUserDelete()"
           (click)=deleteComment(comment.commentId)>delete</button></div>
       </div>
     </div>
@@ -19,36 +19,3 @@
     </form>
 
 </div>
-<!--<div class="comment-section">-->
-<!--  <input placeholder="Post comment" type="text" name="newComment" [(ngModel)]="newComment">-->
-<!--  <button (click)=addComment()>Submit</button>-->
-<!--  <div *ngFor = "let comment of comments; let i=index">-->
-<!--    <div *ngIf="comment.videoId == videoID">{{comment.userName}}: {{comment.comment}}<button>delete</button></div>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--trial 1-->
-<!--<script type="text/javascript">-->
-<!--  function Controller($scope){-->
-<!--    $scope.comments = [];-->
-<!--    $scope.btn_post = function()-->
-<!--    {-->
-<!--      if($scope.userName !=''){-->
-<!--        $scope.comments.push($scope.userName);-->
-<!--        $scope.userName="";-->
-<!--      }-->
-<!--    }-->
-<!--    $scope.post_cmt= function($home){-->
-<!--      $scope.comments.splice($home,  1);-->
-<!--    }-->
-<!--  }-->
-<!--</script>-->
-
-
-
-        <!--  <input placeholder="Post comment" type="text" name="newComment" [(ngModel)]="newComment">-->
-<!--  <button (click)=addComment()>Submit</button>-->
-<!--  <div *ngFor = "let comment of comments; let i=index">-->
-<!--    <div *ngIf="comment.videoId == videoID">{{comment.userName}}: {{comment.comment}}<button>delete</button></div>-->
-<!--  </div>-->
-<!--</div>-->

@@ -52,7 +52,7 @@
           {{video.userName}} posted on {{video.videoTimePosted}}<br/>
           {{video.description}}
         </p>
-        <app-comments [videoID]="video.videoId"></app-comments>
+        <app-comments [videoID]="video.videoId" [videoUser]="video.userName"></app-comments>
       </div>
     </div>
   </div>
