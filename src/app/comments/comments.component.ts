@@ -3,6 +3,7 @@ import {MockComments} from '../mock-comments';
 import {CommentsService} from '../service/comments.service';
 import { Comment } from '../comment';
 import {AUTHENTICATED_USER} from '../service/authentication.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -13,19 +14,36 @@ import {AUTHENTICATED_USER} from '../service/authentication.service';
 export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
+  @Input() videoUser!: string;
   // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
   // @Output() outCreateComment = new EventEmitter<Comment>()
   // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
-
+  comment!: string;
   newComment!: string;
   username!: string;
-
+  isUserLoggedIn!: boolean;
+  canDelete!: boolean;
 
   constructor(private commentsService: CommentsService) { }
   ngOnInit(): void {
     this.getComments();
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
+    this.isUserLoggedIn = this.isLoggedIn();
+    this.canDelete = this.canUserDelete();
+  }
+  isLoggedIn(): boolean {
+    if (this.username == null){
+      return false;
+    } else {
+      return true;
+    }
+  }
+  canUserDelete(): boolean {
+    if (this.isLoggedIn() && this.videoUser === this.username){
+      return true;
+    }
+    return false;
   }
   getComments(): void {
     this.commentsService.getComments()
@@ -41,9 +59,21 @@ export class CommentsComponent implements OnInit {
         console.log(error);
       });
   }
-  }
 
-  // createComment() {
+  // editComments(commentID: number, comment: string): void {
+  //   this.commentsService.updateComment(commentID, comment).subscribe(
+  //     response => {
   //
+  //     }
+  //   );
   // }
+
+  deleteComment = (commentID: number) => {
+    this.commentsService.deleteComment(commentID).subscribe(
+      response => {
+        return response;
+      });
+  }
+}
+
 

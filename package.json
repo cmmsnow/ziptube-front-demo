@@ -24,6 +24,7 @@
     "@types/jest": "^26.0.19",
     "bootstrap": "^4.5.0",
     "moment": "^2.19.3",
+    "pusher-js": "^7.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
