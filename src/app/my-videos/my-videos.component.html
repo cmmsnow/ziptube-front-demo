@@ -12,7 +12,7 @@
           {{video.userName}} posted on {{video.videoTimePosted}}<br/>
           {{video.description}}
         </p>
-        <app-comments [videoID]="video.videoId"></app-comments>
+        <app-comments [videoID]="video.videoId" [videoUser]="video.userName"></app-comments>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
   <div class="side-bar">
     <div *ngFor="let video of myVideos.reverse(); let i = index;">
       <div *ngIf="video != selectedVideo">
-        <video (click)="onSelect(video)" controls>
+        <video (click)="onSelect(video)">
           <source src="{{video.videoURL}}">
         </video>
         <h4 (click)="onSelect(video)">

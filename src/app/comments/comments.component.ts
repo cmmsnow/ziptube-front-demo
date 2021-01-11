@@ -68,8 +68,8 @@ export class CommentsComponent implements OnInit {
   //   );
   // }
 
-  deleteComment(commentId: number): void {
-    this.commentsService.deleteComment(commentId);
+  deleteComment(commentID: number): void {
+    this.commentsService.deleteComment(commentID);
   }
 }
 

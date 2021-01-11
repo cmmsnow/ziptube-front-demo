@@ -33,13 +33,14 @@ footer {
 
 .open-source {
   font-weight: bold;
-  margin: auto;
+  margin: 0 auto;
   padding: 3px 0;
 }
 
 .open-source a {
   color: #6d757d;
   /*color: #9a9da0;*/
+  padding-left: 3px;
   padding-right: 3px;
 }
 
