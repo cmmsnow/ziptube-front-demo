@@ -11,11 +11,19 @@
       <div>
         <h4>1. Choose File</h4>
       </div>
-      <br>
-      <input type="file" id="file">
+
+      <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped"
+             role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+             aria-valuemin="0" aria-valuemax="100"
+             [ngStyle]="{width:progress.percentage+'%'}">
+          {{progress.percentage}}%</div>
+      </div>
+
+      <input type="file" id="file" (change)="selectFile($event)">
       <h6>*Note: File format must be mp4 or mov</h6>
       <div>
-        <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="next()">Next</button>
+        <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="upload()">Next</button>
       </div>
     </div>
 

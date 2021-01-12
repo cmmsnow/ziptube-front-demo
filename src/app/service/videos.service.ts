@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Video} from '../video';
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Video } from '../video';
+import { API_URL } from '../app.constants';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,20 +24,31 @@ export class VideosService {
   }
 
   /** POST: add a new video to the server (storage) */
-  // addVideo(video: Video): Observable<Video> {
-  //   return this.http.post<Video>(this.videosUrl, video, this.httpOptions);
-  // }
-  // addVideo(fileToUpload: File): Observable<boolean> {
-  //   const endpoint = 'your-destination-url';
-  //   const formData: FormData = new FormData();
-  //   formData.append('fileKey', fileToUpload, fileToUpload.name);
-  //   return this.httpClient
-  //     .post(endpoint, formData, { headers: yourHeadersConfig })
-  //     .map(() => { return true; })
-  //     .catch((e) => this.handleError(e));
-  // }
+  addVideo(video: Video): Observable<HttpEvent<{}>> {
+    console.log(`Video Service file: ${video}`);
+    const data: FormData = new FormData();
+    // @ts-ignore
+    data.append('video', video);
+    console.log(`Video Service data: ${data}`);
+    const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', data, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+    return this.http.request(newRequest);
+  }
+   // addVideo = (file: File) => this.http.post<any> (
+   // `${API_URL}/storage/uploadVideo`, {file}
+   // ).pipe(
+   //   map(
+   //     response => {
+   //       console.log(`API Response: ${response}`);
+   //       // return response;
+   //     }
+   //   )
+   // )
 
-  /** POST: add video details
+  /** PUT: add video details (title, description)*/
+
 
 /** DELETE: delete the video from the server */
   // deleteVideo(video: Video | number): Observable<Video> {
