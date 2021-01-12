@@ -6,7 +6,9 @@
   width: 70%;
   position: absolute;
   left: 0;
-  overflow-y: auto;
+  right: 0;
+  top: 0;
+  padding-bottom: 90px;
 }
 
 .main-section h2, h3, h4 {
