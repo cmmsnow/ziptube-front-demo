@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'editprofile', component: EditProfilePageComponent, canActivate: [RouteGuardService]},
-  {path: 'myvideos', component: MyVideosComponent, canActivate: [RouteGuardService], runGuardsAndResolvers: 'always'},
+  {path: 'myvideos', component: MyVideosComponent, canActivate: [RouteGuardService]},
   {path: 'uploadvideo', component: UploadVideoPageComponent, canActivate: [RouteGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   {path: 'editvideo', component: EditVideoPageComponent, canActivate: [RouteGuardService]},
@@ -24,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
