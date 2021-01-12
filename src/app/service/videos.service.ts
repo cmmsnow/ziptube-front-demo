@@ -24,11 +24,11 @@ export class VideosService {
   }
 
   /** POST: add a new video to the server (storage) */
-  addVideo(video: Video): Observable<HttpEvent<{}>> {
-    console.log(`Video Service file: ${video}`);
+  addVideo(file: File): Observable<HttpEvent<{}>> {
+    console.log(`Video Service file: ${file}`);
     const data: FormData = new FormData();
     // @ts-ignore
-    data.append('video', video);
+    data.append('video', file);
     console.log(`Video Service data: ${data}`);
     const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', data, {
       reportProgress: true,

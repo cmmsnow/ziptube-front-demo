@@ -20,7 +20,7 @@ export class UserService {
     }
   )
 
-  executeJWTUpdateUserService = (username: string | null, firstName: string, lastName: string,
+  executeJWTUpdateUserService = (username: string, firstName: string, lastName: string,
                                  email: string, password: string) => this.http.put<any> (
     `${API_URL}/user/${username}`, {
       username,
@@ -29,5 +29,9 @@ export class UserService {
       email,
       password
 }
+  )
+
+  executeJWTGetUserService = (username: string) => this.http.get<any> (
+    `${API_URL}/user/username/${username}`
   )
 }
