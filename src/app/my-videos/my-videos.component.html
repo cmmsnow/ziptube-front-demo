@@ -4,6 +4,11 @@
       <video controls>
         <source src="{{video.videoURL}}">
       </video>
+
+      <nav>
+        <a routerLink="/editvideo" routerLinkActive="active">edit video</a>
+      </nav>
+
       <div class="header-comments">
         <h3>
           {{video.title}}
@@ -12,7 +17,7 @@
           {{video.userName}} posted on {{video.videoTimePosted}}<br/>
           {{video.description}}
         </p>
-        <app-comments [videoID]="video.videoId"></app-comments>
+        <app-comments [videoID]="video.videoId" [videoUser]="video.userName"></app-comments>
       </div>
     </div>
   </div>
@@ -20,7 +25,7 @@
   <div class="side-bar">
     <div *ngFor="let video of myVideos.reverse(); let i = index;">
       <div *ngIf="video != selectedVideo">
-        <video (click)="onSelect(video)" controls>
+        <video (click)="onSelect(video)">
           <source src="{{video.videoURL}}">
         </video>
         <h4 (click)="onSelect(video)">
@@ -41,7 +46,7 @@
 <div *ngIf="myVideos.length == 1">
   <div class="only-section" *ngFor="let video of myVideos; let i = index;">
     <div *ngIf="video == selectedVideo">
-      <video controls>
+      <video>
         <source src="{{video.videoURL}}">
       </video>
       <div class="header-comments">
@@ -52,8 +57,9 @@
           {{video.userName}} posted on {{video.videoTimePosted}}<br/>
           {{video.description}}
         </p>
-        <app-comments [videoID]="video.videoId"></app-comments>
+        <app-comments [videoID]="video.videoId" [videoUser]="video.userName"></app-comments>
       </div>
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

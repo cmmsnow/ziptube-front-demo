@@ -19,7 +19,7 @@
 <div class="side-bar">
   <div *ngFor = "let video of videos.reverse(); let i = index;">
     <div *ngIf="video != selectedVideo">
-      <video (click)="onSelect(video)" controls>
+      <video (click)="onSelect(video)">
         <source src="{{video.videoURL}}">
       </video>
       <h4 (click)="onSelect(video)">

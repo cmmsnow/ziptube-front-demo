@@ -3,13 +3,12 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Comment } from '../comment';
 import {API_URL} from '../app.constants';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentsService {
-
-  private commentsUrl = 'http://localhost:8080/comments/allcomments';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,7 +18,7 @@ export class CommentsService {
 
   /** GET comments from the server */
   getComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.commentsUrl);
+    return this.http.get<Comment[]>(`${API_URL}/comments/allcomments`);
   }
 
   /** POST: add a new comment to the server */
@@ -32,15 +31,18 @@ export class CommentsService {
   )
 
   /** DELETE: delete the video from the server */
-  // deleteVideo(video: Video | number): Observable<Video> {
-  //   const id = typeof video === 'number' ? video : video.id;
-  //   const url = `${this.videosUrl}/${id}`;
+  deleteComment = (commentID: number) => this.http.delete<any>(
+  `${API_URL}/deletecomment/${commentID}`
+  )
+  // deleteComment(commentId: number): Observable<Comment> {
+  //   // const id = typeof comment === 'string' ? comment : this;
+  //   const url = `${API_URL}/deletecomment/${commentId}`;
   //
-  //   return this.http.delete<Video>(url, this.httpOptions);
+  //   return this.http.delete<Comment>(url, this.httpOptions);
   // }
 
   /** PUT: update the video on the server */
-  // updateVideo(video: Video): Observable<any> {
-  //   return this.http.put(this.videosUrl, video, this.httpOptions);
-  // }
+  updateComment(commentID: number, comment: Comment): Observable<any> {
+    return this.http.put<any>(`${API_URL}/comment/{commentID}`, {comment});
+  }
 }
