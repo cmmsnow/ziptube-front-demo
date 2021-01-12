@@ -31,9 +31,6 @@ export class CommentsService {
   )
 
   /** PUT: update the video on the server */
-  // updateComment(commentID: number, comment: Comment): Observable<any> {
-  //   return this.http.put<any>(`${API_URL}/comment/{commentID}`, {comment});
-  // }
-  updateComment = (commentID: number, comment: string) => this.http.put<any>(`${API_URL}/comment/{commentID}`, {comment}
+  updateComment = (commentId: number, comment: string) => this.http.put<any>(`${API_URL}/comment/${commentId}`, {comment}
   )
 }

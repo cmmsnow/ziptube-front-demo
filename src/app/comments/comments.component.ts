@@ -29,7 +29,6 @@ export class CommentsComponent implements OnInit {
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
     this.isUserLoggedIn = this.isLoggedIn();
-    // this.canDelete = this.canUserDelete(comme);
   }
   isLoggedIn(): boolean {
     if (this.username == null){
@@ -46,9 +45,6 @@ export class CommentsComponent implements OnInit {
     }
     return false;
   }
-  // getCommentFromId(commentID: number): Comment {
-  //   return this.comments.filter(comment => (comment.commentId === commentID));
-  // }
   getComments(): void {
     this.commentsService.getComments()
       .subscribe((comments: Comment[]) => this.comments = comments);
@@ -65,14 +61,11 @@ export class CommentsComponent implements OnInit {
   }
 
   // need to ensure sending entire comment for edit comment to work
-  editComments = (commentID: number) => {
-    this.updatedComment.commentId = commentID;
-    this.updatedComment.comment = this.editedComment;
-    this.commentsService.updateComment(commentID, this.editedComment).subscribe(
+  editComments(commentId: number): void {
+    this.commentsService.updateComment(commentId, this.editedComment).subscribe(
       response => {
         console.log(this.editedComment);
         console.log(response);
-        return response;
       }
     );
   }
