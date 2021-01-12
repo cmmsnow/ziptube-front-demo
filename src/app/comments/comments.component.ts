@@ -15,13 +15,13 @@ export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
   @Input() videoUser!: string;
-  comment!: Comment;
+
+  comment!: string;
   newComment!: string;
   username!: string;
   isUserLoggedIn!: boolean;
   canDelete!: boolean;
   editedComment!: string;
-  updatedComment!: Comment;
 
   constructor(private commentsService: CommentsService) { }
   ngOnInit(): void {
@@ -37,6 +37,7 @@ export class CommentsComponent implements OnInit {
       return true;
     }
   }
+  refresh(): void { window.location.reload(); }
   canUserDelete(commentUsername: string): boolean {
     if (this.isLoggedIn() && this.videoUser === this.username){
       return true;
@@ -45,6 +46,7 @@ export class CommentsComponent implements OnInit {
     }
     return false;
   }
+
   getComments(): void {
     this.commentsService.getComments()
       .subscribe((comments: Comment[]) => this.comments = comments);
@@ -58,9 +60,10 @@ export class CommentsComponent implements OnInit {
         window.onbeforeunload = null;
         console.log(error);
       });
+    this.refresh();
   }
 
-  // need to ensure sending entire comment for edit comment to work
+
   editComments(commentId: number): void {
     this.commentsService.updateComment(commentId, this.editedComment).subscribe(
       response => {
@@ -68,6 +71,7 @@ export class CommentsComponent implements OnInit {
         console.log(response);
       }
     );
+    this.refresh();
   }
 
   deleteComment = (commentID: number) => {
@@ -75,7 +79,10 @@ export class CommentsComponent implements OnInit {
       response => {
         return response;
       });
+    this.refresh();
   }
+
+
 }
 
 

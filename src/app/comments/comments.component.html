@@ -1,23 +1,21 @@
 <div class="comment-section">
   <form ng-controller="Controller">
-    <textarea *ngIf="isLoggedIn()" class="form-controller" rows="2" name="newComment" [(ngModel)]="newComment"
-              placeholder="Post Comment"></textarea>
+    <textarea *ngIf="isLoggedIn()" class="form-controller" rows="1" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
     <button *ngIf="isLoggedIn()" (click)=addComment()>Submit</button>
     <div class="comment-box">
-      <div *ngFor="let comment of comments; let i=index">
-        <div *ngIf="comment.videoId == videoID">
-          <span class="comment"><strong>{{comment.userName}}</strong>: {{comment.comment}}</span>
+    <div  *ngFor = "let comment of comments; let i=index">
+       <div class="line" *ngIf="comment.videoId == videoID">
+          <div class="comment"><strong>{{comment.userName}}</strong>: {{comment.comment}}</div>
+         <div class="buttons">
           <span *ngIf="comment.userName == username">
-            <textarea class="form-controller" rows="2" name="editComment" [(ngModel)]="editedComment"
-                      placeholder="Edit Comment"></textarea>
+            <textarea class="form-controller" rows="1" name="editComment" [(ngModel)]="editedComment" placeholder="Edit Comment"></textarea>
             <button (click)=editComments(comment.commentId)>edit</button></span>
           <button *ngIf="canUserDelete(comment.userName)"
-                  (click)=deleteComment(comment.commentId)>delete
-          </button>
-        </div>
-      </div>
-      <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash"
-                                                  style="color:blue; float:right"></span></a>
+                  (click)=deleteComment(comment.commentId)>delete</button>
+         </div>
+       </div>
+    </div>
+    <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash" style="color:blue; float:right"></span></a>
     </div>
   </form>
 </div>

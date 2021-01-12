@@ -1,8 +1,28 @@
 .comment-box{
   border: solid black 1px;
+  padding: 10px 20px 30px ;
   margin: 0 auto;
   width: 70%;
 }
-.comment {
+.comment{
   float: left;
 }
+
+.buttons{
+  float: right;
+  padding: 0px;
+  position: relative;
+  bottom: 3px;
+}
+
+.line{
+  display: block;
+  clear: both;
+  padding: 10px 0px;
+}
+
+button{
+  position: relative;
+  bottom: 10px;
+}
+
