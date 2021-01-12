@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Video} from '../video';
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Video } from '../video';
+import { API_URL } from '../app.constants';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +23,34 @@ export class VideosService {
     return this.http.get<Video[]>(this.videosUrl);
   }
 
-  /** POST: add a new video to the server */
-  // addVideo(video: Video): Observable<Video> {
-  //   return this.http.post<Video>(this.videosUrl, video, this.httpOptions);
-  // }
+  /** POST: add a new video to the server (storage) */
+  addVideo(video: Video): Observable<HttpEvent<{}>> {
+    console.log(`Video Service file: ${video}`);
+    const data: FormData = new FormData();
+    // @ts-ignore
+    data.append('video', video);
+    console.log(`Video Service data: ${data}`);
+    const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', data, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+    return this.http.request(newRequest);
+  }
+   // addVideo = (file: File) => this.http.post<any> (
+   // `${API_URL}/storage/uploadVideo`, {file}
+   // ).pipe(
+   //   map(
+   //     response => {
+   //       console.log(`API Response: ${response}`);
+   //       // return response;
+   //     }
+   //   )
+   // )
 
-  /** DELETE: delete the video from the server */
+  /** PUT: add video details (title, description)*/
+
+
+/** DELETE: delete the video from the server */
   // deleteVideo(video: Video | number): Observable<Video> {
   //   const id = typeof video === 'number' ? video : video.id;
   //   const url = `${this.videosUrl}/${id}`;
