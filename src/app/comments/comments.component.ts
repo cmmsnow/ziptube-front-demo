@@ -15,14 +15,13 @@ export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
   @Input() videoUser!: string;
-  // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
-  // @Output() outCreateComment = new EventEmitter<Comment>()
-  // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
+
   comment!: string;
   newComment!: string;
   username!: string;
   isUserLoggedIn!: boolean;
   canDelete!: boolean;
+  editedComment!: string;
 
   constructor(private commentsService: CommentsService) { }
   ngOnInit(): void {
@@ -30,7 +29,7 @@ export class CommentsComponent implements OnInit {
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
     this.isUserLoggedIn = this.isLoggedIn();
-    this.canDelete = this.canUserDelete();
+
   }
   isLoggedIn(): boolean {
     if (this.username == null){
@@ -39,12 +38,15 @@ export class CommentsComponent implements OnInit {
       return true;
     }
   }
-  canUserDelete(): boolean {
+  canUserDelete(commentUsername: string): boolean {
     if (this.isLoggedIn() && this.videoUser === this.username){
+      return true;
+    } else if (this.isLoggedIn() && commentUsername === this.username){
       return true;
     }
     return false;
   }
+
   getComments(): void {
     this.commentsService.getComments()
       .subscribe((comments: Comment[]) => this.comments = comments);
@@ -60,13 +62,15 @@ export class CommentsComponent implements OnInit {
       });
   }
 
-  // editComments(commentID: number, comment: string): void {
-  //   this.commentsService.updateComment(commentID, comment).subscribe(
-  //     response => {
-  //
-  //     }
-  //   );
-  // }
+
+  editComments(commentId: number): void {
+    this.commentsService.updateComment(commentId, this.editedComment).subscribe(
+      response => {
+        console.log(this.editedComment);
+        console.log(response);
+      }
+    );
+  }
 
   deleteComment = (commentID: number) => {
     this.commentsService.deleteComment(commentID).subscribe(
@@ -74,6 +78,8 @@ export class CommentsComponent implements OnInit {
         return response;
       });
   }
+
+
 }
 
 
