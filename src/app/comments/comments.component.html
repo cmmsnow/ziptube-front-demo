@@ -11,7 +11,7 @@
           <span *ngIf="comment.userName == username">
             <textarea class="form-controller" rows="2" name="editComment" [(ngModel)]="editedComment" placeholder="Edit Comment"></textarea>
             <button (click)=editComments(comment.commentId)>edit</button></span>
-        <button *ngIf="canUserDelete()"
+        <button *ngIf="canUserDelete(comment.userName)"
           (click)=deleteComment(comment.commentId)>delete</button></div>
       </div>
     </div>

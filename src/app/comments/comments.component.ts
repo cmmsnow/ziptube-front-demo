@@ -29,7 +29,7 @@ export class CommentsComponent implements OnInit {
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
     this.isUserLoggedIn = this.isLoggedIn();
-    this.canDelete = this.canUserDelete();
+    // this.canDelete = this.canUserDelete(comme);
   }
   isLoggedIn(): boolean {
     if (this.username == null){
@@ -38,8 +38,10 @@ export class CommentsComponent implements OnInit {
       return true;
     }
   }
-  canUserDelete(): boolean {
+  canUserDelete(commentUsername: string): boolean {
     if (this.isLoggedIn() && this.videoUser === this.username){
+      return true;
+    } else if (this.isLoggedIn() && commentUsername === this.username){
       return true;
     }
     return false;
