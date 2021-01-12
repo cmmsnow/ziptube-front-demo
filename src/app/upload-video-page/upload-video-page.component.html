@@ -1,13 +1,14 @@
 <div class="container d-flex flex-column">
+
   <div>
     <h3>Upload Video</h3>
     <br>
   </div>
 
-
   <div class="d-flex justify-content-center">
 
     <div class="upload-content d-flex flex-column justify-content-between">
+
       <div>
         <h4>1. Choose File</h4>
       </div>
@@ -20,13 +21,12 @@
           {{progress.percentage}}%</div>
       </div>
 
-      <input type="file" id="file" (change)="selectFile($event)">
+      <input type="file" id="file" class="text-wrap" (change)="selectFile($event)">
       <h6>*Note: File format must be mp4 or mov</h6>
       <div>
         <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="upload()">Next</button>
       </div>
     </div>
-
 
     <div class="upload-content d-flex flex-column justify-content-between">
       <h4>2. Video Details</h4>

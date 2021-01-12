@@ -15,8 +15,8 @@ export class UploadVideoPageComponent implements OnInit {
   isDisabled = true;
   isVisible = 'd-none';
   disableNextButton = false;
-  selectedFiles!: FileList;
-  currentFileUpload!: Video;
+  selectedFiles!: undefined;
+  currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
 
   // video!: Video;
@@ -28,11 +28,11 @@ export class UploadVideoPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   selectFile = (event: any) => {
     this.selectedFiles = event.target.files;
+    console.log(`Selected File: ${this.selectedFiles}`);
   }
 
   upload = () => {
@@ -40,15 +40,17 @@ export class UploadVideoPageComponent implements OnInit {
 
     // @ts-ignore
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.videosService.addVideo(this.currentFileUpload).subscribe((event: any) => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress.percentage = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        console.log('File is completely uploaded!');
-      }
-    });
 
-    // @ts-ignore
+    console.log(`File being uploaded: ${this.currentFileUpload}`);
+    this.videosService.addVideo(this.currentFileUpload)
+      .subscribe((event: any) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress.percentage = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          console.log('File is completely uploaded!');
+        }
+      });
+
     this.selectedFiles = undefined;
   }
 
