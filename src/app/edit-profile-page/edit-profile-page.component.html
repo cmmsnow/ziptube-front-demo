@@ -1,13 +1,16 @@
-<div>
+<div class="container">
+  <div class="update-user-container">
+    <div class="alert alert-warning" *ngIf="updateProfileForm.dirty && updateProfileForm.invalid">Enter valid values</div>
+  </div>
+
   <h3>My Account</h3>
   <br>
-
   <form #updateProfileForm="ngForm">
     <fieldset>
       <label>First Name:</label>
       <br>
       <label>
-        <input type="text" name="firstName" required="required" [(ngModel)]="firstName" value="">
+        <input type="text" name="firstName" required="required" [(ngModel)]="firstName" value="{{firstName}}">
       </label>
     </fieldset>
 
@@ -15,7 +18,7 @@
       <label>Last Name:</label>
       <br>
       <label>
-        <input type="text" name="lastName" [(ngModel)]="lastName" required="required" value="">
+        <input type="text" name="lastName" [(ngModel)]="lastName" required="required" value="{{lastName}}">
       </label>
     </fieldset>
 
@@ -24,7 +27,7 @@
       <br>
       <label>
         <input type="email" name="email" [(ngModel)]="email" required="required"
-               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" value="">
+               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" value="{{email}}">
       </label>
     </fieldset>
 
