@@ -2,19 +2,17 @@
   <form ng-controller="Controller">
     <textarea *ngIf="isLoggedIn()" class="form-controller" rows="2" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
     <button *ngIf="isLoggedIn()" (click)=addComment()>Submit</button>
-    <hr/>
+    <div class="comment-box" *ngFor = "let comment of comments; let i=index">
     <div>
-      <div *ngFor = "let comment of comments; let i=index">
         <div *ngIf="comment.videoId == videoID">
-          {{comment.userName}}: {{comment.comment}}
+          <span class="comment"><strong>{{comment.userName}}</strong>: {{comment.comment}}</span>
           <span *ngIf="comment.userName == username">
             <textarea class="form-controller" rows="2" name="editComment" [(ngModel)]="editedComment" placeholder="Edit Comment"></textarea>
             <button (click)=editComments(comment.commentId)>edit</button></span>
-          <button *ngIf="canUserDelete()"
+          <button *ngIf="canUserDelete(comment.userName)"
                   (click)=deleteComment(comment.commentId)>delete</button></div>
       </div>
     </div>
-    <hr/>
     <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash" style="color:blue; float:right"></span></a>
   </form>
 </div>

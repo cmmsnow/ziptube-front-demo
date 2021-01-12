@@ -32,6 +32,7 @@ export class CommentsService {
   )
 
   /** DELETE: delete the video from the server */
+
   deleteComment = (commentID: number) => this.http.delete<any>(
     `${API_URL}/deletecomment/${commentID}`
   )
@@ -43,7 +44,7 @@ export class CommentsService {
   // }
 
   /** PUT: update the video on the server */
-  updateComment = (commentID: number, comment: string) => this.http.put<any>(`${API_URL}/comment/{commentID}`, {comment}
+  updateComment = (commentId: number, comment: string) => this.http.put<any>(`${API_URL}/comment/${commentId}`, {comment}
   )
 
   // updateComment(commentID: number, comment: Comment): Observable<any> {

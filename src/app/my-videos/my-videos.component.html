@@ -4,6 +4,11 @@
       <video controls>
         <source src="{{video.videoURL}}">
       </video>
+
+      <nav>
+        <a routerLink="/editvideo" routerLinkActive="active">edit video</a>
+      </nav>
+
       <div class="header-comments">
         <h3>
           {{video.title}}
@@ -57,3 +62,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

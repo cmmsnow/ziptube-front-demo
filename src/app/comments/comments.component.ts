@@ -29,7 +29,7 @@ export class CommentsComponent implements OnInit {
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
     this.isUserLoggedIn = this.isLoggedIn();
-    this.canDelete = this.canUserDelete();
+
   }
   isLoggedIn(): boolean {
     if (this.username == null){
@@ -38,18 +38,15 @@ export class CommentsComponent implements OnInit {
       return true;
     }
   }
-  canUserDelete(): boolean {
+  canUserDelete(commentUsername: string): boolean {
     if (this.isLoggedIn() && this.videoUser === this.username){
+      return true;
+    } else if (this.isLoggedIn() && commentUsername === this.username){
       return true;
     }
     return false;
   }
-  canUserEdit(): boolean {
-    if (this.isLoggedIn() && this.videoUser === this.username){
-      return true;
-    }
-    return false;
-  }
+
   getComments(): void {
     this.commentsService.getComments()
       .subscribe((comments: Comment[]) => this.comments = comments);
@@ -64,20 +61,16 @@ export class CommentsComponent implements OnInit {
         console.log(error);
       });
   }
-  editComments = (commentID: number) => {
-    this.commentsService.updateComment(commentID, this.editedComment).subscribe(
+
+
+  editComments(commentId: number): void {
+    this.commentsService.updateComment(commentId, this.editedComment).subscribe(
       response => {
-        return response;
+        console.log(this.editedComment);
+        console.log(response);
       }
     );
   }
-  // editComments = (commentID: number, comment: Comment) => {
-  //   this.commentsService.updateComment(commentID, comment).subscribe(
-  //     response => {
-  //       return response;
-  //     }
-  //   );
-  // }
 
   deleteComment = (commentID: number) => {
     this.commentsService.deleteComment(commentID).subscribe(
