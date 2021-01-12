@@ -37,6 +37,7 @@ export class VideosComponent implements OnInit, AfterContentChecked{
 
   public onSelect(video: Video): void {
     this.selectedVideo = video;
+    console.log(this.selectedVideo.videoId);
   }
 
 }

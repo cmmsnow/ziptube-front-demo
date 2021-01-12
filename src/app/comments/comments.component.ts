@@ -15,14 +15,13 @@ export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
   @Input() videoUser!: string;
-  // @Output() outUpdateComment = new EventEmitter()<CommentUpdate>();
-  // @Output() outCreateComment = new EventEmitter<Comment>()
-  // @ViewChild() ('commentContentEditable') commentContentEditable: ElementRef;
-  comment!: string;
+  comment!: Comment;
   newComment!: string;
   username!: string;
   isUserLoggedIn!: boolean;
   canDelete!: boolean;
+  editedComment!: string;
+  updatedComment!: Comment;
 
   constructor(private commentsService: CommentsService) { }
   ngOnInit(): void {
@@ -45,6 +44,9 @@ export class CommentsComponent implements OnInit {
     }
     return false;
   }
+  // getCommentFromId(commentID: number): Comment {
+  //   return this.comments.filter(comment => (comment.commentId === commentID));
+  // }
   getComments(): void {
     this.commentsService.getComments()
       .subscribe((comments: Comment[]) => this.comments = comments);
@@ -60,13 +62,18 @@ export class CommentsComponent implements OnInit {
       });
   }
 
-  // editComments(commentID: number, comment: string): void {
-  //   this.commentsService.updateComment(commentID, comment).subscribe(
-  //     response => {
-  //
-  //     }
-  //   );
-  // }
+  // need to ensure sending entire comment for edit comment to work
+  editComments = (commentID: number) => {
+    this.updatedComment.commentId = commentID;
+    this.updatedComment.comment = this.editedComment;
+    this.commentsService.updateComment(commentID, this.editedComment).subscribe(
+      response => {
+        console.log(this.editedComment);
+        console.log(response);
+        return response;
+      }
+    );
+  }
 
   deleteComment = (commentID: number) => {
     this.commentsService.deleteComment(commentID).subscribe(
