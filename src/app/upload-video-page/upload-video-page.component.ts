@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VideosService} from '../service/videos.service';
 import {HttpClient, HttpEventType, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Video} from '../video';
 
 @Component({
   selector: 'app-upload-video-page',
@@ -19,6 +20,8 @@ export class UploadVideoPageComponent implements OnInit {
   selectedFiles!: undefined;
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
+  editedVideo!: string;
+  video!: Video;
 
   constructor(
     public videosService: VideosService,
@@ -104,13 +107,28 @@ export class UploadVideoPageComponent implements OnInit {
   //  }
 
   //
-  submitVideoDetails = () => {
+  // submitVideoDetails = () => {
+  //   this.videoTitle = '';
+  //   this.videoDescription = '';
+  //   this.isDisabled = true;
+  //   this.isVisible = '';
+  //   this.disableNextButton = !this.disableNextButton;
+  //   // this.videosService.updateVideo();
+  // }
+
+  submitVideoDetails(videoId: number): void {
     this.videoTitle = '';
     this.videoDescription = '';
     this.isDisabled = true;
     this.isVisible = '';
     this.disableNextButton = !this.disableNextButton;
-    // this.videosService.updateVideo();
+
+    this.videosService.updateVideo(videoId, this.editedVideo).subscribe(
+      response => {
+        console.log(this.editedVideo);
+        console.log(response);
+      }
+    );
   }
 
   uploadAnotherVideo = () => {

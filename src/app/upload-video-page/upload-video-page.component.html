@@ -25,7 +25,7 @@
       <div class="container">
         <form enctype="multipart/form-data" [formGroup]="form" (ngSubmit)="submitForm()">
           <div class="form-group">
-            <input (change)="uploadFile($event)" class="text-wrap" type="file">
+            <input (change)="uploadFile($event)" class="text-wrap" type="file" accept=".mp4, .mov">
           </div>
           <h6>*Note: File format must be mp4 or mov</h6>
           <div class="form-group">
@@ -50,7 +50,7 @@
 
       <div>
         <button [disabled]="isDisabled" class="btn btn-success"
-                (click)="submitVideoDetails()">Submit
+                (click)="submitVideoDetails(video.videoId)">Submit
         </button>
       </div>
     </div>

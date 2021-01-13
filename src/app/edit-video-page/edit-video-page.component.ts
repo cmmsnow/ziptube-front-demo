@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {VideosService} from '../service/videos.service';
+import {Video} from '../video';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-video-page',
@@ -9,8 +12,10 @@ export class EditVideoPageComponent implements OnInit {
 
   warningIsVisible = 'd-none';
   confirmDeleteIsVisible = 'd-none';
+  editedVideo!: string;
+  video!: Video;
 
-  constructor() { }
+  constructor(public videosService: VideosService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,5 +29,24 @@ export class EditVideoPageComponent implements OnInit {
     this.confirmDeleteIsVisible = '';
 
   }
+
+  // routeToMyVideos = () => {
+  //   this.router.navigate(['myvideos']);  }
+
+  editVideo(videoId: number): void {
+    this.videosService.updateVideo(videoId, this.editedVideo).subscribe(
+      response => {
+        console.log(this.editedVideo);
+        console.log(response);
+      });
+  }
+
+  deleteVideo = (videoID: number) => {
+    this.videosService.deleteVideo(videoID).subscribe(
+      response => {
+        return response;
+      });
+  }
+
 
 }
