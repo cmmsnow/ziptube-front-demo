@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {VideosService} from '../service/videos.service';
-import {HttpEventType, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpEventType, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Video} from '../video';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthenticationService} from "../service/authentication.service";
 
 @Component({
   selector: 'app-upload-video-page',
@@ -9,6 +11,7 @@ import {Video} from '../video';
   styleUrls: ['./upload-video-page.component.css']
 })
 export class UploadVideoPageComponent implements OnInit {
+  form: FormGroup;
 
   videoTitle = '';
   videoDescription = '';
@@ -24,35 +27,79 @@ export class UploadVideoPageComponent implements OnInit {
   // progress: { percentage: number } = { percentage: 0 };
 
   constructor(
-    public videosService: VideosService) {
+    public videosService: VideosService,
+    public formBuilder: FormBuilder,
+    public authenticationService: AuthenticationService,
+    private http: HttpClient) {
+    this.form = this.formBuilder.group({
+      name: [''],
+      file: [null]
+    });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  uploadFile = (event: any) => {
+    // @ts-ignore
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({
+      file
+    });
+    console.log(`Uploaded file: ${file}`);
+    this.form.get('file')?.updateValueAndValidity();
   }
 
-  selectFile = (event: any) => {
-    this.selectedFiles = event.target.files;
-    console.log(`Selected File: ${this.selectedFiles}`);
-  }
-
-  upload = () => {
-    this.progress.percentage = 0;
+  submitForm = () => {
+    const formData: any = new FormData();
+    // @ts-ignore
+    formData.append('name', this.form.get('name').value);
+    // @ts-ignore
+    formData.append('file', this.form.get('file').value);
 
     // @ts-ignore
-    this.currentFileUpload = this.selectedFiles.item(0);
-
-    console.log(`File being uploaded: ${this.currentFileUpload}`);
-    this.videosService.addVideo(this.currentFileUpload)
-      .subscribe((event: any) => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress.percentage = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-          console.log('File is completely uploaded!');
-        }
-      });
-
-    this.selectedFiles = undefined;
+    this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
+      // *****headers: new HttpHeaders({
+      //   'Content-Type': 'multipart/form-data',
+      //   Authorization: `${this.authenticationService.getAuthenticatedToken()}`
+      // })
+      }
+      // @ts-ignore
+      // transformRequest: angular.identity,
+      // @ts-ignore
+      // headers: {'Content-Type': 'multipart/form-data'}
+    ).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
+
+  // selectFile = (event: any) => {
+  //   this.selectedFiles = event.target.files;
+  //   console.log(`Selected File: ${this.selectedFiles}`);
+  // }
+
+  // upload = () => {
+  //   this.progress.percentage = 0;
+
+    // @ts-ignore
+  //   this.currentFileUpload = this.selectedFiles.item(0);
+  //   console.log(`File being uploaded: ${this.currentFileUpload}`);
+  //
+  //   this.videosService.addVideo(this.currentFileUpload)
+  //     .subscribe((event: any) => {
+  //       if (event.type === HttpEventType.UploadProgress) {
+  //         this.progress.percentage = Math.round(100 * event.loaded / event.total);
+  //       } else if (event instanceof HttpResponse) {
+  //         console.log('File is completely uploaded!');
+  //       }
+  //     });
+  //
+  //   this.selectedFiles = undefined;
+  // }
 
   // handleFileInput = (files: FileList) => {
   //    this.fileToUpload = files.item(0);

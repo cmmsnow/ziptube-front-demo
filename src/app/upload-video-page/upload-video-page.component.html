@@ -7,7 +7,7 @@
 
   <div class="d-flex justify-content-center">
 
-    <div class="upload-content d-flex flex-column justify-content-between">
+    <div class="upload-content d-flex flex-column justify-content-between" method="post" enctype="multipart/form-data">
 
       <div>
         <h4>1. Choose File</h4>
@@ -18,13 +18,22 @@
              role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
              aria-valuemin="0" aria-valuemax="100"
              [ngStyle]="{width:progress.percentage+'%'}">
-          {{progress.percentage}}%</div>
+          {{progress.percentage}}%
+        </div>
       </div>
 
-      <input type="file" id="file" class="text-wrap" (change)="selectFile($event)">
-      <h6>*Note: File format must be mp4 or mov</h6>
-      <div>
-        <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="upload()">Next</button>
+      <div class="container">
+        <form [formGroup]="form">
+          <div>
+            <input (change)="uploadFile($event)" enctype="multipart/form-data" class="text-wrap" id="file" type="file">
+          </div>
+
+          <h6>*Note: File format must be mp4 or mov</h6>
+
+          <div>
+            <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="submitForm()">Next</button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -51,12 +60,13 @@
     <div class="upload-content {{isVisible}}">
       <h4>3. Upload Complete!</h4>
       <div class="alert alert-success alert-message" role="alert">
-          <p>You have successfully uploaded your video</p>
-          <hr>
-          <p class="mb-0">Please click the button below if you'd like to upload another video</p>
+        <p>You have successfully uploaded your video</p>
+        <hr>
+        <p class="mb-0">Please click the button below if you'd like to upload another video</p>
         <br>
         <button class="btn btn-primary"
-                (click)="uploadAnotherVideo()">Upload New Video</button>
+                (click)="uploadAnotherVideo()">Upload New Video
+        </button>
       </div>
     </div>
 

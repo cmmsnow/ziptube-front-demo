@@ -25,15 +25,15 @@ export class VideosService {
 
   /** POST: add a new video to the server (storage) */
   addVideo(file: File): Observable<HttpEvent<{}>> {
-    console.log(`Video Service file: ${file}`);
-    const data: FormData = new FormData();
+    const formData: FormData = new FormData();
     // @ts-ignore
-    data.append('video', file);
-    console.log(`Video Service data: ${data}`);
-    const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', data, {
+    formData.append('video', file);
+
+    const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', formData, {
       reportProgress: true,
       responseType: 'text'
     });
+
     return this.http.request(newRequest);
   }
    // addVideo = (file: File) => this.http.post<any> (
@@ -47,7 +47,7 @@ export class VideosService {
    //   )
    // )
 
-  /** PUT: add video details (title, description)*/
+  // PUT: add video details (title, description)*/
 
 
 /** DELETE: delete the video from the server */
