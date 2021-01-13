@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VideosService} from '../service/videos.service';
 import {HttpClient, HttpEventType, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Video} from '../video';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-upload-video-page',
@@ -22,61 +20,52 @@ export class UploadVideoPageComponent implements OnInit {
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
 
-  // video!: Video;
-
   constructor(
     public videosService: VideosService,
     public formBuilder: FormBuilder,
-    public authenticationService: AuthenticationService,
     private http: HttpClient) {
     this.form = this.formBuilder.group({
-      fileUpload: [null]
+      video: [null]
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   uploadFile = (event: any) => {
     // @ts-ignore
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({
-      fileUpload: file
+      video: file
     });
     // @ts-ignore
-    this.form.get('fileUpload').updateValueAndValidity();
+    this.form.get('video').updateValueAndValidity();
     console.log(this.form.value);
   }
 
   submitForm = () => {
     const formData: any = new FormData();
     // @ts-ignore
-    formData.append('fileUpload', this.form.get('fileUpload').value);
+    formData.append('video', this.form.get('video').value);
+
+    this.progress.percentage = 0;
+
     // @ts-ignore
-    this.http.post('http://localhost:8080/storage/uploadVideo', formData
-    ).subscribe(
-      response => {
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.http.post('http://localhost:8080/storage/uploadVideo', formData)
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.type === HttpEventType.UploadProgress) {
+            this.progress.percentage = Math.round(100 * response.loaded / response.total);
+          } else if (response instanceof HttpResponse) {
+            console.log('File is completely uploaded!');
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   // selectFile = (event: any) => {
@@ -87,7 +76,7 @@ export class UploadVideoPageComponent implements OnInit {
   // upload = () => {
   //   this.progress.percentage = 0;
 
-    // @ts-ignore
+  // @ts-ignore
   //   this.currentFileUpload = this.selectedFiles.item(0);
   //   console.log(`File being uploaded: ${this.currentFileUpload}`);
   //
