@@ -24,16 +24,13 @@ export class UploadVideoPageComponent implements OnInit {
 
   // video!: Video;
 
-  // progress: { percentage: number } = { percentage: 0 };
-
   constructor(
     public videosService: VideosService,
     public formBuilder: FormBuilder,
     public authenticationService: AuthenticationService,
     private http: HttpClient) {
     this.form = this.formBuilder.group({
-      name: [''],
-      avatar: [null]
+      fileUpload: [null]
     });
   }
 
@@ -43,26 +40,19 @@ export class UploadVideoPageComponent implements OnInit {
     // @ts-ignore
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({
-      avatar: file
+      fileUpload: file
     });
-    this.form.get('file')?.updateValueAndValidity();
+    // @ts-ignore
+    this.form.get('fileUpload').updateValueAndValidity();
     console.log(this.form.value);
   }
 
   submitForm = () => {
     const formData: any = new FormData();
     // @ts-ignore
-    formData.append('name', this.form.get('name').value);
+    formData.append('fileUpload', this.form.get('fileUpload').value);
     // @ts-ignore
-    formData.append('avatar', this.form.get('avatar').value);
-
-    // @ts-ignore
-    this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
-      headers: new HttpHeaders({
-        'Content-Type':  'multipart/form-data',
-        Authorization: `${this.authenticationService.getAuthenticatedToken()}`
-      })
-      }
+    this.http.post('http://localhost:8080/storage/uploadVideo', formData
     ).subscribe(
       response => {
         console.log(response);
@@ -72,6 +62,22 @@ export class UploadVideoPageComponent implements OnInit {
       }
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // selectFile = (event: any) => {
   //   this.selectedFiles = event.target.files;
