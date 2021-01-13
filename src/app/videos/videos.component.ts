@@ -1,8 +1,8 @@
 import {AfterContentChecked, Component, OnInit} from '@angular/core';
-import {MockVideos} from '../mock-videos';
 import {VideosService} from '../service/videos.service';
 import {Video} from '../video';
-
+import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-videos',
@@ -10,11 +10,16 @@ import {Video} from '../video';
   styleUrls: ['./videos.component.css']
 })
 export class VideosComponent implements OnInit, AfterContentChecked{
-  // videos = MockVideos;
   videos!: Video[];
   selectedVideo!: Video;
+  // myRouter!: Router;
 
   constructor(private videosService: VideosService) {}
+
+  // constructor(private videosService: VideosService, private router: Router, private activeRoute: ActivatedRoute) {
+  //   this.myRouter = router;
+  //   this.activeRoute.params.subscribe(params => this.navigateByUrl(params[this.selectedVideo.videoId]));
+  // }
 
   ngOnInit(): void {
     this.getVideos();
@@ -24,7 +29,12 @@ export class VideosComponent implements OnInit, AfterContentChecked{
     if (this.selectedVideo == null) {
       this.onSelect(this.getLastVideo());
     }
+    // this.navigateByUrl(this.selectedVideo.videoId);
   }
+
+  // navigateByUrl(videoId: number): void {
+  //   this.router.navigate(['/', videoId]);
+  // }
 
   getVideos(): void {
     this.videosService.getVideos()
@@ -38,6 +48,7 @@ export class VideosComponent implements OnInit, AfterContentChecked{
   public onSelect(video: Video): void {
     this.selectedVideo = video;
     console.log(this.selectedVideo.videoId);
+    // this.navigateByUrl(this.selectedVideo.videoId);
   }
 
 }
