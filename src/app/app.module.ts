@@ -1,24 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderBarComponent } from './header-bar/header-bar.component';
-import { FooterBarComponent } from './footer-bar/footer-bar.component';
-import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { UploadVideoPageComponent } from './upload-video-page/upload-video-page.component';
-import { ErrorComponent } from './error/error.component';
-import { VideosComponent } from './videos/videos.component';
-import { MyVideosComponent } from './my-videos/my-videos.component';
-import { CommentsComponent } from './comments/comments.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderBarComponent} from './header-bar/header-bar.component';
+import {FooterBarComponent} from './footer-bar/footer-bar.component';
+import {EditProfilePageComponent} from './edit-profile-page/edit-profile-page.component';
+import {LoginPageComponent} from './login-page/login-page.component';
+import {UploadVideoPageComponent} from './upload-video-page/upload-video-page.component';
+import {ErrorComponent} from './error/error.component';
+import {VideosComponent} from './videos/videos.component';
+import {MyVideosComponent} from './my-videos/my-videos.component';
+import {CommentsComponent} from './comments/comments.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpErrorInterceptor} from './service/http-error.interceptor';
-import { FormsModule } from '@angular/forms';
-import { LogoutComponent } from './logout/logout.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { HttpInterceptorAuthService } from './service/http/http-interceptor-auth.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LogoutComponent} from './logout/logout.component';
+import {RegisterPageComponent} from './register-page/register-page.component';
+import {HttpInterceptorAuthService} from './service/http/http-interceptor-auth.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {EditVideoPageComponent} from './edit-video-page/edit-video-page.component';
 
 @NgModule({
@@ -42,14 +42,15 @@ import {EditVideoPageComponent} from './edit-video-page/edit-video-page.componen
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorAuthService,
-    multi: true
-  }
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorAuthService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
