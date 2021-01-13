@@ -12,13 +12,13 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
   videos!: Video[];
   selectedVideo!: Video;
   myVideos!: Video[];
-  username!: string | null;
+  userName!: string | null;
 
   constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
     this.getVideos();
-    this.username = sessionStorage.getItem(AUTHENTICATED_USER);
+    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
   }
 
   ngAfterContentChecked(): void {
@@ -29,12 +29,13 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
   }
 
   getVideos(): void {
+    // this.videosService.getVideosByUsername(this.userName)
     this.videosService.getVideos()
       .subscribe((videos: Video[]) => this.videos = videos);
   }
 
   public getMyVideos(): void {
-    this.myVideos = this.videos.filter(video => video.userName === this.username);
+    this.myVideos = this.videos.filter(video => video.userName === this.userName);
   }
 
   public getMyLastVideo(): Video {
