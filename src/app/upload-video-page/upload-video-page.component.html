@@ -23,15 +23,19 @@
       </div>
 
       <div class="container">
-        <form [formGroup]="form">
+        <form enctype="multipart/form-data" [formGroup]="form" (ngSubmit)="submitForm()">
           <div>
-            <input (change)="uploadFile($event)" enctype="multipart/form-data" class="text-wrap" id="file" type="file">
+            <input (change)="uploadFile($event)" class="text-wrap" type="file">
+          </div>
+
+          <div class="form-group input-group-lg">
+            <input class="form-control" placeholder="Name" formControlName="name">
           </div>
 
           <h6>*Note: File format must be mp4 or mov</h6>
 
-          <div>
-            <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="submitForm()">Next</button>
+          <div class="form-group">
+            <button [disabled]="disableNextButton" class="btn btn-success next-button">Create</button>
           </div>
         </form>
       </div>

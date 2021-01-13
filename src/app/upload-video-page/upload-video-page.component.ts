@@ -3,7 +3,7 @@ import {VideosService} from '../service/videos.service';
 import {HttpClient, HttpEventType, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Video} from '../video';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {AuthenticationService} from "../service/authentication.service";
+import {AuthenticationService} from '../service/authentication.service';
 
 @Component({
   selector: 'app-upload-video-page',
@@ -33,7 +33,7 @@ export class UploadVideoPageComponent implements OnInit {
     private http: HttpClient) {
     this.form = this.formBuilder.group({
       name: [''],
-      file: [null]
+      avatar: [null]
     });
   }
 
@@ -43,10 +43,10 @@ export class UploadVideoPageComponent implements OnInit {
     // @ts-ignore
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({
-      file
+      avatar: file
     });
-    console.log(`Uploaded file: ${file}`);
     this.form.get('file')?.updateValueAndValidity();
+    console.log(this.form.value);
   }
 
   submitForm = () => {
@@ -54,19 +54,15 @@ export class UploadVideoPageComponent implements OnInit {
     // @ts-ignore
     formData.append('name', this.form.get('name').value);
     // @ts-ignore
-    formData.append('file', this.form.get('file').value);
+    formData.append('avatar', this.form.get('avatar').value);
 
     // @ts-ignore
     this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
-      // *****headers: new HttpHeaders({
-      //   'Content-Type': 'multipart/form-data',
-      //   Authorization: `${this.authenticationService.getAuthenticatedToken()}`
-      // })
+      headers: new HttpHeaders({
+        'Content-Type':  'multipart/form-data',
+        Authorization: `${this.authenticationService.getAuthenticatedToken()}`
+      })
       }
-      // @ts-ignore
-      // transformRequest: angular.identity,
-      // @ts-ignore
-      // headers: {'Content-Type': 'multipart/form-data'}
     ).subscribe(
       response => {
         console.log(response);
