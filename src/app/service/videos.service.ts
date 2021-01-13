@@ -23,6 +23,10 @@ export class VideosService {
     return this.http.get<Video[]>(this.videosUrl);
   }
 
+  getVideosByUsername(userName: string | null): Observable<Video[]> {
+    return this.http.get<Video[]>(`http://localhost:8080/storage/allvideosbyusername/${userName}`);
+  }
+
   /** POST: add a new video to the server (storage) */
   addVideo(file: File): Observable<HttpEvent<{}>> {
     console.log(`Video Service file: ${file}`);
@@ -47,7 +51,7 @@ export class VideosService {
    //   )
    // )
 
-  /** PUT: add video details (title, description)*/
+ // /** PUT: add video details (title, description)*/
 
 
 /** DELETE: delete the video from the server */
