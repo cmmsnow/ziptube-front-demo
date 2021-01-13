@@ -1,7 +1,11 @@
 <div class="comment-section">
   <form ng-controller="Controller">
+    <hr/>
+    <div class="add-comment">
     <textarea *ngIf="isLoggedIn()" class="form-controller" rows="1" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
     <button *ngIf="isLoggedIn()" (click)=addComment()>Submit</button>
+    </div>
+    <hr/>
     <div class="comment-box">
     <div  *ngFor = "let comment of comments; let i=index">
        <div class="line" *ngIf="comment.videoId == videoID">

@@ -1,5 +1,4 @@
 import {AfterContentChecked, Component, OnInit} from '@angular/core';
-import {MockVideos} from '../mock-videos';
 import {Video} from '../video';
 import {VideosService} from '../service/videos.service';
 import {AUTHENTICATED_USER} from '../service/authentication.service';
@@ -10,13 +9,12 @@ import {AUTHENTICATED_USER} from '../service/authentication.service';
   styleUrls: ['./my-videos.component.css']
 })
 export class MyVideosComponent implements OnInit, AfterContentChecked {
-  // videos = MockVideos;
   videos!: Video[];
   selectedVideo!: Video;
   myVideos!: Video[];
   username!: string | null;
 
-  constructor(private videosService: VideosService) { }
+  constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
     this.getVideos();

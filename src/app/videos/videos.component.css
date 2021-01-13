@@ -3,10 +3,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 70%;
+  width: 65%;
   position: absolute;
   left: 0;
-  overflow-y: auto;
+  padding-bottom: 100px;
+  /*height: 100%;*/
+  /*overflow-y: auto;*/
 }
 
 .main-section h2, h3, h4 {
@@ -24,8 +26,9 @@
   right: 0;
   width: 30%;
   padding: 10px 10px 100px 10px;
-  overflow-y: auto;
   text-align: center;
+  /*height: 100%;*/
+  /*overflow-y: auto;*/
 }
 
 .side-bar video {

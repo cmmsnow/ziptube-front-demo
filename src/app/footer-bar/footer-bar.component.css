@@ -35,6 +35,7 @@ footer {
   font-weight: bold;
   margin: 0 auto;
   padding: 3px 0;
+  text-align: center;
 }
 
 .open-source a {
@@ -47,7 +48,6 @@ footer {
 .open-source a:hover {
   color: #9a9da0;
   text-decoration: none;
-  padding-right: 5px;
 }
 
 img {

@@ -1,8 +1,21 @@
+.comment-section {
+  margin-top: 20px;
+}
+
+.add-comment{
+  padding-top: 8px;
+}
+
+hr {
+  width: 80%;
+  margin: 10px auto;
+}
+
 .comment-box{
-  border: solid black 1px;
-  padding: 10px 20px 30px ;
+  /*border: solid black 1px;*/
+  /*padding: 10px 20px 30px ;*/
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
 }
 .comment{
   float: left;

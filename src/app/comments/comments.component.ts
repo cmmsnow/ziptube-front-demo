@@ -1,9 +1,7 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {MockComments} from '../mock-comments';
+import {Component, Input, OnInit} from '@angular/core';
 import {CommentsService} from '../service/comments.service';
 import { Comment } from '../comment';
 import {AUTHENTICATED_USER} from '../service/authentication.service';
-import {Router} from '@angular/router';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -15,7 +13,6 @@ export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
   @Input() videoUser!: string;
-
   comment!: string;
   newComment!: string;
   username!: string;
@@ -29,7 +26,6 @@ export class CommentsComponent implements OnInit {
     // @ts-ignore
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
     this.isUserLoggedIn = this.isLoggedIn();
-
   }
   isLoggedIn(): boolean {
     if (this.username == null){
@@ -38,6 +34,9 @@ export class CommentsComponent implements OnInit {
       return true;
     }
   }
+
+  refresh(): void { window.location.reload(); }
+
   canUserDelete(commentUsername: string): boolean {
     if (this.isLoggedIn() && this.videoUser === this.username){
       return true;
@@ -51,6 +50,7 @@ export class CommentsComponent implements OnInit {
     this.commentsService.getComments()
       .subscribe((comments: Comment[]) => this.comments = comments);
   }
+
   addComment(): void {
     this.commentsService.addComment(this.username, this.videoID, this.newComment).subscribe(
       response => {
@@ -60,8 +60,8 @@ export class CommentsComponent implements OnInit {
         window.onbeforeunload = null;
         console.log(error);
       });
+    this.refresh();
   }
-
 
   editComments(commentId: number): void {
     this.commentsService.updateComment(commentId, this.editedComment).subscribe(
@@ -70,6 +70,7 @@ export class CommentsComponent implements OnInit {
         console.log(response);
       }
     );
+    this.refresh();
   }
 
   deleteComment = (commentID: number) => {
@@ -77,8 +78,8 @@ export class CommentsComponent implements OnInit {
       response => {
         return response;
       });
+    this.refresh();
   }
-
 
 }
 
