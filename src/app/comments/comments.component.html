@@ -1,22 +1,29 @@
 <div class="comment-section">
-
   <form ng-controller="Controller">
-    <textarea *ngIf="isLoggedIn()" class="form-controller" rows="2" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
+
+    <hr *ngIf="isLoggedIn()"/>
+    <div class="add-comment">
+    <textarea *ngIf="isLoggedIn()" class="form-controller" rows="1" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
     <button *ngIf="isLoggedIn()" (click)=addComment()>Submit</button>
-    <hr/>
-    <div>
-      <div *ngFor = "let comment of comments; let i=index">
-        <div *ngIf="comment.videoId == videoID">
-          {{comment.userName}}: {{comment.comment}}<button *ngIf="canUserDelete()"
-          (click)=deleteComment(comment.commentId)>delete</button></div>
-      </div>
     </div>
-    <hr/>
-    <!--    <h3>Comments</h3>-->
-<!--    <ul class="list-group">-->
-
-<!--            </ul>-->
-<a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash" style="color:blue; float:right"></span></a>
-    </form>
-
+    <hr *ngIf="isLoggedIn()"/>
+    <div class="comment-box">
+      <div class="header">
+        <h4><u>Comments</u></h4>
+      </div>
+    <div  *ngFor = "let comment of comments; let i=index">
+       <div class="line" *ngIf="comment.videoId == videoID">
+          <div class="comment"><strong>{{comment.userName}}</strong>: {{comment.comment}}</div>
+         <div class="buttons">
+          <span *ngIf="comment.userName == username">
+            <textarea class="form-controller" rows="1" name="editComment" [(ngModel)]="editedComment" placeholder="Edit Comment"></textarea>
+            <button (click)=editComments(comment.commentId)>edit</button></span>
+          <button *ngIf="canUserDelete(comment.userName)"
+                  (click)=deleteComment(comment.commentId)>delete</button>
+         </div>
+       </div>
+    </div>
+    <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash" style="color:blue; float:right"></span></a>
+    </div>
+  </form>
 </div>

@@ -46,7 +46,7 @@
 <div *ngIf="myVideos.length == 1">
   <div class="only-section" *ngFor="let video of myVideos; let i = index;">
     <div *ngIf="video == selectedVideo">
-      <video>
+      <video controls>
         <source src="{{video.videoURL}}">
       </video>
       <div class="header-comments">

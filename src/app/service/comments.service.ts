@@ -11,10 +11,11 @@ import {map} from 'rxjs/operators';
 export class CommentsService {
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /** GET comments from the server */
   getComments(): Observable<Comment[]> {
@@ -22,17 +23,18 @@ export class CommentsService {
   }
 
   /** POST: add a new comment to the server */
-  // addNewComment = (userName: string, comment: string, videoId: number) => this.http.post<any>(
-  //   'http://localhost:8080/comment/addcomment', {userName, videoId, comment}
-  // )
+    // addNewComment = (userName: string, comment: string, videoId: number) => this.http.post<any>(
+    //   'http://localhost:8080/comment/addcomment', {userName, videoId, comment}
+    // )
 
   addComment = (userName: string, videoId: number, comment: string) => this.http.post<any>(
     `${API_URL}/comment/addcomment`, {userName, videoId, comment}
   )
 
   /** DELETE: delete the video from the server */
+
   deleteComment = (commentID: number) => this.http.delete<any>(
-  `${API_URL}/deletecomment/${commentID}`
+    `${API_URL}/deletecomment/${commentID}`
   )
   // deleteComment(commentId: number): Observable<Comment> {
   //   // const id = typeof comment === 'string' ? comment : this;
@@ -42,7 +44,10 @@ export class CommentsService {
   // }
 
   /** PUT: update the video on the server */
-  updateComment(commentID: number, comment: Comment): Observable<any> {
-    return this.http.put<any>(`${API_URL}/comment/{commentID}`, {comment});
-  }
+  updateComment = (commentId: number, comment: string) => this.http.put<any>(`${API_URL}/comment/${commentId}`, {comment}
+  )
+
+  // updateComment(commentID: number, comment: Comment): Observable<any> {
+  //   return this.http.put<any>(`${API_URL}/comment/{commentID}`, {comment});
+  // }
 }

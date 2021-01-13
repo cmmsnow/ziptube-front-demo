@@ -1,0 +1,49 @@
+.comment-section {
+  margin-top: 20px;
+}
+
+.add-comment{
+  padding-top: 8px;
+}
+
+.header{
+  float: left;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-top: 8px;
+
+}
+
+hr {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.comment-box{
+  /*border: solid black 1px;*/
+  /*padding: 10px 20px 30px ;*/
+  margin: 0 auto;
+  width: 80%;
+}
+.comment{
+  float: left;
+}
+
+.buttons{
+  float: right;
+  padding: 0px;
+  position: relative;
+  bottom: 3px;
+}
+
+.line{
+  display: block;
+  clear: both;
+  padding: 10px 0px;
+}
+
+button{
+  position: relative;
+  bottom: 10px;
+}
+

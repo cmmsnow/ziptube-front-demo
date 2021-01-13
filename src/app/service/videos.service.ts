@@ -23,27 +23,23 @@ export class VideosService {
     return this.http.get<Video[]>(this.videosUrl);
   }
 
+  getVideosByUsername(userName: string | null): Observable<Video[]> {
+    return this.http.get<Video[]>(`http://localhost:8080/storage/allvideosbyusername/${userName}`);
+  }
 
   /** POST: add a new video to the server (storage) */
-  // @ts-ignore
-  addVideo = (formData) => this.http.post<any>(
-    `${API_URL}/storage/uploadVideo`, {
-      formData
-    }
-  )
-
-  // addVideo(file: File): Observable<HttpEvent<{}>> {
-  //   const formData: FormData = new FormData();
-  //   // @ts-ignore
-  //   formData.append('video', file);
-  //
-  //   const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', formData, {
-  //     reportProgress: true,
-  //     responseType: 'text'
-  //   });
-  //
-  //   return this.http.request(newRequest);
-  // }
+  addVideo(file: File): Observable<HttpEvent<{}>> {
+    console.log(`Video Service file: ${file}`);
+    const data: FormData = new FormData();
+    // @ts-ignore
+    data.append('video', file);
+    console.log(`Video Service data: ${data}`);
+    const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', data, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+    return this.http.request(newRequest);
+  }
    // addVideo = (file: File) => this.http.post<any> (
    // `${API_URL}/storage/uploadVideo`, {file}
    // ).pipe(
@@ -55,7 +51,7 @@ export class VideosService {
    //   )
    // )
 
-  // PUT: add video details (title, description)*/
+ // /** PUT: add video details (title, description)*/
 
 
 /** DELETE: delete the video from the server */
