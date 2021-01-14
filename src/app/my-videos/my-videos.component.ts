@@ -63,7 +63,6 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
   }
 
   public onSelect(video: Video): void {
-    // this.selectedVideo = video;
     sessionStorage.setItem(MYVIDEOID, video.videoId.toString());
     this.getStoredVideoId();
     this.selectedVideo = this.getSelectedVideoWithVideoId();
