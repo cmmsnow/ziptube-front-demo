@@ -13,12 +13,10 @@ import {EditVideoPageComponent} from './edit-video-page/edit-video-page.componen
 
 const routes: Routes = [
   {path: '', component: VideosComponent},
-  // {path: '/:videoId', component: VideosComponent},
   {path: 'register', component: RegisterPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'editprofile', component: EditProfilePageComponent, canActivate: [RouteGuardService]},
   {path: 'myvideos', component: MyVideosComponent, canActivate: [RouteGuardService]},
-  // {path: 'myvideos/:videoId', component: MyVideosComponent, canActivate: [RouteGuardService]},
   {path: 'uploadvideo', component: UploadVideoPageComponent, canActivate: [RouteGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   {path: 'editvideo', component: EditVideoPageComponent, canActivate: [RouteGuardService]},
