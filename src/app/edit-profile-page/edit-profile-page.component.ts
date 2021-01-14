@@ -15,7 +15,6 @@ export class EditProfilePageComponent implements OnInit {
   lastName = '';
   email = '';
   originalEmail = '';
-  // password = '';
   invalidUpdate = false;
 
   constructor(
