@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {VideosService} from '../service/videos.service';
 import {Video} from '../video';
 import {Router} from '@angular/router';
-import {AUTHENTICATED_USER} from '../service/authentication.service';
+import {AUTHENTICATED_USER, MYVIDEOID} from '../service/authentication.service';
 
 @Component({
   selector: 'app-edit-video-page',
@@ -15,7 +15,8 @@ export class EditVideoPageComponent implements OnInit {
   confirmDeleteIsVisible = 'd-none';
   editedVideo!: string;
   video!: Video;
-  username!: string | null;
+  videos!: Video[];
+  userName!: string | null;
   title = '';
   description = '';
   videoId!: number;
@@ -25,7 +26,19 @@ export class EditVideoPageComponent implements OnInit {
   constructor(public videosService: VideosService, private router: Router) { }
 
   ngOnInit(): void {
-   // this.videoId = sessionStorage.getItem(VIDEOID);
+    this.videosService.getVideos()
+      .subscribe((videos: Video[]) => this.videos = videos);
+    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
+   // @ts-ignore
+    this.videoId = + sessionStorage.getItem(MYVIDEOID);
+    this.video = this.getSelectedVideoWithVideoId();
+  }
+
+  // @ts-ignore
+  getSelectedVideoWithVideoId(): Video{
+    for (const item of this.videos) {
+      if (item.videoId === this.videoId) { return item; }
+    }
   }
 
   showDeleteVideo = () => {
@@ -42,8 +55,8 @@ export class EditVideoPageComponent implements OnInit {
   //   this.router.navigate(['myvideos']);  }
 
   editVideo(): void {
-    this.username = sessionStorage.getItem(AUTHENTICATED_USER);
-    this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
+    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
+    this.videosService.updateVideo(this.videoId, this.userName, this.videoTitle, this.videoDescription).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);
@@ -56,6 +69,5 @@ export class EditVideoPageComponent implements OnInit {
         return response;
       });
   }
-
 
 }
