@@ -5,12 +5,13 @@
 <!--insert video selected to be edited here. Add "edit video" link to each video on "MyVideosPage"-->
 <br>
 <ul>
-  <li>Title: <input placeholder="change video title"/></li>
-  <li>Description: <input placeholder="change video description"/></li>
+  <li>Title: <input placeholder="change video title" [(ngModel)]="videoTitle" )/></li>
+  <li>Description: <input placeholder="change video description" [(ngModel)]="videoDescription"/></li>
 </ul>
 <h6>*If a field is left blank, no update will be made to that field.</h6>
 <div>
-<button class="btn btn-success"><a routerLink="/myvideos">Submit changes</a></button>
+<button class="btn btn-success"(click)="editVideo(video.videoId)">
+  <a routerLink="/myvideos">Submit changes</a></button>
 </div>
 <div>
   <button class="btn btn-link"(click)="showDeleteVideo()">delete video</button>
@@ -21,8 +22,8 @@
     <p>This action cannot be undone.</p>
     <br>
 <!--    <p class="mb-0">Please click the button below if you'd like to upload another video</p>-->
-    <button class="btn btn-danger">
-      <a routerLink="/myvideos">Delete video</a>
-      </button>
+    <button class="btn btn-danger"(click)="deleteVideo(video.videoId)">
+      <a routerLink="/myvideos">Delete video</a></button>
   </div>
 </div>
+<router-outlet></router-outlet>

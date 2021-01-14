@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {VideosService} from '../service/videos.service';
+import {Video} from '../video';
+import {Router} from '@angular/router';
+import {AUTHENTICATED_USER} from "../service/authentication.service";
 
 @Component({
   selector: 'app-edit-video-page',
@@ -9,10 +13,19 @@ export class EditVideoPageComponent implements OnInit {
 
   warningIsVisible = 'd-none';
   confirmDeleteIsVisible = 'd-none';
+  editedVideo!: string;
+  video!: Video;
+  username!: string | null;
+  title = '';
+  description = '';
+  videoId!: number;
+  videoTitle!: string;
+  videoDescription!: string;
 
-  constructor() { }
+  constructor(public videosService: VideosService, private router: Router) { }
 
   ngOnInit(): void {
+   // this.videoId = sessionStorage.getItem(VIDEOID);
   }
 
   showDeleteVideo = () => {
@@ -24,5 +37,25 @@ export class EditVideoPageComponent implements OnInit {
     this.confirmDeleteIsVisible = '';
 
   }
+
+  // routeToMyVideos = () => {
+  //   this.router.navigate(['myvideos']);  }
+
+  editVideo(): void {
+    this.username = sessionStorage.getItem(AUTHENTICATED_USER);
+    this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
+      response => {
+        console.log(this.editedVideo);
+        console.log(response);
+      });
+  }
+
+  deleteVideo = () => {
+    this.videosService.deleteVideo(this.videoId).subscribe(
+      response => {
+        return response;
+      });
+  }
+
 
 }
