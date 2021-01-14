@@ -14,7 +14,8 @@ export class EditProfilePageComponent implements OnInit {
   firstName = '';
   lastName = '';
   email = '';
-  password = '';
+  originalEmail = '';
+  // password = '';
   invalidUpdate = false;
 
   constructor(
@@ -24,6 +25,10 @@ export class EditProfilePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.updateUserInformation();
+  }
+
+  updateUserInformation = () => {
     if (typeof this.username === 'string') {
       this.userService.executeJWTGetUserService(this.username)
         .subscribe(
@@ -31,24 +36,41 @@ export class EditProfilePageComponent implements OnInit {
             this.firstName = response.firstName;
             this.lastName = response.lastName;
             this.email = response.email;
+            this.originalEmail = response.email;
           }
         );
     }
   }
 
   handleJWTProfileUpdate = () => {
-    if (typeof this.username === 'string') {
-      this.userService.executeJWTUpdateUserService(this.username, this.firstName, this.lastName, this.email,
-        this.password)
-        .subscribe(
-          response => {
-            console.log(`Response: ${response}`);
-          },
-          error => {
-            console.log(`Error: ${error}`);
-            this.invalidUpdate = true;
-          }
-        );
+    if (this.email !== this.originalEmail) {
+      if (typeof this.username === 'string') {
+        this.userService.executeFullJWTUpdateUserService(this.username, this.firstName, this.lastName, this.email)
+          .subscribe(
+            response => {
+              this.updateUserInformation();
+              console.log(`Response: ${response}`);
+            },
+            error => {
+              console.log(`Error: ${error}`);
+              this.invalidUpdate = true;
+            }
+          );
+      }
+    } else {
+      if (typeof this.username === 'string') {
+        this.userService.executePartialJWTUpdateUserService(this.username, this.firstName, this.lastName)
+          .subscribe(
+            response => {
+              this.updateUserInformation();
+              console.log(`Response: ${response}`);
+            },
+            error => {
+              console.log(`Error: ${error}`);
+              this.invalidUpdate = true;
+            }
+          );
+      }
     }
   }
 }
