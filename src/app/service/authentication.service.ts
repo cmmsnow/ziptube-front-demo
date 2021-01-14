@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 export const TOKEN = 'token';
 export const AUTHENTICATED_USER = 'authenticatedUser';
 export const VIDEOID = 'videoId';
+export const MYVIDEOID = 'myVideoId';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,8 @@ export class AuthenticationService {
       response => {
         sessionStorage.setItem(AUTHENTICATED_USER, username);
         sessionStorage.setItem(TOKEN, `Bearer ${response.token}`);
+        sessionStorage.removeItem(VIDEOID);
+        sessionStorage.removeItem(MYVIDEOID);
         return response;
       }
     )
@@ -46,5 +49,6 @@ export class AuthenticationService {
     sessionStorage.removeItem(AUTHENTICATED_USER);
     sessionStorage.removeItem(TOKEN);
     sessionStorage.removeItem(VIDEOID);
+    sessionStorage.removeItem(MYVIDEOID);
   }
 }
