@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {VideosService} from '../service/videos.service';
 import {Video} from '../video';
 import {Router} from '@angular/router';
-import {AUTHENTICATED_USER} from "../service/authentication.service";
+import {AUTHENTICATED_USER} from '../service/authentication.service';
 
 @Component({
   selector: 'app-edit-video-page',
