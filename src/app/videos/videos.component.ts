@@ -1,8 +1,7 @@
 import {AfterContentChecked, Component, OnInit} from '@angular/core';
 import {VideosService} from '../service/videos.service';
 import {Video} from '../video';
-import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
+import {VIDEOID} from '../service/authentication.service';
 
 @Component({
   selector: 'app-videos',
@@ -12,29 +11,37 @@ import {ActivatedRoute} from '@angular/router';
 export class VideosComponent implements OnInit, AfterContentChecked{
   videos!: Video[];
   selectedVideo!: Video;
-  // myRouter!: Router;
+  currentVideoId!: number;
 
   constructor(private videosService: VideosService) {}
 
-  // constructor(private videosService: VideosService, private router: Router, private activeRoute: ActivatedRoute) {
-  //   this.myRouter = router;
-  //   this.activeRoute.params.subscribe(params => this.navigateByUrl(params[this.selectedVideo.videoId]));
-  // }
-
   ngOnInit(): void {
     this.getVideos();
+    this.getStoredVideoId();
   }
 
   ngAfterContentChecked(): void {
-    if (this.selectedVideo == null) {
+    if (this.selectedVideo == null && this.currentVideoId == null) {
       this.onSelect(this.getLastVideo());
+    } else {
+      this.onSelect(this.getSelectedVideoWithVideoId());
     }
-    // this.navigateByUrl(this.selectedVideo.videoId);
   }
 
-  // navigateByUrl(videoId: number): void {
-  //   this.router.navigate(['/', videoId]);
-  // }
+  getStoredVideoId(): void{
+    // @ts-ignore
+    if (sessionStorage.getItem(VIDEOID) != null){
+      // @ts-ignore
+      this.currentVideoId  = + sessionStorage.getItem(VIDEOID);
+    }
+  }
+
+  // @ts-ignore
+  getSelectedVideoWithVideoId(): Video{
+    for (const item of this.videos) {
+      if (item.videoId === this.currentVideoId) { return item; }
+    }
+  }
 
   getVideos(): void {
     this.videosService.getVideos()
@@ -46,9 +53,9 @@ export class VideosComponent implements OnInit, AfterContentChecked{
   }
 
   public onSelect(video: Video): void {
-    this.selectedVideo = video;
-    console.log(this.selectedVideo.videoId);
-    // this.navigateByUrl(this.selectedVideo.videoId);
+    sessionStorage.setItem(VIDEOID, video.videoId.toString());
+    this.getStoredVideoId();
+    this.selectedVideo = this.getSelectedVideoWithVideoId();
   }
 
 }
