@@ -3,6 +3,7 @@ import {VideosService} from '../service/videos.service';
 import {HttpClient, HttpEventType, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Video} from '../video';
+import {AUTHENTICATED_USER} from '../service/authentication.service';
 
 @Component({
   selector: 'app-upload-video-page',
@@ -22,6 +23,10 @@ export class UploadVideoPageComponent implements OnInit {
   progress: { percentage: number } = {percentage: 0};
   editedVideo!: string;
   video!: Video;
+  username!: string | null;
+  title = '';
+  description = '';
+  videoId!: number;
 
   constructor(
     public videosService: VideosService,
@@ -58,6 +63,7 @@ export class UploadVideoPageComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log(response);
+          this.videoId = response.videoId;
           if (response.type === HttpEventType.UploadProgress) {
             this.progress.percentage = Math.round(100 * response.loaded / response.total);
           } else if (response instanceof HttpResponse) {
@@ -70,65 +76,21 @@ export class UploadVideoPageComponent implements OnInit {
       );
   }
 
+  uploadButton(): void{
+    this.isDisabled = false;
+  }
 
-  // selectFile = (event: any) => {
-  //   this.selectedFiles = event.target.files;
-  //   console.log(`Selected File: ${this.selectedFiles}`);
-  // }
-
-  // upload = () => {
-  //   this.progress.percentage = 0;
-
-  // @ts-ignore
-  //   this.currentFileUpload = this.selectedFiles.item(0);
-  //   console.log(`File being uploaded: ${this.currentFileUpload}`);
-  //
-  //   this.videosService.addVideo(this.currentFileUpload)
-  //     .subscribe((event: any) => {
-  //       if (event.type === HttpEventType.UploadProgress) {
-  //         this.progress.percentage = Math.round(100 * event.loaded / event.total);
-  //       } else if (event instanceof HttpResponse) {
-  //         console.log('File is completely uploaded!');
-  //       }
-  //     });
-  //
-  //   this.selectedFiles = undefined;
-  // }
-
-  // handleFileInput = (files: FileList) => {
-  //    this.fileToUpload = files.item(0);
-  // }
-  //  uploadFileToActivity = () => {
-  //    this.videosService.addVideo(this.fileToUpload).subscribe(data => {
-  //      // do something, if upload success
-  //    }, error => {
-  //      console.log(error);
-  //    });
-  //  }
-
-  //
-  // submitVideoDetails = () => {
-  //   this.videoTitle = '';
-  //   this.videoDescription = '';
-  //   this.isDisabled = true;
-  //   this.isVisible = '';
-  //   this.disableNextButton = !this.disableNextButton;
-  //   // this.videosService.updateVideo();
-  // }
-
-  submitVideoDetails(videoId: number): void {
-    this.videoTitle = '';
-    this.videoDescription = '';
+  submitVideoDetails(): void {
+    this.username = sessionStorage.getItem(AUTHENTICATED_USER);
     this.isDisabled = true;
     this.isVisible = '';
     this.disableNextButton = !this.disableNextButton;
 
-    this.videosService.updateVideo(videoId, this.editedVideo).subscribe(
+    this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);
-      }
-    );
+      });
   }
 
   uploadAnotherVideo = () => {

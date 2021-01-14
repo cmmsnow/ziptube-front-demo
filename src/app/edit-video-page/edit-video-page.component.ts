@@ -14,6 +14,9 @@ export class EditVideoPageComponent implements OnInit {
   confirmDeleteIsVisible = 'd-none';
   editedVideo!: string;
   video!: Video;
+  username = '';
+  title = '';
+  description = '';
 
   constructor(public videosService: VideosService, private router: Router) { }
 
@@ -34,15 +37,15 @@ export class EditVideoPageComponent implements OnInit {
   //   this.router.navigate(['myvideos']);  }
 
   editVideo(videoId: number): void {
-    this.videosService.updateVideo(videoId, this.editedVideo).subscribe(
+    this.videosService.updateVideo(videoId, this.username, this.title, this.description).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);
       });
   }
 
-  deleteVideo = (videoID: number) => {
-    this.videosService.deleteVideo(videoID).subscribe(
+  deleteVideo = (videoId: number) => {
+    this.videosService.deleteVideo(videoId).subscribe(
       response => {
         return response;
       });

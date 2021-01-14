@@ -55,8 +55,8 @@ export class VideosService {
 
 
 /** DELETE: delete the video from the server */
-  deleteVideo = (videoID: number) => this.http.delete<any>(
-  `${API_URL}/storage/deletevideo/${videoID}`)
+  deleteVideo = (videoId: number) => this.http.delete<any>(
+  `${API_URL}/storage/deletevideo/${videoId}`)
   // deleteVideo(video: Video | number): Observable<Video> {
   //   const id = typeof video === 'number' ? video : video.id;
   //   const url = `${this.videosUrl}/${id}`;
@@ -65,8 +65,8 @@ export class VideosService {
   // }
 
   /** PUT: update the video on the server (title/description) */
-  updateVideo = (videoId: number, video: string) =>
-    this.http.put<any>(`${API_URL}/storage/video/${videoId}`, {video}
+  updateVideo = (videoId: number, userName: string | null, title: string, description: string) =>
+    this.http.put<any>(`${API_URL}/storage/video/${videoId}`, {videoId, userName, title, description}
     )
   // updateVideo(video: Video): Observable<any> {
   //   return this.http.put(this.videosUrl, video, this.httpOptions);
