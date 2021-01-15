@@ -73,5 +73,4 @@ export class EditVideoPageComponent implements OnInit {
         return response;
       });
   }
-
 }
