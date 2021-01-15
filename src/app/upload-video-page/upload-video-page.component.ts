@@ -59,15 +59,22 @@ export class UploadVideoPageComponent implements OnInit {
     this.progress.percentage = 0;
 
     // @ts-ignore
-    this.http.post('http://localhost:8080/storage/uploadVideo', formData)
+    this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
+      reportProgress: true,
+      observe: 'events'
+    })
       .subscribe(
         (response: any) => {
-          console.log(response);
-          this.videoId = response.videoId;
+          // console.log(response);
           if (response.type === HttpEventType.UploadProgress) {
             this.progress.percentage = Math.round(100 * response.loaded / response.total);
           } else if (response instanceof HttpResponse) {
             console.log('File is completely uploaded!');
+          }
+          this.videoId = response.videoId;
+
+          if (response.videoId !== null) {
+            this.isDisabled = false;
           }
         },
         error => {
@@ -76,9 +83,9 @@ export class UploadVideoPageComponent implements OnInit {
       );
   }
 
-  uploadButton(): void{
-    this.isDisabled = false;
-  }
+  // uploadButton(): void{
+  //   this.isDisabled = false;
+  // }
 
   submitVideoDetails(): void {
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);

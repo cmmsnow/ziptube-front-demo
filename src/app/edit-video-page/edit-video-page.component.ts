@@ -37,6 +37,7 @@ export class EditVideoPageComponent implements OnInit {
           this.description = this.video.description;
         });
     this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
+    console.log(this.userName);
   }
 
   // @ts-ignore
@@ -59,8 +60,7 @@ export class EditVideoPageComponent implements OnInit {
   }
 
   editVideo(): void {
-    // this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
-    this.videosService.updateVideo(this.videoId, this.userName, this.videoTitle, this.videoDescription).subscribe(
+    this.videosService.updateVideo(this.videoId, this.userName, this.title, this.description).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);
@@ -71,6 +71,7 @@ export class EditVideoPageComponent implements OnInit {
   deleteVideo = () => {
     this.videosService.deleteVideo(this.videoId).subscribe(
       response => {
+        // this.router.navigate(['']);
         return response;
       });
     this.router.navigate(['myvideos']);

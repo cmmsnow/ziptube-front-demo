@@ -4,12 +4,21 @@
 <br>
 <!--insert video selected to be edited here. Add "edit video" link to each video on "MyVideosPage"-->
 <br>
-<ul>
-  <li>Title:</li>
-  <input value="{{title}}" [(ngModel)]="videoTitle" required="required"/>
-  <li>Description:</li>
-  <input value="{{description}}" [(ngModel)]="videoDescription" required="required"/>
-</ul>
+
+<div>
+
+  <div>Title:</div>
+  <label>
+    <input value="{{title}}" [(ngModel)]="title" required="required"/>
+  </label>
+
+  <div>Description:</div>
+  <label>
+    <input value="{{description}}" [(ngModel)]="description" required="required"/>
+  </label>
+</div>
+
+
 <h6>*If a field is left blank, no update will be made to that field.</h6>
 <div>
   <button class="btn btn-success" (click)="editVideo()">Submit changes</button>
