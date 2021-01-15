@@ -26,12 +26,17 @@ export class EditVideoPageComponent implements OnInit {
   constructor(public videosService: VideosService, private router: Router) { }
 
   ngOnInit(): void {
-    this.videosService.getVideos()
-      .subscribe((videos: Video[]) => this.videos = videos);
-    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
-   // @ts-ignore
+    // @ts-ignore
     this.videoId = + sessionStorage.getItem(MYVIDEOID);
-    this.video = this.getSelectedVideoWithVideoId();
+    this.videosService.getVideos()
+      .subscribe(
+        response => {
+          this.videos = response;
+          this.video = this.getSelectedVideoWithVideoId();
+          this.title = this.video.title;
+          this.description = this.video.description;
+        });
+    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
   }
 
   // @ts-ignore
@@ -52,12 +57,13 @@ export class EditVideoPageComponent implements OnInit {
   }
 
   editVideo(): void {
-    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
+    // this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
     this.videosService.updateVideo(this.videoId, this.userName, this.videoTitle, this.videoDescription).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);
       });
+    this.router.navigate(['myvideos']);
   }
 
   deleteVideo = () => {

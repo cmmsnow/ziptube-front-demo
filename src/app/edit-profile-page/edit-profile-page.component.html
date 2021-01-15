@@ -3,7 +3,7 @@
     <div class="alert alert-warning" *ngIf="updateProfileForm.dirty && updateProfileForm.invalid">Enter valid values</div>
   </div>
 
-  <h3>My Account</h3>
+  <h3>Edit Profile</h3>
   <br>
   <form #updateProfileForm="ngForm">
     <fieldset>
@@ -31,13 +31,13 @@
       </label>
     </fieldset>
 
-    <fieldset>
-      <label>Password:</label>
-      <br>
-      <label>
-        <input type="password" name="password" [(ngModel)]="password" required="required" value="">
-      </label>
-    </fieldset>
+<!--    <fieldset>-->
+<!--      <label>Password:</label>-->
+<!--      <br>-->
+<!--      <label>-->
+<!--        <input type="password" name="password" [(ngModel)]="password" required="required" value="">-->
+<!--      </label>-->
+<!--    </fieldset>-->
 
     <br>
     <button type="submit" class="btn btn-success" (click)=handleJWTProfileUpdate()>Submit</button>

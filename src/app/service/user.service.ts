@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {API_URL} from '../app.constants';
 
@@ -7,7 +7,8 @@ import {API_URL} from '../app.constants';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   executeJWTRegistrationService = (firstName: string, lastName: string, username: string,
                                    password: string, email: string) => this.http.post<any>(
@@ -20,18 +21,25 @@ export class UserService {
     }
   )
 
-  executeJWTUpdateUserService = (username: string, firstName: string, lastName: string,
-                                 email: string, password: string) => this.http.put<any> (
+  executeFullJWTUpdateUserService = (username: string, firstName: string, lastName: string,
+                                     email: string) => this.http.put<any>(
     `${API_URL}/user/${username}`, {
       username,
       firstName,
       lastName,
-      email,
-      password
-}
+      email
+    }
   )
 
-  executeJWTGetUserService = (username: string) => this.http.get<any> (
+  executePartialJWTUpdateUserService = (username: string, firstName: string, lastName: string) => this.http.put<any> (
+    `${API_URL}/user/updateName/${username}`, {
+      username,
+      firstName,
+      lastName
+    }
+  )
+
+  executeJWTGetUserService = (username: string) => this.http.get<any>(
     `${API_URL}/user/username/${username}`
   )
 }

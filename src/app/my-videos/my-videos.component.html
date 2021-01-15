@@ -4,10 +4,10 @@
       <video controls>
         <source src="{{video.videoURL}}">
       </video>
-      <br>
 
-      <button class="btn btn-link"(click)="goToEdit()">edit video</button>
-<!--          <a [routerLink]="['./editvideo']" routerLinkActive="active">edit video</a>-->
+      <nav>
+        <button class="btn btn-success" routerLink="/editvideo" routerLinkActive="active">edit video</button>
+      </nav>
 
       <div class="header-comments">
         <h3>
@@ -37,7 +37,6 @@
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
 </div>
 
 <div *ngIf="myVideos.length == 0" class="no-videos">
@@ -51,9 +50,9 @@
         <source src="{{video.videoURL}}">
       </video>
 
-<!--      <nav>-->
-<!--        <a routerLink="/editvideo" routerLinkActive="active">edit video</a>-->
-<!--      </nav>-->
+      <nav>
+        <button class="btn btn-success" routerLink="/editvideo" routerLinkActive="active">edit video</button>
+      </nav>
 
       <div class="header-comments">
         <h3>
@@ -67,6 +66,5 @@
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
 </div>
-
+<router-outlet></router-outlet>
