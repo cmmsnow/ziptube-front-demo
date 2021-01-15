@@ -13,9 +13,9 @@
         <h4>1. Choose File</h4>
       </div>
 
-      <div *ngIf="currentFileUpload" class="progress">
-        <div class="progress-bar progress-bar-info progress-bar-striped"
-             role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+      <div class="progress">
+        <div class="progress-bar progress-bar-animated progress-bar-striped"
+             role="progressbar"
              aria-valuemin="0" aria-valuemax="100"
              [ngStyle]="{width:progress.percentage+'%'}">
           {{progress.percentage}}%
@@ -29,7 +29,7 @@
           </div>
           <h6>*Note: File format must be mp4 or mov</h6>
           <div class="form-group">
-            <button [disabled]="disableNextButton" class="btn btn-success next-button" (click)="uploadButton()">Upload</button>
+            <button [disabled]="disableNextButton" class="btn btn-success next-button">Upload</button>
           </div>
         </form>
       </div>
