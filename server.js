@@ -1,19 +1,14 @@
-//Install express server
 const express = require('express');
-const path = require('path');
 
 const app = express();
-const cors = require('cors');
 
-// Serve only the static files form the dist directory
-app.use(cors());
-app.use(express.static('.dist/ziptube-demo'))
+app.use(express.static('./dist/ziptube-demo'));
 
-app.get('/*', function(req,res) {
-
-  res.sendFile(path.join(__dirname, './../dist/ziptube-demo/index.html'));
-  console.log('path', path.join(__dirname, './../dist/ziptube-demo/index.html'))
+app.get('/*', function (req, res) {
+  res.sendFile('index.html', { root: 'dist/ziptube-demo' }
+  );
 });
 
-// Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
+
+console.log(`Running on port ${process.env.PORT || 8080}`)
