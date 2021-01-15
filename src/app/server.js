@@ -11,8 +11,8 @@ app.use(express.static('.dist/ziptube-demo'))
 
 app.get('/*', function(req,res) {
 
-  res.sendFile(path.join(__dirname, './../dist/ziptubefrontend/index.html'));
-  console.log('path', path.join(__dirname, './../dist/ziptubefrontend/index.html'))
+  res.sendFile(path.join(__dirname, './../dist/ziptube-demo/index.html'));
+  console.log('path', path.join(__dirname, './../dist/ziptube-demo/index.html'))
 });
 
 // Start the app by listening on the default Heroku port
