@@ -1,9 +1,10 @@
 {
   "name": "ziptube-demo",
   "version": "0.0.0",
+  "main": "server.js",
   "scripts": {
     "ng": "ng",
-    "start": "node app/server.js",
+    "start": "node server.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
