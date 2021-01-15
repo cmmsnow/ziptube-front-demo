@@ -37,6 +37,7 @@ export class EditVideoPageComponent implements OnInit {
           this.description = this.video.description;
         });
     this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
+    console.log(this.userName);
   }
 
   // @ts-ignore
@@ -56,22 +57,19 @@ export class EditVideoPageComponent implements OnInit {
 
   }
 
-  // routeToMyVideos = () => {
-  //   this.router.navigate(['myvideos']);  }
-
   editVideo(): void {
-    // this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
-    this.videosService.updateVideo(this.videoId, this.userName, this.videoTitle, this.videoDescription).subscribe(
+    this.videosService.updateVideo(this.videoId, this.userName, this.title, this.description).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);
       });
-    this.router.navigate(['myvideos']);
+    this.router.navigate(['']);
   }
 
   deleteVideo = () => {
     this.videosService.deleteVideo(this.videoId).subscribe(
       response => {
+        this.router.navigate(['']);
         return response;
       });
   }
