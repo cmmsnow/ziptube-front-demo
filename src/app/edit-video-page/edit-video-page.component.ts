@@ -51,9 +51,6 @@ export class EditVideoPageComponent implements OnInit {
 
   }
 
-  // routeToMyVideos = () => {
-  //   this.router.navigate(['myvideos']);  }
-
   editVideo(): void {
     this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
     this.videosService.updateVideo(this.videoId, this.userName, this.videoTitle, this.videoDescription).subscribe(
