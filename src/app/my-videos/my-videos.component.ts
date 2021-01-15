@@ -51,7 +51,7 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
   getVideos(): void {
     // this.videosService.getVideosByUsername(this.userName)
     this.videosService.getVideos()
-      .subscribe((videos: Video[]) => this.videos = videos);
+      .subscribe((response: Video[]) => this.videos = response);
   }
 
   public getMyVideos(): void {
