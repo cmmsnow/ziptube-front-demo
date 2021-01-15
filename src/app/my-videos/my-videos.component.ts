@@ -25,7 +25,6 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
     this.getStoredVideoId();
     }
 
-
   ngAfterContentChecked(): void {
     this.getMyVideos();
     this.getStoredVideoId();
@@ -70,12 +69,4 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
     this.getStoredVideoId();
     this.selectedVideo = this.getSelectedVideoWithVideoId();
   }
-
-  goToEdit(): void {
-    this.router.navigate(['editvideo'], { relativeTo: this.route });
-  }
-
-  // goToEditVideo(){
-  //   this.router.navigate(['editvideo']), {relativeTo: this.route};
-  // }
 }
