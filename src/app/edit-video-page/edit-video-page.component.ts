@@ -28,6 +28,12 @@ export class EditVideoPageComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.videoId = + sessionStorage.getItem(MYVIDEOID);
+    this.getVideos();
+    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
+    console.log(this.userName);
+  }
+
+  getVideos(): void {
     this.videosService.getVideos()
       .subscribe(
         response => {
@@ -36,8 +42,6 @@ export class EditVideoPageComponent implements OnInit {
           this.title = this.video.title;
           this.description = this.video.description;
         });
-    this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
-    console.log(this.userName);
   }
 
   // @ts-ignore
@@ -46,8 +50,6 @@ export class EditVideoPageComponent implements OnInit {
       if (item.videoId === this.videoId) { return item; }
     }
   }
-
-  // refresh(): void { window.location.reload(); }
 
   showDeleteVideo = () => {
     this.warningIsVisible = '';
@@ -65,15 +67,16 @@ export class EditVideoPageComponent implements OnInit {
         console.log(this.editedVideo);
         console.log(response);
       });
+    this.getVideos();
     this.router.navigate(['myvideos']);
   }
 
   deleteVideo = () => {
     this.videosService.deleteVideo(this.videoId).subscribe(
       response => {
-        // this.router.navigate(['']);
         return response;
       });
+    this.getVideos();
     this.router.navigate(['myvideos']);
   }
 }
