@@ -47,6 +47,8 @@ export class EditVideoPageComponent implements OnInit {
     }
   }
 
+  // refresh(): void { window.location.reload(); }
+
   showDeleteVideo = () => {
     this.warningIsVisible = '';
   }
@@ -63,14 +65,15 @@ export class EditVideoPageComponent implements OnInit {
         console.log(this.editedVideo);
         console.log(response);
       });
-    this.router.navigate(['']);
+    this.router.navigate(['myvideos']);
   }
 
   deleteVideo = () => {
     this.videosService.deleteVideo(this.videoId).subscribe(
       response => {
-        this.router.navigate(['']);
+        // this.router.navigate(['']);
         return response;
       });
+    this.router.navigate(['myvideos']);
   }
 }
