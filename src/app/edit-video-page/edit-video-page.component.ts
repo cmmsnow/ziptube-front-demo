@@ -74,6 +74,5 @@ export class EditVideoPageComponent implements OnInit {
         // this.router.navigate(['']);
         return response;
       });
-    this.router.navigate(['myvideos']);
   }
 }
