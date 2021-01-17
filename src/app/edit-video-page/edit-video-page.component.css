@@ -1,8 +1,12 @@
 .delete-video {
   margin: 1em 3em 0 0;
-  width: 95vh;
+  width: 40vw;
+  font-weight: 700;
 }
-button a {
-  color: white;
+/*button a {*/
+/*  color: white;*/
+/*}*/
 
+.delete-video-btns {
+  width: 15vw;
 }

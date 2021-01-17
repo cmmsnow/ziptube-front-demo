@@ -2,36 +2,28 @@
   margin-top: 20px;
 }
 
-.add-comment{
-  padding-top: 8px;
-}
-
 .header{
   float: left;
   padding-bottom: 10px;
-  padding-left: 0px;
+  padding-left: 0;
   padding-top: 8px;
 
 }
 
 hr {
-  width: 80%;
-  margin: 10px auto;
+  height: 1px;
+  border-top: 2px;
+  /*width: 100%;*/
+  /*margin: 10px auto;*/
 }
 
-.comment-box{
-  /*border: solid black 1px;*/
-  /*padding: 10px 20px 30px ;*/
-  margin: 0 auto;
-  width: 80%;
-}
-.comment{
+.comment-by-username {
   float: left;
 }
 
 .buttons{
   float: right;
-  padding: 0px;
+  padding: 0;
   position: relative;
   bottom: 3px;
 }
@@ -39,11 +31,22 @@ hr {
 .line{
   display: block;
   clear: both;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
-button{
-  position: relative;
-  bottom: 10px;
+.user-comment {
+  margin-left: 0.75em;
+}
+
+.edit-user-comment {
+
+}
+
+button {
+  margin-left: 0.75em;
+}
+
+.user-edit-delete-comment {
+  /*border: 1px solid green;*/
 }
 

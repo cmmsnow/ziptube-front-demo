@@ -56,7 +56,7 @@ export class UploadVideoPageComponent implements OnInit {
     // @ts-ignore
     formData.append('video', this.form.get('video').value);
 
-    this.progress.percentage = 0;
+    // this.progress.percentage = 0;
 
     // @ts-ignore
     this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
@@ -66,12 +66,19 @@ export class UploadVideoPageComponent implements OnInit {
       .subscribe(
         (response: any) => {
           // console.log(response);
-          if (response.type === HttpEventType.UploadProgress) {
-            this.progress.percentage = Math.round(100 * response.loaded / response.total);
-          } else if (response instanceof HttpResponse) {
-            console.log('File is completely uploaded!');
+          // if (response.type === HttpEventType.UploadProgress) {
+          //   this.progress.percentage = Math.round(100 * response.loaded / response.total);
+          // } else if (response instanceof HttpResponse) {
+          //   console.log('File is completely uploaded!');
+          //   console.log(response);
+          // }
+
+          console.log(response);
+
+          if (response.videoId >= 1) {
+            this.videoId = response.videoId;
+            console.log(this.videoId);
           }
-          this.videoId = response.videoId;
 
           if (response.videoId !== null) {
             this.isDisabled = false;

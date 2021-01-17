@@ -1,13 +1,13 @@
-<div *ngIf="myVideos.length > 1">
+<div *ngIf="myVideos.length > 1" class="container-fluid my-video-hero d-flex justify-content-between">
   <div class="main-section" *ngFor="let video of myVideos; let i = index;">
     <div *ngIf="video == selectedVideo">
       <video controls>
         <source src="{{video.videoURL}}">
       </video>
 
-      <nav>
-        <button class="btn btn-success" routerLink="/editvideo" routerLinkActive="active">edit video</button>
-      </nav>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-info" routerLink="/editvideo" routerLinkActive="active">Edit Video</button>
+      </div>
 
       <div class="header-comments">
         <h3>
@@ -22,12 +22,14 @@
     </div>
   </div>
 
-  <div class="side-bar">
+  <div class="my-side-bar">
     <div *ngFor="let video of myVideos.reverse(); let i = index;">
       <div *ngIf="video != selectedVideo">
-        <video (click)="onSelect(video)">
-          <source src="{{video.videoURL}}">
-        </video>
+        <div class="container my-video-box">
+          <video (click)="onSelect(video)">
+            <source src="{{video.videoURL}}">
+          </video>
+        </div>
         <h4 (click)="onSelect(video)">
           {{video.title}}
         </h4>
@@ -45,14 +47,15 @@
 
 <div *ngIf="myVideos.length == 1">
   <div class="only-section" *ngFor="let video of myVideos; let i = index;">
+
     <div *ngIf="video == selectedVideo">
       <video controls>
         <source src="{{video.videoURL}}">
       </video>
 
-      <nav>
-        <button class="btn btn-success" routerLink="/editvideo" routerLinkActive="active">edit video</button>
-      </nav>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-info" routerLink="/editvideo" routerLinkActive="active">Edit Video</button>
+      </div>
 
       <div class="header-comments">
         <h3>
@@ -66,5 +69,6 @@
       </div>
     </div>
   </div>
+
 </div>
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->

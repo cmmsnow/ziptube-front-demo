@@ -68,9 +68,9 @@ export class VideosService {
   // }
 
   /** PUT: update the video on the server (title/description) */
-  updateVideo = (videoId: number, userName: string | null, title: string, description: string) =>
+  updateVideo = (videoId: number, username: string | null, title: string, description: string) =>
     this.http.put<any>(
       `${API_URL}/storage/video/${videoId}`,
-      {videoId, userName, title, description}
+      {videoId, username, title, description}
     )
 }
