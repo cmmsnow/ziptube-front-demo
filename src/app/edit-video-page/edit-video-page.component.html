@@ -1,37 +1,42 @@
-<h3>
-  Edit Video
-</h3>
-<br>
-<!--insert video selected to be edited here. Add "edit video" link to each video on "MyVideosPage"-->
-<br>
+<div class="container">
+  <h3>
+    Edit Video
+  </h3>
 
-<div>
-
-  <div>Title:</div>
-  <label>
-    <input value="{{title}}" [(ngModel)]="title" required="required"/>
-  </label>
-
-  <div>Description:</div>
-  <label>
-    <input value="{{description}}" [(ngModel)]="description" required="required"/>
-  </label>
-</div>
-
-
-<h6>*If a field is left blank, no update will be made to that field.</h6>
-<div>
-  <button class="btn btn-success" (click)="editVideo()">Submit changes</button>
-<!--        <a routerLink="/myvideos">Submit changes</a>-->
-</div>
-<div>
-  <button class="btn btn-link" (click)="showDeleteVideo()">delete video</button>
-</div>
-<div class="delete-video {{warningIsVisible}}">
-  <div class="alert alert-danger" role="alert">
-    <p>Are you sure you want to delete this video and all of its related information?</p>
-    <p>This action cannot be undone.</p>
+  <div>
+    <div>Title:</div>
+    <div class="input-group flex-wrap: wrap">
+        <input class="form-control" value="{{title}}" [(ngModel)]="title" required="required"/>
+    </div>
     <br>
-    <button class="btn btn-danger" (click)="deleteVideo()">Delete video</button>
+    <div>Description:</div>
+    <div class="input-group flex-wrap: wrap">
+      <input class="form-control" value="{{description}}" [(ngModel)]="description" required="required"/>
+    </div>
   </div>
+  <br>
+  <h6>*If a field is left blank, the current information will be lost.</h6>
+  <br>
+
+  <div class="buttons">
+    <button class="btn btn-success" (click)="editVideo()">Submit changes</button>
+    <!--        <a routerLink="/myvideos">Submit changes</a>-->
+  </div>
+  <br>
+  <div>
+    <button class="btn btn-danger" (click)="showDeleteVideo()">Delete Video</button>
+  </div>
+
+  <div class="delete-video {{warningIsVisible}}">
+    <div class="alert alert-danger" role="alert">
+      <p>Are you sure you want to delete this video and all of its related information?</p>
+      <p>This action cannot be undone.</p>
+      <br>
+      <div class="d-flex justify-content-between delete-video-btns">
+        <button class="btn btn-danger" (click)="deleteVideo()">Delete video</button>
+        <button class="btn btn-success" (click)="toggleState()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
 </div>

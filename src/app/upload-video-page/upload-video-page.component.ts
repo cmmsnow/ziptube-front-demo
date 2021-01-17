@@ -18,7 +18,7 @@ export class UploadVideoPageComponent implements OnInit {
   isDisabled = true;
   isVisible = 'd-none';
   disableNextButton = false;
-  selectedFiles!: undefined;
+  // selectedFiles!: undefined;
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
   editedVideo!: string;
@@ -26,7 +26,7 @@ export class UploadVideoPageComponent implements OnInit {
   username!: string | null;
   title = '';
   description = '';
-  videoID!: number;
+  videoId!: number;
 
   constructor(
     public videosService: VideosService,
@@ -66,19 +66,26 @@ export class UploadVideoPageComponent implements OnInit {
     })
       .subscribe(
         (response: any) => {
-          console.log(response);
-          // const body: string = JSON.parse(response.body);
           if (response.type === HttpEventType.UploadProgress) {
             this.progress.percentage = Math.round(100 * response.loaded / response.total);
           } else if (response instanceof HttpResponse) {
             console.log('File is completely uploaded!');
+            console.log(response);
           }
-          console.log(response.body);
-          console.log(response.body.videoId);
-          this.videoID = response.body.videoId;
 
-          if (response.videoId !== null) {
+          // console.log(response);
+
+          // this.videoId = response.videoId;
+          // console.log(this.videoId);
+          console.log(response.status);
+
+          if (response.status === 202) {
+            console.log(`If response 202: ${response.status}`);
             this.isDisabled = false;
+
+            console.log(`Response videoID type: ${typeof response.videoId}, videoId: ${response.videoId}`);
+            this.videoId = response.body.videoId;
+            console.log(this.videoId);
           }
         },
         error => {
@@ -97,7 +104,7 @@ export class UploadVideoPageComponent implements OnInit {
     this.isVisible = '';
     this.disableNextButton = !this.disableNextButton;
 
-    this.videosService.updateVideo(this.videoID, this.username, this.videoTitle, this.videoDescription).subscribe(
+    this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);

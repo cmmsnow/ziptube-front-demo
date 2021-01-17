@@ -2,28 +2,50 @@
   <form ng-controller="Controller">
 
     <hr *ngIf="isLoggedIn()"/>
-    <div class="add-comment">
-    <textarea *ngIf="isLoggedIn()" class="form-controller" rows="1" name="newComment" [(ngModel)]="newComment" placeholder="Post Comment"></textarea>
-    <button *ngIf="isLoggedIn()" (click)=addComment()>Submit</button>
+
+    <div class="form-floating d-flex flex-column align-content-end">
+      <div>
+      <textarea *ngIf="isLoggedIn()" class="form-control" rows="1" name="newComment" [(ngModel)]="newComment"
+                placeholder="Comment"></textarea>
+      </div>
+      <br>
     </div>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-success" type="button" *ngIf="isLoggedIn()" (click)=addComment()>Post Comment</button>
+    </div>
+
     <hr *ngIf="isLoggedIn()"/>
     <div class="comment-box">
       <div class="header">
-        <h4><u>Comments</u></h4>
+        <h5>Comments</h5>
       </div>
-    <div  *ngFor = "let comment of comments; let i=index">
-       <div class="line" *ngIf="comment.videoId == videoID">
-          <div class="comment"><strong>{{comment.userName}}</strong>: {{comment.comment}}</div>
-         <div class="buttons">
-          <span *ngIf="comment.userName == username">
-            <textarea class="form-controller" rows="1" name="editComment" [(ngModel)]="editedComment" placeholder="Edit Comment"></textarea>
-            <button (click)=editComments(comment.commentId)>edit</button></span>
-          <button *ngIf="canUserDelete(comment.userName)"
-                  (click)=deleteComment(comment.commentId)>delete</button>
-         </div>
-       </div>
-    </div>
-    <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash" style="color:blue; float:right"></span></a>
+      <div *ngFor="let comment of comments; let i=index">
+
+        <div class="line d-flex justify-content-between align-items-center" *ngIf="comment.videoId == videoID">
+
+          <div class="d-flex flex-column align-items-start">
+            <div>
+              <div class="comment-by-username"><strong>{{comment.userName}}</strong></div>
+              <div class="user-comment">{{comment.comment}}</div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between user-edit-delete-comment" *ngIf="comment.userName == username">
+              <textarea class="form-controller edit-user-comment" rows="1" name="editComment"
+                        [(ngModel)]="editedComment"
+                        placeholder="Edit Comment"></textarea>
+            <button class="btn btn-secondary" (click)=editComments(comment.commentId)>Edit Comment</button>
+            <button class="btn btn-danger" *ngIf="canUserDelete(comment.userName)"
+                    (click)=deleteComment(comment.commentId)>Delete Comment
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!--      <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash"-->
+      <!--                                                  style="color:blue; float:right"></span></a>-->
     </div>
   </form>
 </div>
