@@ -7,9 +7,7 @@
 .our-pics {
   margin-left: 5px;
   margin-right: 5px;
-  /*display: flex;*/
   cursor: pointer;
-  /*transition: .15s ease-out;*/
 }
 
 img {
@@ -17,15 +15,11 @@ img {
   height: auto;
 }
 
-/*.our-pics:hover {*/
-/*  transform: translateY(-0.25rem);*/
-/*}*/
-
 footer {
   font-size: 12px;
   height: 72px;
   line-height: 20px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #343a40;
@@ -40,7 +34,6 @@ footer {
 
 .open-source a {
   color: #6d757d;
-  /*color: #9a9da0;*/
   padding-left: 3px;
   padding-right: 3px;
 }

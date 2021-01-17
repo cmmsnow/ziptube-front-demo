@@ -31,21 +31,23 @@
             </div>
           </div>
 
-          <div class="d-flex justify-content-between user-edit-delete-comment" *ngIf="comment.userName == username">
+          <div class="d-flex justify-content-between user-edit-delete-comment">
+            <div *ngIf="comment.userName == username">
               <textarea class="form-controller edit-user-comment" rows="1" name="editComment"
                         [(ngModel)]="editedComment"
                         placeholder="Edit Comment"></textarea>
-            <button class="btn btn-secondary" (click)=editComments(comment.commentId)>Edit Comment</button>
-            <button class="btn btn-danger" *ngIf="canUserDelete(comment.userName)"
-                    (click)=deleteComment(comment.commentId)>Delete Comment
-            </button>
+              <button class="btn btn-secondary" (click)=editComments(comment.commentId)>Edit Comment</button>
+            </div>
+            <div *ngIf="canUserDelete(comment.userName)">
+              <button class="btn btn-danger"
+                      (click)=deleteComment(comment.commentId)>Delete Comment
+              </button>
+            </div>
           </div>
 
         </div>
       </div>
 
-      <!--      <a href="" ng-click="post_cmt($home)"><span class="glyphicon glyphicon-trash"-->
-      <!--                                                  style="color:blue; float:right"></span></a>-->
     </div>
   </form>
 </div>

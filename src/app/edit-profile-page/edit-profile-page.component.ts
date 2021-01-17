@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
 import {UserService} from '../service/user.service';
 
@@ -18,7 +17,6 @@ export class EditProfilePageComponent implements OnInit {
   invalidUpdate = false;
 
   constructor(
-    private router: Router,
     public authenticationService: AuthenticationService,
     public userService: UserService
   ) { }
