@@ -23,9 +23,18 @@ export class VideosService {
     return this.http.get<Video[]>(this.videosUrl);
   }
 
+
   getVideosByUsername(userName: string | null): Observable<Video[]> {
     return this.http.get<Video[]>(`https://ziptubebackend.herokuapp.com/storage/allvideosbyusername/${userName}`);
   }
+
+  getVideosByUsername = (userName: string) => this.http.get(
+    `http://localhost:8080/storage/allvideosbyusername/${userName}`
+  )
+  // getVideosByUsername(userName: string | null): Observable<Video[]> {
+  //   return this.http.get<Video[]>(`http://localhost:8080/storage/allvideosbyusername/${userName}`);
+  // }
+
 
   /** POST: add a new video to the server (storage) */
   addVideo(file: File): Observable<HttpEvent<{}>> {
@@ -66,10 +75,8 @@ export class VideosService {
 
   /** PUT: update the video on the server (title/description) */
   updateVideo = (videoId: number, userName: string | null, title: string, description: string) =>
-    this.http.put<any>(`${API_URL}/storage/video/${videoId}`, {videoId, userName, title, description}
+    this.http.put<any>(
+      `${API_URL}/storage/video/${videoId}`,
+      {videoId, userName, title, description}
     )
-  // updateVideo(video: Video): Observable<any> {
-  //   return this.http.put(this.videosUrl, video, this.httpOptions);
-  // }
-
 }
