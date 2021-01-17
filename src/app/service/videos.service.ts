@@ -29,7 +29,7 @@ export class VideosService {
   }
 
   getVideosByUsername = (userName: string) => this.http.get(
-    `http://localhost:8080/storage/allvideosbyusername/${userName}`
+    `https://ziptubebackend.herokuapp.com/storage/allvideosbyusername/${userName}`
   )
   // getVideosByUsername(userName: string | null): Observable<Video[]> {
   //   return this.http.get<Video[]>(`http://localhost:8080/storage/allvideosbyusername/${userName}`);
