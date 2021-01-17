@@ -1,8 +1,7 @@
 import {AfterContentChecked, Component, OnInit} from '@angular/core';
 import {Video} from '../video';
 import {VideosService} from '../service/videos.service';
-import {AUTHENTICATED_USER, MYVIDEOID, VIDEOID} from '../service/authentication.service';
-import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+import {AUTHENTICATED_USER, MYVIDEOID} from '../service/authentication.service';
 
 @Component({
   selector: 'app-my-videos',
@@ -17,7 +16,7 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
   currentVideoId!: number;
   name!: string;
 
-  constructor(private videosService: VideosService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
     this.getVideos();
@@ -52,7 +51,6 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
   }
 
   getVideos(): void {
-    // this.videosService.getVideosByUsername(this.userName)
     this.videosService.getVideos()
       .subscribe((response: Video[]) => this.videos = response);
   }
@@ -71,11 +69,4 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
     this.selectedVideo = this.getSelectedVideoWithVideoId();
   }
 
-  goToEdit(): void {
-    this.router.navigate(['editvideo'], { relativeTo: this.route });
-  }
-
-  // goToEditVideo(){
-  //   this.router.navigate(['editvideo']), {relativeTo: this.route};
-  // }
 }
