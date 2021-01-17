@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class VideosService {
 
-  private videosUrl = 'http://localhost:8080/storage/video/allvideos';
+  private videosUrl = 'https://ziptubebackend.herokuapp.com/storage/video/allvideos';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,12 +23,18 @@ export class VideosService {
     return this.http.get<Video[]>(this.videosUrl);
   }
 
+
+  getVideosByUsername(userName: string | null): Observable<Video[]> {
+    return this.http.get<Video[]>(`https://ziptubebackend.herokuapp.com/storage/allvideosbyusername/${userName}`);
+  }
+
   getVideosByUsername = (userName: string) => this.http.get(
     `http://localhost:8080/storage/allvideosbyusername/${userName}`
   )
   // getVideosByUsername(userName: string | null): Observable<Video[]> {
   //   return this.http.get<Video[]>(`http://localhost:8080/storage/allvideosbyusername/${userName}`);
   // }
+
 
   /** POST: add a new video to the server (storage) */
   addVideo(file: File): Observable<HttpEvent<{}>> {
@@ -37,7 +43,7 @@ export class VideosService {
     // @ts-ignore
     data.append('video', file);
     console.log(`Video Service data: ${data}`);
-    const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', data, {
+    const newRequest = new HttpRequest('POST', 'https://ziptubebackend.herokuapp.com/storage/uploadVideo', data, {
       reportProgress: true,
       responseType: 'text'
     });
