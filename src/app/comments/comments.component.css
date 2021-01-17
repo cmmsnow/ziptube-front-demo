@@ -18,12 +18,12 @@ hr {
   float: left;
 }
 
-.buttons{
-  float: right;
-  padding: 0;
-  position: relative;
-  bottom: 3px;
-}
+/*.buttons{*/
+/*  float: right;*/
+/*  padding: 0;*/
+/*  position: relative;*/
+/*  bottom: 3px;*/
+/*}*/
 
 .line{
   display: block;
@@ -40,6 +40,11 @@ button {
   margin-left: 0.75em;
 }
 
+.edit-comment-button {
+  position: relative;
+  bottom: 0.376em;
+}
+
 .user-edit-delete-comment {
-  border: 1px solid red;
+
 }
