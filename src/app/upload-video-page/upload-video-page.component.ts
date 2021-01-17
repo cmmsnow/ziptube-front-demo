@@ -26,7 +26,7 @@ export class UploadVideoPageComponent implements OnInit {
   username!: string | null;
   title = '';
   description = '';
-  videoId!: number;
+  videoID!: number;
 
   constructor(
     public videosService: VideosService,
@@ -61,17 +61,21 @@ export class UploadVideoPageComponent implements OnInit {
     // @ts-ignore
     this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
       reportProgress: true,
-      observe: 'events'
+      responseType: 'json',
+      observe: 'response'
     })
       .subscribe(
         (response: any) => {
-          // console.log(response);
+          console.log(response);
+          // const body: string = JSON.parse(response.body);
           if (response.type === HttpEventType.UploadProgress) {
             this.progress.percentage = Math.round(100 * response.loaded / response.total);
           } else if (response instanceof HttpResponse) {
             console.log('File is completely uploaded!');
           }
-          this.videoId = response.videoId;
+          console.log(response.body);
+          console.log(response.body.videoId);
+          this.videoID = response.body.videoId;
 
           if (response.videoId !== null) {
             this.isDisabled = false;
@@ -93,7 +97,7 @@ export class UploadVideoPageComponent implements OnInit {
     this.isVisible = '';
     this.disableNextButton = !this.disableNextButton;
 
-    this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
+    this.videosService.updateVideo(this.videoID, this.username, this.videoTitle, this.videoDescription).subscribe(
       response => {
         console.log(this.editedVideo);
         console.log(response);
