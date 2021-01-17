@@ -31,17 +31,17 @@ export class VideosService {
   // }
 
   /** POST: add a new video to the server (storage) */
-  addVideo(file: File): Observable<HttpEvent<{}>> {
-    console.log(`Video Service file: ${file}`);
-    const data: FormData = new FormData();
+  addVideo(video: Video): Observable<HttpEvent<any>> {
+    const formData: any = new FormData();
     // @ts-ignore
-    data.append('video', file);
-    console.log(`Video Service data: ${data}`);
-    const newRequest = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', data, {
+    formData.append('video', this.form.get('video').value);
+    const req = new HttpRequest('POST', 'http://localhost:8080/storage/uploadVideo', formData, {
       reportProgress: true,
-      responseType: 'text'
+      responseType: 'json',
+      // @ts-ignore
+      observe: 'events'
     });
-    return this.http.request(newRequest);
+    return this.http.request(req);
   }
    // addVideo = (file: File) => this.http.post<any> (
    // `${API_URL}/storage/uploadVideo`, {file}
@@ -68,9 +68,9 @@ export class VideosService {
   // }
 
   /** PUT: update the video on the server (title/description) */
-  updateVideo = (videoId: number, username: string | null, title: string, description: string) =>
+  updateVideo = (videoId: number, userName: string | null, title: string, description: string) =>
     this.http.put<any>(
       `${API_URL}/storage/video/${videoId}`,
-      {videoId, username, title, description}
+      {videoId, userName, title, description}
     )
 }

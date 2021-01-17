@@ -18,7 +18,7 @@ export class UploadVideoPageComponent implements OnInit {
   isDisabled = true;
   isVisible = 'd-none';
   disableNextButton = false;
-  selectedFiles!: undefined;
+  // selectedFiles!: undefined;
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
   editedVideo!: string;
@@ -56,32 +56,36 @@ export class UploadVideoPageComponent implements OnInit {
     // @ts-ignore
     formData.append('video', this.form.get('video').value);
 
-    // this.progress.percentage = 0;
+    this.progress.percentage = 0;
 
     // @ts-ignore
     this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
       reportProgress: true,
-      observe: 'events'
+      responseType: 'json',
+      observe: 'response'
     })
       .subscribe(
         (response: any) => {
-          // console.log(response);
-          // if (response.type === HttpEventType.UploadProgress) {
-          //   this.progress.percentage = Math.round(100 * response.loaded / response.total);
-          // } else if (response instanceof HttpResponse) {
-          //   console.log('File is completely uploaded!');
-          //   console.log(response);
-          // }
-
-          console.log(response);
-
-          if (response.videoId >= 1) {
-            this.videoId = response.videoId;
-            console.log(this.videoId);
+          if (response.type === HttpEventType.UploadProgress) {
+            this.progress.percentage = Math.round(100 * response.loaded / response.total);
+          } else if (response instanceof HttpResponse) {
+            console.log('File is completely uploaded!');
+            console.log(response);
           }
 
-          if (response.videoId !== null) {
+          // console.log(response);
+
+          // this.videoId = response.videoId;
+          // console.log(this.videoId);
+          console.log(response.status);
+
+          if (response.status === 202) {
+            console.log(`If response 202: ${response.status}`);
             this.isDisabled = false;
+
+            console.log(`Response videoID type: ${typeof response.videoId}, videoId: ${response.videoId}`);
+            this.videoId = response.body.videoId;
+            console.log(this.videoId);
           }
         },
         error => {
