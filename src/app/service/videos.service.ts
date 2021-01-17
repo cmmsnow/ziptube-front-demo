@@ -24,9 +24,9 @@ export class VideosService {
   }
 
 
-//   getVideosByUsername(userName: string | null): Observable<Video[]> {
-//     return this.http.get<Video[]>(`https://ziptubebackend.herokuapp.com/storage/allvideosbyusername/${userName}`);
-//   }
+  getVideosByUsername(userName: string | null): Observable<Video[]> {
+    return this.http.get<Video[]>(`https://ziptubebackend.herokuapp.com/storage/allvideosbyusername/${userName}`);
+  }
 
 //   getVideosByUsername = (userName: string) => this.http.get(
 //     `https://ziptubebackend.herokuapp.com/storage/allvideosbyusername/${userName}`
