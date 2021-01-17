@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {VideosService} from '../service/videos.service';
 import {Video} from '../video';
 import {Router} from '@angular/router';
@@ -23,27 +23,17 @@ export class EditVideoPageComponent implements OnInit {
   videoTitle!: string;
   videoDescription!: string;
 
-  constructor(public videosService: VideosService, private router: Router) {
-  }
+  constructor(public videosService: VideosService, private router: Router) { }
 
   ngOnInit(): void {
     // @ts-ignore
-    this.videoId = +sessionStorage.getItem(MYVIDEOID);
+    this.videoId = + sessionStorage.getItem(MYVIDEOID);
     this.getVideos();
     this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
     console.log(this.userName);
   }
 
-  // @ts-ignore
-  getSelectedVideoWithVideoId(): Video {
-    for (const item of this.videos) {
-      if (item.videoId === this.videoId) {
-        return item;
-      }
-    }
-  }
-
-  getVideos = () => {
+  getVideos(): void {
     this.videosService.getVideos()
       .subscribe(
         response => {
@@ -53,14 +43,16 @@ export class EditVideoPageComponent implements OnInit {
           this.description = this.video.description;
         });
   }
-  // refresh(): void { window.location.reload(); }
+
+  // @ts-ignore
+  getSelectedVideoWithVideoId(): Video{
+    for (const item of this.videos) {
+      if (item.videoId === this.videoId) { return item; }
+    }
+  }
 
   showDeleteVideo = () => {
     this.warningIsVisible = '';
-  }
-
-  toggleState = () => {
-    this.warningIsVisible = 'd-none';
   }
 
   confirmVideoDeleted = () => {
@@ -72,6 +64,7 @@ export class EditVideoPageComponent implements OnInit {
   editVideo(): void {
     this.videosService.updateVideo(this.videoId, this.userName, this.title, this.description).subscribe(
       response => {
+        console.log(this.editedVideo);
         console.log(response);
       });
     this.getVideos();
@@ -81,7 +74,6 @@ export class EditVideoPageComponent implements OnInit {
   deleteVideo = () => {
     this.videosService.deleteVideo(this.videoId).subscribe(
       response => {
-        // this.router.navigate(['']);
         return response;
       });
     this.getVideos();
