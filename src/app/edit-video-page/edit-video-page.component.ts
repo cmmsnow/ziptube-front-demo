@@ -79,4 +79,8 @@ export class EditVideoPageComponent implements OnInit {
     this.getVideos();
     this.router.navigate(['myvideos']);
   }
+
+  toggleState = () => {
+    this.warningIsVisible = 'd-none';
+  }
 }
