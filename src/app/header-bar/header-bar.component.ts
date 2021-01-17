@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
 import {AuthenticationService} from '../service/authentication.service';
 
 @Component({

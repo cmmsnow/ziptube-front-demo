@@ -4,6 +4,7 @@ import {HttpClient, HttpEventType, HttpHeaders, HttpResponse} from '@angular/com
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Video} from '../video';
 import {AUTHENTICATED_USER} from '../service/authentication.service';
+import {API_URL} from '../app.constants';
 
 @Component({
   selector: 'app-upload-video-page',
@@ -59,7 +60,7 @@ export class UploadVideoPageComponent implements OnInit {
     this.progress.percentage = 0;
 
     // @ts-ignore
-    this.http.post('http://localhost:8080/storage/uploadVideo', formData, {
+    this.http.post(`${API_URL}/storage/uploadVideo`, formData, {
       reportProgress: true,
       responseType: 'json',
       observe: 'response'
@@ -70,22 +71,10 @@ export class UploadVideoPageComponent implements OnInit {
             this.progress.percentage = Math.round(100 * response.loaded / response.total);
           } else if (response instanceof HttpResponse) {
             console.log('File is completely uploaded!');
-            console.log(response);
           }
-
-          // console.log(response);
-
-          // this.videoId = response.videoId;
-          // console.log(this.videoId);
-          console.log(response.status);
-
           if (response.status === 202) {
-            console.log(`If response 202: ${response.status}`);
             this.isDisabled = false;
-
-            console.log(`Response videoID type: ${typeof response.videoId}, videoId: ${response.videoId}`);
             this.videoId = response.body.videoId;
-            console.log(this.videoId);
           }
         },
         error => {
@@ -93,10 +82,6 @@ export class UploadVideoPageComponent implements OnInit {
         }
       );
   }
-
-  // uploadButton(): void{
-  //   this.isDisabled = false;
-  // }
 
   submitVideoDetails(): void {
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
@@ -106,7 +91,6 @@ export class UploadVideoPageComponent implements OnInit {
 
     this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
       response => {
-        console.log(this.editedVideo);
         console.log(response);
       });
   }
@@ -116,24 +100,4 @@ export class UploadVideoPageComponent implements OnInit {
     this.disableNextButton = !this.disableNextButton;
 
   }
-
-  // save = (event: any) => {
-  //
-  //   this.video = event.target.files[0];
-  //   console.log(this.video);
-  // }
-  //
-  // next = () => {
-  //   // this.progress.percentage = 0;
-  //   this.videosService.addVideo(this.video)
-  //     .subscribe(response => {
-  //         // @ts-ignore
-  //         if (response.videoId >= 1) {
-  //           this.isDisabled = !this.isDisabled;
-  //           console.log(response);
-  //         }
-  //       }
-  //     );
-  // }
-
 }

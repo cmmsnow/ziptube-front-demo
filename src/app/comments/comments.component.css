@@ -32,7 +32,8 @@ hr {
 }
 
 .user-comment {
-  margin-left: 0.75em;
+  margin-left: 1em;
+  text-align: left;
 }
 
 button {

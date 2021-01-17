@@ -7,8 +7,7 @@ import {API_URL} from '../app.constants';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   executeJWTRegistrationService = (firstName: string, lastName: string, username: string,
                                    password: string, email: string) => this.http.post<any>(
