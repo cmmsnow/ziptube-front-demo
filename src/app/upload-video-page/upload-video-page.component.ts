@@ -56,7 +56,7 @@ export class UploadVideoPageComponent implements OnInit {
     // @ts-ignore
     formData.append('video', this.form.get('video').value);
 
-    // this.progress.percentage = 0;
+    this.progress.percentage = 0;
 
     // @ts-ignore
     this.http.post(`${API_URL}/storage/uploadVideo`, formData, {
