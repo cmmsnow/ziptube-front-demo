@@ -22,16 +22,18 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
     this.getVideos();
     this.userName = sessionStorage.getItem(AUTHENTICATED_USER);
     this.getStoredVideoId();
-    }
+  }
 
 
   ngAfterContentChecked(): void {
     this.getMyVideos();
-    this.getStoredVideoId();
-    if (this.selectedVideo == null && this.currentVideoId == null) {
-      this.onSelect(this.getMyLastVideo());
-    } else {
-      this.onSelect(this.getSelectedVideoWithVideoId());
+    if (this.myVideos.length > 0){
+      this.getStoredVideoId();
+      if (this.selectedVideo == null && this.currentVideoId == null) {
+        this.onSelect(this.getMyLastVideo());
+      } else {
+        this.onSelect(this.getSelectedVideoWithVideoId());
+      }
     }
   }
 
@@ -57,6 +59,9 @@ export class MyVideosComponent implements OnInit, AfterContentChecked {
 
   public getMyVideos(): void {
     this.myVideos = this.videos.filter(video => video.userName === this.userName);
+    if (this.myVideos.length === 0) {
+      sessionStorage.removeItem(MYVIDEOID);
+    }
   }
 
   public getMyLastVideo(): Video {
