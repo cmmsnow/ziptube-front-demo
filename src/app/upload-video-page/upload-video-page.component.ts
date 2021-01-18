@@ -19,7 +19,6 @@ export class UploadVideoPageComponent implements OnInit {
   isDisabled = true;
   isVisible = 'd-none';
   disableNextButton = false;
-  // selectedFiles!: undefined;
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
   editedVideo!: string;
