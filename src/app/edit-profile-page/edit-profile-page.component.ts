@@ -40,21 +40,6 @@ export class EditProfilePageComponent implements OnInit {
   }
 
   handleJWTProfileUpdate = () => {
-    if (this.email !== this.originalEmail) {
-      if (typeof this.username === 'string') {
-        this.userService.executeFullJWTUpdateUserService(this.username, this.firstName, this.lastName, this.email)
-          .subscribe(
-            response => {
-              this.updateUserInformation();
-              console.log(`Response: ${response}`);
-            },
-            error => {
-              console.log(`Error: ${error}`);
-              this.invalidUpdate = true;
-            }
-          );
-      }
-    } else {
       if (typeof this.username === 'string') {
         this.userService.executePartialJWTUpdateUserService(this.username, this.firstName, this.lastName)
           .subscribe(
@@ -68,6 +53,6 @@ export class EditProfilePageComponent implements OnInit {
             }
           );
       }
+      window.location.reload();
     }
-  }
 }
