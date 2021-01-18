@@ -9,8 +9,6 @@ import { API_URL } from '../app.constants';
 })
 export class VideosService {
 
-  private videosUrl = 'http://localhost:8080/storage/video/allvideos';
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -19,7 +17,7 @@ export class VideosService {
 
   /** GET videos from the server */
   getVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>(this.videosUrl);
+    return this.http.get<Video[]>(`${API_URL}/storage/video/allvideos`);
   }
 
   /** DELETE: delete the video from the server */
