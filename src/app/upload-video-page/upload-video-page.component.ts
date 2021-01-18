@@ -16,9 +16,9 @@ export class UploadVideoPageComponent implements OnInit {
 
   videoTitle = '';
   videoDescription = '';
-  isDisabled = true;
+  disableUploadButton = true;
   isVisible = 'd-none';
-  disableNextButton = false;
+  disableSubmitButton = false;
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
   editedVideo!: string;
@@ -72,7 +72,7 @@ export class UploadVideoPageComponent implements OnInit {
             console.log('File is completely uploaded!');
           }
           if (response.status === 202) {
-            this.isDisabled = false;
+            this.disableUploadButton = false;
             this.videoId = response.body.videoId;
           }
         },
@@ -84,9 +84,9 @@ export class UploadVideoPageComponent implements OnInit {
 
   submitVideoDetails(): void {
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
-    this.isDisabled = true;
+    this.disableUploadButton = true;
     this.isVisible = '';
-    this.disableNextButton = !this.disableNextButton;
+    this.disableSubmitButton = !this.disableSubmitButton;
 
     this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
       response => {
@@ -96,7 +96,8 @@ export class UploadVideoPageComponent implements OnInit {
 
   uploadAnotherVideo = () => {
     this.isVisible = 'd-none';
-    this.disableNextButton = !this.disableNextButton;
+    this.disableSubmitButton = false;
+    this.disableUploadButton = true;
 
   }
 }
