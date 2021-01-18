@@ -18,6 +18,8 @@ export class UploadVideoPageComponent implements OnInit {
   videoDescription = '';
   disableUploadButton = true;
   isVisible = 'd-none';
+  waitMessage = 'd-none';
+  successMessage = 'd-none';
   disableSubmitButton = false;
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
@@ -52,6 +54,7 @@ export class UploadVideoPageComponent implements OnInit {
   }
 
   submitForm = () => {
+    this.waitMessage = '';
     const formData: any = new FormData();
     // @ts-ignore
     formData.append('video', this.form.get('video').value);
@@ -70,6 +73,8 @@ export class UploadVideoPageComponent implements OnInit {
             this.progress.percentage = Math.round(100 * response.loaded / response.total);
           } else if (response instanceof HttpResponse) {
             console.log('File is completely uploaded!');
+            this.waitMessage = 'd-none';
+            this.successMessage = '';
           }
           if (response.status === 202) {
             this.disableUploadButton = false;
