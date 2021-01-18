@@ -13,15 +13,15 @@
         <h4>1. Choose File</h4>
       </div>
 
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped active"
-             role="progressbar"
-             attr.aria-valuenow="{{ progress }}"
-             aria-valuemin="0" aria-valuemax="100"
-             [ngStyle]="{width:progress.percentage+'%'}">
-          {{progress.percentage}}%
-        </div>
-      </div>
+<!--      <div class="progress">-->
+<!--        <div class="progress-bar progress-bar-striped active"-->
+<!--             role="progressbar"-->
+<!--             attr.aria-valuenow="{{ progress }}"-->
+<!--             aria-valuemin="0" aria-valuemax="100"-->
+<!--             [ngStyle]="{width:progress.percentage+'%'}">-->
+<!--          {{progress.percentage}}%-->
+<!--        </div>-->
+<!--      </div>-->
 
       <div class="container">
         <form enctype="multipart/form-data" [formGroup]="form" (ngSubmit)="submitForm()">
@@ -30,27 +30,29 @@
           </div>
           <h6>*Note: File format must be mp4 or mov</h6>
           <div class="form-group">
-            <button [disabled]="disableNextButton" class="btn btn-success next-button">Upload</button>
+            <button [disabled]="disableSubmitButton" class="btn btn-success next-button">Upload</button>
           </div>
+          <div class="{{waitMessage}}"><strong>Please wait, uploading...</strong></div>
+          <div class="{{successMessage}}"><strong>Upload success!</strong></div>
         </form>
       </div>
     </div>
 
     <div class="upload-content d-flex flex-column justify-content-between">
       <h4>2. Video Details</h4>
-      <br>
+      <p>(Once uploaded, this section will become available.)</p>
       <div>Title:</div>
       <label>
-        <input [disabled]="isDisabled" type="text" name="title" [(ngModel)]="videoTitle" required="required">
+        <input [disabled]="disableUploadButton" type="text" name="title" [(ngModel)]="videoTitle" required="required">
       </label>
       <div>Description:</div>
       <label>
-        <input [disabled]="isDisabled" type="text" name="description" [(ngModel)]="videoDescription"
+        <input [disabled]="disableUploadButton" type="text" name="description" [(ngModel)]="videoDescription"
                required="required">
       </label>
 
       <div>
-        <button [disabled]="isDisabled" class="btn btn-success"
+        <button [disabled]="disableUploadButton" class="btn btn-success"
                 (click)="submitVideoDetails()">Submit
         </button>
       </div>

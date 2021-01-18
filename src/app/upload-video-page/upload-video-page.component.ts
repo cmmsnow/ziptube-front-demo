@@ -16,9 +16,11 @@ export class UploadVideoPageComponent implements OnInit {
 
   videoTitle = '';
   videoDescription = '';
-  isDisabled = true;
+  disableUploadButton = true;
   isVisible = 'd-none';
-  disableNextButton = false;
+  waitMessage = 'd-none';
+  successMessage = 'd-none';
+  disableSubmitButton = false;
   currentFileUpload!: File;
   progress: { percentage: number } = {percentage: 0};
   editedVideo!: string;
@@ -52,6 +54,7 @@ export class UploadVideoPageComponent implements OnInit {
   }
 
   submitForm = () => {
+    this.waitMessage = '';
     const formData: any = new FormData();
     // @ts-ignore
     formData.append('video', this.form.get('video').value);
@@ -70,9 +73,11 @@ export class UploadVideoPageComponent implements OnInit {
             this.progress.percentage = Math.round(100 * response.loaded / response.total);
           } else if (response instanceof HttpResponse) {
             console.log('File is completely uploaded!');
+            this.waitMessage = 'd-none';
+            this.successMessage = '';
           }
           if (response.status === 202) {
-            this.isDisabled = false;
+            this.disableUploadButton = false;
             this.videoId = response.body.videoId;
           }
         },
@@ -84,9 +89,9 @@ export class UploadVideoPageComponent implements OnInit {
 
   submitVideoDetails(): void {
     this.username = sessionStorage.getItem(AUTHENTICATED_USER);
-    this.isDisabled = true;
+    this.disableUploadButton = true;
     this.isVisible = '';
-    this.disableNextButton = !this.disableNextButton;
+    this.disableSubmitButton = !this.disableSubmitButton;
 
     this.videosService.updateVideo(this.videoId, this.username, this.videoTitle, this.videoDescription).subscribe(
       response => {
@@ -96,7 +101,8 @@ export class UploadVideoPageComponent implements OnInit {
 
   uploadAnotherVideo = () => {
     this.isVisible = 'd-none';
-    this.disableNextButton = !this.disableNextButton;
+    this.disableSubmitButton = false;
+    this.disableUploadButton = true;
 
   }
 }
