@@ -15,6 +15,7 @@ export class EditProfilePageComponent implements OnInit {
   email = '';
   originalEmail = '';
   invalidUpdate = false;
+  isVisible = 'd-none';
 
   constructor(
     public authenticationService: AuthenticationService,
@@ -69,5 +70,6 @@ export class EditProfilePageComponent implements OnInit {
           );
       }
     }
+    this.isVisible = '';
   }
 }
