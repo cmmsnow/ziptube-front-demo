@@ -34,7 +34,7 @@ export class UserService {
     `${API_URL}/user/updateName/${username}`, {
       username,
       firstName,
-      lastName
+      lastName,
     }
   )
 
