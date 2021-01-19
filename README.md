@@ -1,27 +1,35 @@
-# ZiptubeDemo
+# ZipTube
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
+A video library application created by students of Zip Code Wilmington that mimics the major features of sites like YouTube, Vine, and Vimeo. Users are able to view, upload, delete videos, and comment on videos. In addition, users can manage comments made to their uploaded videos.
 
-## Development server
+## Built With
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+-   [Angular](https://angular.io/) - Front-End Framework
+-   [Spring Boot](https://spring.io/) - Back-End Management
+-   [Maven](https://maven.apache.org/) - Dependency Management
 
-## Code scaffolding
+## External Resources
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-   [Bootstrap](https://getbootstrap.com/) - CSS Framework 
+-   [AWS S3](https://aws.amazon.com/s3/) - Video File Storage
+-   [AWS RDS/MySQL](https://aws.amazon.com/rds/) - Database
+-   [JWT](https://jwt.io/) - Authentication and Security
+-   [Heroku](https://www.heroku.com/) - Deployment
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Versioning
 
-## Running unit tests
+v1.0 - Currently in development.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Authors
 
-## Running end-to-end tests
+-   **Shubham Amatya** - [GitHub](https://github.com/shubham-amatya)
+-   **Jarrell Wells** - [GitHub](https://github.com/jarrellw)
+-   **Christine Snow** - [GitHub](https://github.com/cmmsnow)
+-   **Christian Anderson** - [GitHub](https://github.com/christian-anderson)
+-   **Hillary Givhan** - [GitHub](https://github.com/hgivhan)
+-   **Dolio** - _Product Owner_
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Acknowledgments
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-   Zip Code Wilmington Cohort 6.2
