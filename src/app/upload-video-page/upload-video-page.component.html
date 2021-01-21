@@ -9,28 +9,15 @@
 
     <div class="upload-content d-flex flex-column justify-content-between" method="post" enctype="multipart/form-data">
 
-      <div>
-        <h4>1. Choose File</h4>
-      </div>
-
-<!--      <div class="progress">-->
-<!--        <div class="progress-bar progress-bar-striped active"-->
-<!--             role="progressbar"-->
-<!--             attr.aria-valuenow="{{ progress }}"-->
-<!--             aria-valuemin="0" aria-valuemax="100"-->
-<!--             [ngStyle]="{width:progress.percentage+'%'}">-->
-<!--          {{progress.percentage}}%-->
-<!--        </div>-->
-<!--      </div>-->
-
       <div class="container">
+        <h4>1. Choose File</h4>
         <form enctype="multipart/form-data" [formGroup]="form" (ngSubmit)="submitForm()">
           <div class="form-group">
             <input (change)="uploadFile($event)" class="text-wrap" type="file" accept=".mp4, .mov">
           </div>
           <h6>*Note: File format must be mp4 or mov</h6>
           <div class="form-group">
-            <button [disabled]="disableSubmitButton" class="btn btn-success next-button">Upload</button>
+            <button [disabled]="disableSubmitButton" class="btn btn-info next-button">Upload</button>
           </div>
           <div class="{{waitMessage}}"><strong>Please wait, uploading...</strong></div>
           <div class="{{successMessage}}"><strong>Upload success!</strong></div>
@@ -52,7 +39,7 @@
       </label>
 
       <div>
-        <button [disabled]="disableUploadButton" class="btn btn-success"
+        <button [disabled]="disableUploadButton" class="btn btn-info"
                 (click)="submitVideoDetails()">Submit
         </button>
       </div>
@@ -74,3 +61,14 @@
   </div>
 
 </div>
+
+
+<!--      <div class="progress">-->
+<!--        <div class="progress-bar progress-bar-striped active"-->
+<!--             role="progressbar"-->
+<!--             attr.aria-valuenow="{{ progress }}"-->
+<!--             aria-valuemin="0" aria-valuemax="100"-->
+<!--             [ngStyle]="{width:progress.percentage+'%'}">-->
+<!--          {{progress.percentage}}%-->
+<!--        </div>-->
+<!--      </div>-->

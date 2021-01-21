@@ -3,50 +3,39 @@
 
     <hr *ngIf="isLoggedIn()"/>
 
-    <div class="form-floating d-flex flex-column align-content-end">
-      <div>
-      <textarea *ngIf="isLoggedIn()" class="form-control" rows="1" name="newComment" [(ngModel)]="newComment"
-                placeholder="Comment"></textarea>
+    <div class="input-group mb-3 add-comment" *ngIf="isLoggedIn()">
+      <input type="text" class="form-control" placeholder="Comment" aria-describedby="basic-addon2" name="newComment"
+             [(ngModel)]="newComment">
+      <div class="input-group-append">
+        <button class="btn btn-info" type="button" (click)=addComment()>Post Comment</button>
       </div>
-      <br>
     </div>
 
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-success" type="button" *ngIf="isLoggedIn()" (click)=addComment()>Post Comment</button>
-    </div>
-
-    <hr *ngIf="isLoggedIn()"/>
+    <hr/>
     <div class="comment-box">
       <div class="header">
         <h5>Comments</h5>
       </div>
       <div *ngFor="let comment of comments; let i=index">
 
-        <div class="line d-flex justify-content-between align-items-center" *ngIf="comment.videoId == videoID">
+        <div class="justify-content-between form-inline line" *ngIf="comment.videoId == videoID">
 
-          <div class="d-flex flex-column align-items-start">
+          <div class="d-flex flex-column align-items-start name-and-comment">
             <div class="comment-by-username"><strong>{{comment.userName}}</strong></div>
             <div class="user-comment">{{comment.comment}}</div>
           </div>
 
-          <div class="d-flex justify-content-between">
-
-            <div *ngIf="comment.userName == username">
-
-              <textarea class="form-controller" id="floatingTextarea" rows="1" name="editComment"
-                        [(ngModel)]="editedComment"
-                        placeholder="Edit Comment">
-              </textarea>
-                <label for="floatingTextarea"></label>
-
-              <button class="btn btn-secondary edit-comment-button" (click)=editComments(comment.commentId)>Edit Comment</button>
+          <div *ngIf="comment.userName == username" class="input-group-sm mb-3 align-items-end edit-comment">
+            <input type="text" class="form-control" placeholder="Edit Comment"
+                   aria-describedby="basic-addon2" name="editComment" [(ngModel)]="editedComment">
+            <div class="input-group-append edit-comment-buttons">
+              <button class="btn btn-info" type="button" (click)=editComments(comment.commentId)>Edit</button>
+              <button class="btn btn-secondary" type="button" (click)=deleteComment(comment.commentId)>Delete</button>
             </div>
+          </div>
 
-            <div *ngIf="canUserDelete(comment.userName)">
-              <button class="btn btn-danger"
-                      (click)=deleteComment(comment.commentId)>Delete Comment
-              </button>
-            </div>
+          <div *ngIf="canUserDelete(comment.userName)" class="delete-comment align-items-end input-group-sm">
+            <button class="btn btn-secondary" (click)=deleteComment(comment.commentId)>Delete</button>
           </div>
 
         </div>

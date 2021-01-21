@@ -1,4 +1,4 @@
-<div class="container-fluid hero d-flex justify-content-between">
+<div class="container-fluid hero d-flex justify-content-between whole-page">
 
   <div *ngFor="let video of videos; let i = index;">
     <div class="main-section">
@@ -10,12 +10,10 @@
           <h3>
             {{video.title}}
           </h3>
-          <p>
-            {{video.userName}} posted on {{video.videoTimePosted}}<br/>
-            {{video.description}}
-          </p>
+          <p class="description">{{video.description}}</p>
+          <p class="posted-by">{{video.userName}} posted on {{video.videoTimePosted}}</p>
+          <app-comments [videoID]="video.videoId"></app-comments>
         </div>
-        <app-comments [videoID]="video.videoId"></app-comments>
       </div>
     </div>
   </div>
