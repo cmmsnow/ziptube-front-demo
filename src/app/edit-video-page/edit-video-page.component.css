@@ -1,9 +1,14 @@
 .delete-video {
-  margin: 1em 3em 0 0;
+  margin: 1em 3em 11em 0;
   width: 40vw;
   font-weight: 700;
+
 }
 
 .delete-video-btns {
   width: 15vw;
+}
+
+h3 {
+  padding-top: 30px;
 }
