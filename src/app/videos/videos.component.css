@@ -71,6 +71,10 @@
   text-align: left;
 }
 
+.side-bar video,h4:hover{
+  cursor: pointer;
+}
+
 .side-bar p {
   margin-bottom: 20px;
   position: relative;
