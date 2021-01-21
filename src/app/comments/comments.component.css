@@ -1,39 +1,45 @@
-.comment-section {
-  margin-top: 20px;
+.add-comment {
+  margin-top: 17px;
 }
 
 .header{
-  float: left;
   padding-bottom: 10px;
   padding-left: 0;
-  padding-top: 8px;
+  padding-top: 12px;
+}
+
+h5 {
+  padding-top: 10px;
 }
 
 hr {
   height: 1px;
   border-top: 2px;
-}
-
-.comment-by-username {
-  float: left;
+  margin: 0 auto;
 }
 
 .line{
-  display: block;
   clear: both;
   padding: 10px 0;
 }
 
+.name-and-comment {
+  padding-left: 18px;
+}
+
 .user-comment {
-  margin-left: 1em;
+  margin-left: 1.3em;
   text-align: left;
 }
 
-button {
-  margin-left: 0.75em;
+.edit-comment input {
+  position: relative;
+  right: 98px;
+  top: 21px;
 }
 
-.edit-comment-button {
+.edit-comment button {
   position: relative;
-  bottom: 0.376em;
+  left: 67px;
+  bottom: 10px;
 }

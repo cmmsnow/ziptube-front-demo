@@ -5,20 +5,19 @@
         <source src="{{video.videoURL}}">
       </video>
 
-      <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-info" routerLink="/editvideo" routerLinkActive="active">Edit Video</button>
-      </div>
-
       <div class="header-comments">
         <h3>
           {{video.title}}
         </h3>
-        <p>
-          {{video.userName}} posted on {{video.videoTimePosted}}<br/>
-          {{video.description}}
-        </p>
-        <app-comments [videoID]="video.videoId" [videoUser]="video.userName"></app-comments>
+        <p class="description">{{video.description}}</p>
+        <p class="posted-by">{{video.userName}} posted on {{video.videoTimePosted}}</p>
+        <app-comments [videoID]="video.videoId" [videoUsername]="video.userName"></app-comments>
       </div>
+
+      <div class="d-flex justify-content-end edit-button">
+        <button type="button" class="btn btn-info" routerLink="/editvideo" routerLinkActive="active">Edit Video</button>
+      </div>
+
     </div>
   </div>
 
@@ -65,7 +64,7 @@
           {{video.userName}} posted on {{video.videoTimePosted}}<br/>
           {{video.description}}
         </p>
-        <app-comments [videoID]="video.videoId" [videoUser]="video.userName"></app-comments>
+        <app-comments [videoID]="video.videoId" [videoUsername]="video.userName"></app-comments>
       </div>
     </div>
   </div>

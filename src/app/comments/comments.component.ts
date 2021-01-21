@@ -12,7 +12,7 @@ import {AUTHENTICATED_USER} from '../service/authentication.service';
 export class CommentsComponent implements OnInit {
   comments!: Comment[];
   @Input() videoID!: number;
-  @Input() videoUser!: string;
+  @Input() videoUsername!: string;
   comment!: string;
   newComment!: string;
   username!: string;
@@ -37,13 +37,15 @@ export class CommentsComponent implements OnInit {
 
   refresh(): void { window.location.reload(); }
 
-  canUserDelete(commentUsername: string): boolean {
-    if (this.isLoggedIn() && this.videoUser === this.username){
+  canUserDelete(commentPoster: string): boolean {
+    console.log(`${commentPoster} posted comment`);
+    console.log(`${this.username} signedin user`);
+    console.log(`${this.videoUsername} posted video`);
+    if (this.videoUsername === this.username && commentPoster !== this.username){
       return true;
-    } else if (this.isLoggedIn() && commentUsername === this.username){
-      return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   getComments(): void {

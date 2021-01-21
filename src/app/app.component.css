@@ -6,6 +6,8 @@
   height: 100%;
   overflow-y: auto;
   padding-top: .625em;
-  padding-bottom: 20em;
-  margin-left: 0.75em;
+  padding-bottom: 40em;
+  /*margin-left: 0.75em;*/
+  /*background-color: #398596;*/
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
