@@ -19,11 +19,11 @@
   <br>
 
   <div class="buttons">
-    <button class="btn btn-success" (click)="editVideo()">Submit changes</button>
+    <button class="btn btn-info" (click)="editVideo()">Submit changes</button>
   </div>
   <br>
   <div>
-    <button class="btn btn-danger" (click)="showDeleteVideo()">Delete Video</button>
+    <button class="btn btn-secondary" (click)="showDeleteVideo()">Delete Video</button>
   </div>
 
   <div class="delete-video {{warningIsVisible}}">
@@ -33,7 +33,7 @@
       <br>
       <div class="d-flex justify-content-between delete-video-btns">
         <button class="btn btn-danger" (click)="deleteVideo()">Delete</button>
-        <button class="btn btn-success" (click)="toggleState()">Cancel</button>
+        <button class="btn btn-info" (click)="toggleState()">Cancel</button>
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@
           </div>
           <h6>*Note: File format must be mp4 or mov</h6>
           <div class="form-group">
-            <button [disabled]="disableSubmitButton" class="btn btn-success next-button">Upload</button>
+            <button [disabled]="disableSubmitButton" class="btn btn-info next-button">Upload</button>
           </div>
           <div class="{{waitMessage}}"><strong>Please wait, uploading...</strong></div>
           <div class="{{successMessage}}"><strong>Upload success!</strong></div>
@@ -39,7 +39,7 @@
       </label>
 
       <div>
-        <button [disabled]="disableUploadButton" class="btn btn-success"
+        <button [disabled]="disableUploadButton" class="btn btn-info"
                 (click)="submitVideoDetails()">Submit
         </button>
       </div>
